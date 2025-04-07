@@ -22,7 +22,7 @@ Widget cachedImage(
   String imageUrl, {
   double? width,
   double? height,
-  BoxFit? fit,
+  BoxFit? boxFit,
   Widget? placeholderImg,
   bool isShowPlaceholderImg = true,
 }) {
@@ -31,7 +31,7 @@ Widget cachedImage(
     //  cacheManager: EsoImageCacheManager(),
     width: width,
     height: height,
-    fit: BoxFit.cover,
+    fit: boxFit ?? BoxFit.cover,
     placeholder:
         isShowPlaceholderImg == false
             ? null
@@ -95,7 +95,7 @@ smallIconText(
 }
 
 ///组件间隙
-Container lineSpace({double height = 1, double width = 1, Color? color}) {
+Container lineSpace({double? height, double? width, Color? color}) {
   return Container(width: width, height: height, color: color);
 }
 

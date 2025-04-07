@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 // TODO add your dark theme colors palette
-class DarkThemeColors
-{
+class DarkThemeColors {
   //dark swatch
   static const Color primaryColor = Color(0xff614BFF);
   static const Color accentColor = Color(0xff614BFF);

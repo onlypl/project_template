@@ -1,6 +1,7 @@
 class APIs {
   /// url
   static const String baseUrl = 'https://tv.myhunan.cn';
+  static const String wsUrl = 'ws://pet.myhunan.cn:9502';
 
   /// 刷新token
   static const String refreshToken =

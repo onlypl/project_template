@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../config/translations/localization_service.dart';
@@ -35,7 +36,7 @@ class AppSharedPreferences {
   /// 获取当前主题类型是否为light
   static bool getThemeIsLight() =>
       _sharedPreferences.getBool(_lightThemeKey) ??
-      false; // todo set the default theme (true for light, false for dark)
+      !Get.isDarkMode; // todo set the default theme (true for light, false for dark)
 
   /// 保存语言
   static Future<void> setCurrentLanguage(String languageCode) =>

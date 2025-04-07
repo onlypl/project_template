@@ -32,6 +32,23 @@ String durationTransForm(int seconds, bool isShowHour) {
   return payTime;
 }
 
+///几分钟前
+String formatRelativeTime(DateTime date, DateTime nowDate) {
+  // final now = DateTime.now();
+  final diff = nowDate.difference(date);
+  if (diff.inMinutes == 0) {
+    return '刚刚';
+  } else if (diff.inMinutes <= 60) {
+    return '${diff.inMinutes}分钟前';
+  } else if (diff.inHours < 24) {
+    return '${diff.inHours}小时前';
+  } else if (diff.inDays >= 1) {
+    return '${DateFormat.Hm().format(date)}}';
+  } else {
+    return '${DateFormat.yMd().format(date)} : ${DateFormat.Hm().format(date)}'; // 或者其他你希望的格式
+  }
+}
+
 ///小于10则前面补0
 String formatNumberWithLeadingZero(int number) {
   return number.toString().padLeft(2, '0');
@@ -58,21 +75,24 @@ String formatDateInt(int ms) {
   final minutes = seconds ~/ 60;
   seconds = seconds % 60;
 
-  final hoursString = hours >= 10
-      ? '$hours'
-      : hours == 0
+  final hoursString =
+      hours >= 10
+          ? '$hours'
+          : hours == 0
           ? '00'
           : '0$hours';
 
-  final minutesString = minutes >= 10
-      ? '$minutes'
-      : minutes == 0
+  final minutesString =
+      minutes >= 10
+          ? '$minutes'
+          : minutes == 0
           ? '00'
           : '0$minutes';
 
-  final secondsString = seconds >= 10
-      ? '$seconds'
-      : seconds == 0
+  final secondsString =
+      seconds >= 10
+          ? '$seconds'
+          : seconds == 0
           ? '00'
           : '0$seconds';
 

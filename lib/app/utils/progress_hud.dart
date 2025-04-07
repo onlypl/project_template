@@ -16,7 +16,7 @@ const bool _crossPage = true;
 // 点击穿透toast显示区域,为true可以穿透,默认false
 const bool _ignoreContentClick = false;
 // 是否在该Loading Toast显示时,能否正常点击触发事件,默认false
-const bool _allowClickLoading = false;
+const bool _allowClickLoading = true;
 // 是否允许该Loading跨页面显示,如果为true,则该Toast会跨越多个Route显示,如果为false则在当前Route发生变化时,会自动关闭该Toast,默认false
 const bool _crossPageLoading = true;
 // 点击物理返回键的行为(在android上等同于物理的返回键)

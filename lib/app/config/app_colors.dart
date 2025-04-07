@@ -22,7 +22,7 @@ const MaterialColor white = MaterialColor(0xFFFFFFFF, <int, Color>{
 });
 
 class AppColor {
-  static const Color themeColor = Color(0xFF00ADB5);
+  static const Color themeColor = Color(0xFF9971EE);
   static const Color themeColor2 = Color(0xFFDDF5F6);
   static const Color primaryColor = Color(0xFFFFFFFF);
   static const Color darkPrimaryColor = Color(0xFF161616); //161616 25272A
