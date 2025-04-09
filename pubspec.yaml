@@ -55,7 +55,7 @@ dependencies:
   connectivity_plus: ^6.1.3 #网络检测状态
   cached_network_image: ^3.4.1 #图片下载缓存库
   flutter_staggered_grid_view: ^0.7.0 #瀑布流
-  status_bar_control: ^3.2.1 #状态栏控件，可让您控制 iOS 和 Android 上的状态栏颜色、样式（主题）、可见性和半透明属性。
+  #status_bar_control: ^3.2.1 #状态栏控件，可让您控制 iOS 和 Android 上的状态栏颜色、样式（主题）、可见性和半透明属性。
   transparent_image: ^2.0.1 #淡入淡出图片
   webview_flutter: ^4.10.0 #webView组件
   loading_animation_widget: ^1.3.0 #全局加载动画

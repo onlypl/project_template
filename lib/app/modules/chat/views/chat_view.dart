@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_template/app/config/app_colors.dart';
 import 'package:project_template/app/models/message_model.dart';
-import 'package:project_template/app/utils/format_util.dart';
 import 'package:project_template/app/utils/view_utils.dart';
 
 import '../../../utils/log.dart';
@@ -69,16 +68,16 @@ class ChatView extends GetView<ChatController> {
 
   ///聊天内容item
   _buildtChatItem(MessageModel model, int index, {bool isRight = false}) {
-    DateTime nowDateTime = DateTime.parse(model.time ?? '');
+    //  DateTime nowDateTime = DateTime.parse(model.time ?? '');
     String showTime = model.time ?? '';
-    if (index - 1 > 1) {
-      //包含系统加入聊天室的第3条数据
-      MessageModel previousModel = controller.messageList[index - 1];
-      showTime = formatRelativeTime(
-        DateTime.parse(previousModel.time ?? ''),
-        nowDateTime,
-      );
-    }
+    // if (index - 1 > 1) {
+    //   //包含系统加入聊天室的第3条数据
+    //   MessageModel previousModel = controller.messageList[index - 1];
+    //   showTime = formatRelativeTime(
+    //     DateTime.parse(previousModel.time ?? ''),
+    //     nowDateTime,
+    //   );
+    // }
     return Container(
       margin: EdgeInsets.only(top: 12.h),
       padding: EdgeInsets.only(left: 16.w, right: 16.w),
