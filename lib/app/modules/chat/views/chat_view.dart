@@ -30,35 +30,40 @@ class ChatView extends GetView<ChatController> {
       child: Column(
         children: [
           Expanded(
-            flex: 1,
-            child: Obx(() {
-              return ListView.builder(
-                controller: controller.listViewScrollController,
-                itemCount: controller.messageList.length,
-                padding: EdgeInsets.only(bottom: 10.h),
-                itemBuilder: (BuildContext context, int index) {
-                  MessageModel model = controller.messageList[index];
-                  if (model.type == 'join') {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10.h),
-                      child: Text(
-                        model.data ?? '',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: AppColor.textColor666,
-                          fontSize: 13.sp,
+            // flex: 1,
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Obx(() {
+                return ListView.builder(
+                  reverse: true,
+                  shrinkWrap: true,
+                  controller: controller.listViewScrollController,
+                  itemCount: controller.messageList.length,
+                  padding: EdgeInsets.only(bottom: 10.h),
+                  itemBuilder: (BuildContext context, int index) {
+                    MessageModel model = controller.messageList[index];
+                    if (model.type == 'join') {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10.h),
+                        child: Text(
+                          model.data ?? '',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: AppColor.textColor666,
+                            fontSize: 13.sp,
+                          ),
                         ),
-                      ),
+                      );
+                    }
+                    return _buildtChatItem(
+                      model,
+                      index,
+                      isRight: model.isMe ?? false,
                     );
-                  }
-                  return _buildtChatItem(
-                    model,
-                    index,
-                    isRight: model.isMe ?? false,
-                  );
-                },
-              );
-            }),
+                  },
+                );
+              }),
+            ),
           ),
           _buildBottomSendMsg(context),
         ],

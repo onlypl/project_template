@@ -15,8 +15,9 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => const HomeView(),
+      page: () => HomeView(),
       binding: HomeBinding(),
+      // bindings: [HomeBinding(), ChatBinding()],
     ),
     GetPage(
       name: _Paths.CHAT,

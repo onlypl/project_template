@@ -48,6 +48,14 @@ void main() async {
   );
   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   runApp(
+    // MultiProvider(
+    //   providers: [
+    //         // 在这里为每个页面添加GlobalWebsocketVM绑定
+    //         ChangeNotifierProvider<GlobalWebSocketVM>(create: (_) => GlobalWebSocketVM()),
+    //       ],
+    //   builder:(context, child) {
+    //       return Container();
+    // },);
     ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
@@ -55,7 +63,9 @@ void main() async {
       builder: (context, child) {
         bool themeIsLight = AppSharedPreferences.getThemeIsLight();
         final botToastBuilder = BotToastInit(); //1.提示初始化
+
         return GetMaterialApp(
+          //   initialBinding: , //全局
           debugShowCheckedModeBanner: false, //去掉deBug横幅
           // useInheritedMediaQuery:
           //    true, //键盘出现在 android 中时，屏幕不会向上滚动，主要是当文本字段获得焦点时
@@ -66,24 +76,6 @@ void main() async {
           darkTheme: AppTheme.getThemeData(isLight: false), //暗黑模式主题
           themeMode: themeIsLight ? ThemeMode.light : ThemeMode.dark, //设置当前主题
           builder: BotToastInit(),
-          // builder: (context, child) {
-          //   child = MultiProvider(
-          //     providers: [
-          //       // 在这里为每个页面添加GlobalWebsocketVM绑定
-          //       ChangeNotifierProvider<GlobalWebSocketVM>(
-          //         create: (_) => socketVM,
-          //       ),
-          //     ],
-          //     builder: (context, child) => child ?? const SizedBox.shrink(),
-          //   );
-          //   //   child = botToastBuilder(context, child);
-          //   return child;
-          //   /*return ChangeNotifierProvider<UserVM>(
-          //   create: (_) => userVM,
-          //   builder: (context, child) =>
-          //   child ?? const SizedBox.shrink(),
-          // );*/
-          // },
           initialRoute: AppPages.INITIAL,
           // home: const SplashPage(),
           getPages: AppPages.routes,

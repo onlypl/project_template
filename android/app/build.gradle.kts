@@ -8,17 +8,6 @@ plugins {
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
-// 获取时间戳的工具函数 修改APK包名
-fun getTimestamp(): String = SimpleDateFormat("yyyyMMddHHmm").format(Date())
-android.applicationVariants.all {
-        val variant = this
-        variant.outputs
-            .filterIsInstance<com.android.build.gradle.internal.api.BaseVariantOutputImpl>()
-            .forEach { output ->
-                val outputFileName = "app-${variant.name}-v${variant.versionName}-${getTimestamp()}.apk"
-                output.outputFileName = outputFileName
-            }
-    }
 
 android {
     namespace = "com.template.project_template"
@@ -80,6 +69,15 @@ android {
             )
             // 配置release 的签名信息
             signingConfig = mySignConfig
+            applicationVariants.all {
+                val variant = this
+                variant.outputs
+                    .filterIsInstance<com.android.build.gradle.internal.api.BaseVariantOutputImpl>()
+                    .forEach { output ->
+                        val outputFileName = "app-${variant.name}-v${variant.versionName}-${SimpleDateFormat("yyyyMMddHHmm").format(Date())}.apk"
+                        output.outputFileName = outputFileName
+                    }
+            }
         }
 
         debug {

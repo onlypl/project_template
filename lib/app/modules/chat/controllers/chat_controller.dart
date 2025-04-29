@@ -21,8 +21,8 @@ class ChatController extends GetxController {
   GlobalKey bottomKey = GlobalKey();
   late final WebSocketManager? websocket;
   late final String udid;
-  RxList messageList = [].obs;
-  late final String nickName;
+  RxList<MessageModel> messageList = <MessageModel>[].obs;
+  late String nickName;
   late double bottomPading;
   final FocusNode focusNode = FocusNode();
   RxBool keyboardVisible = false.obs;
@@ -64,7 +64,8 @@ class ChatController extends GetxController {
     await FlutterUdid.udid.then((value) {
       udid = value;
     });
-    nickName = Get.arguments['nickName'];
+    nickName = Get.arguments == null ? '测试未填写' : Get.arguments['nickName'];
+    Log().info('nickName----$nickName');
 
     ///监听底部高度变化
     textEditingController.addListener(() {
@@ -97,8 +98,8 @@ class ChatController extends GetxController {
                 if (udid.isNotEmpty && udid == model.uid) {
                   model.isMe = true;
                 }
-                messageList.add(model);
-                Future.delayed(Duration(milliseconds: 800), () {
+                messageList.insert(0, model);
+                Future.delayed(Duration(milliseconds: 300), () {
                   _scrollToBottom();
                 });
               } catch (e) {
@@ -145,10 +146,10 @@ class ChatController extends GetxController {
   void _handleFocusChange() {
     keyboardVisible.value =
         focusNode.hasFocus; // Update the keyboard visibility state.
-    Log().debug('执行(${keyboardVisible == true ? '弹出软键盘' : '收起软键盘'})');
-    update();
+    Log().debug('执行(${keyboardVisible.value == true ? '弹出软键盘' : '收起软键盘'})');
+    // update();
     if (keyboardVisible.value) {
-      Future.delayed(Duration(milliseconds: 800), () {
+      Future.delayed(Duration(milliseconds: 300), () {
         _scrollToBottom();
       });
     }
@@ -156,6 +157,7 @@ class ChatController extends GetxController {
 
   /// 在合适的地方（比如发送按钮点击发送聊天消息）
   void sendChatMessage() {
+    print(nickName);
     if (sendText.isNotEmpty) {
       WebSocketManager().sendMessage(
         message: jsonEncode(
@@ -172,7 +174,6 @@ class ChatController extends GetxController {
       sendText.value = '';
       textEditingController.text = '';
       Get.focusScope?.unfocus();
-      update();
     } else {
       Log().debug('请输入消息');
     }
@@ -181,15 +182,14 @@ class ChatController extends GetxController {
   //输入内容发生改变
   void changeSendText(String msg) {
     sendText.value = msg;
-    update();
   }
 
   //滚动到最底部
   void _scrollToBottom() {
     if (listViewScrollController.hasClients) {
       var resp = listViewScrollController.animateTo(
-        listViewScrollController.position.maxScrollExtent,
-        duration: Duration(milliseconds: 200),
+        0.0, //listViewScrollController.position.maxScrollExtent,
+        duration: Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }

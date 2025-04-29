@@ -9,26 +9,39 @@ class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
   @override
   Widget build(BuildContext context) {
+    // Get.put(ChatController());
     return Scaffold(
       appBar: AppBar(title: const Text('Demo首页'), centerTitle: true),
       body: Center(
-        child: TextButton(
-          onPressed: () {
-            print('进入聊天室');
-            _buildDialog(title: '输入昵称');
-            // Get.toNamed(Routes.CHAT);
-          },
-          child: Text('进入聊天室'),
-          style: ButtonStyle(
-            // 文字颜色（包括禁用状态）
-            foregroundColor: WidgetStateProperty.resolveWith<Color>((
-              Set<WidgetState> states,
-            ) {
-              if (states.contains(WidgetState.disabled)) return Colors.grey;
-              return Colors.white;
-            }),
-            backgroundColor: WidgetStatePropertyAll(AppColor.themeColor),
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Obx(
+            //   () => Text(
+            //     (Get.find<ChatController>().messageList.isEmpty
+            //         ? '无'
+            //         : Get.find<ChatController>().messageList.last.data ?? ''),
+            //   ),
+            // ),
+            TextButton(
+              onPressed: () {
+                print('进入聊天室');
+                _buildDialog(title: '输入昵称');
+                // Get.toNamed(Routes.CHAT);
+              },
+              child: Text('进入聊天室'),
+              style: ButtonStyle(
+                // 文字颜色（包括禁用状态）
+                foregroundColor: WidgetStateProperty.resolveWith<Color>((
+                  Set<WidgetState> states,
+                ) {
+                  if (states.contains(WidgetState.disabled)) return Colors.grey;
+                  return Colors.white;
+                }),
+                backgroundColor: WidgetStatePropertyAll(AppColor.themeColor),
+              ),
+            ),
+          ],
         ),
       ),
     );
