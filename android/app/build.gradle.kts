@@ -20,7 +20,7 @@ android {
         create("packJKS"){
             keyAlias = "key" // 别名
             keyPassword = "pl7611346" // 密码
-            storeFile = file("/Users/onlypl/key.jks")//file("${rootDir.absolutePath}/keystore/key.jks") //file("/Users/onlypl/key.jks") // 存储keystore或者是jks文件的路径
+            storeFile = file("${rootDir.absolutePath}/key.jks")//file("${rootDir.absolutePath}/keystore/key.jks") //file("/Users/onlypl/key.jks") // 存储keystore或者是jks文件的路径
             storePassword = "pl7611346" // 存储密码
           //  enableV1Signing = true
          //   enableV2Signing = true
