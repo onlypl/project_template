@@ -192,3 +192,64 @@ get generate model on models from "https://miapp.itying.com/api/pcontent?id=59f6
 
 // fund是目录下
 get create page:featured on fund  
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------插件--------------------------------
+cbor 二进制对象编码/解码
+flutter_easyloading HUD
+
+Riverpod
+FlutterBoost
+
+
+--------------------------------
+GetxService:
+区别：
+
+GetView 是 GetX 中的一个便捷小部件，用于创建只需要一个 Controller 的页面。通常情况下，我们需要手动获取 Controller 实例，但使用 GetView 可以自动获取指定的 Controller，无需在代码中显式调用 Get.find。
+
+GetWidget 是 GetX 提供的一个便捷工具，主要用于创建具有持久化控制器实例的组件或小部件。与 GetView 相似，GetWidget 可以直接获取 Controller，但它的特殊之处在于：在多次构建过程中，GetWidget 会一直保持同一个控制器实例，而不会因为小部件重新构建而丢失状态。
+
+        GetWidget的特点如下：
+
+持久化：无论小部件如何重新构建，控制器实例都不会丢失。
+便于封装：非常适合封装那些需要频繁构建的组件，避免重新获取控制器。
+泛型支持：通过泛型指定控制器的类型，使得代码安全、简洁
+        它的使用场景如下：
+
+用于需要重复构建的组件，例如列表项、按钮等。
+
+当组件需要依赖控制器的数据且不希望控制器实例被重新创建时（例如，在不同页面的 Tab 中共享状态）。
+
+GetxController：
+
+GetxController 用于管理特定页面或 widget 的状态。每个页面或 widget 可以拥有一个或多个 GetxController，用于管理其自身的状态和逻辑。
+GetxController 是短暂存在的，通常与页面或 widget 的生命周期相关联。它们在页面或 widget 销毁时被销毁。
+GetxService：
+
+GetxService 用于全局状态管理和持久化服务。它们在整个应用程序生命周期中是单例存在的，并且负责处理应用程序范围内的状态和服务。
+GetxService 通常用于管理全局性的业务逻辑、持久化数据、全局状态等，它们不会随着页面或 widget 的销毁而销毁。
+使用场景：
+GetxController 的使用场景：
+
+管理特定页面或 widget 的状态和逻辑。
+处理特定页面或 widget 的用户交互和数据更新。
+GetxService 的使用场景：
+
+管理全局性的业务逻辑、全局状态和持久化数据。
+处理应用程序级别的服务，例如用户登录状态、数据缓存、全局设置等。
+总结：
+在实际开发中，GetxController 通常用于管理特定页面或 widget 的状态，而 GetxService 则用于处理应用程序范围内的全局状态和服务。合理使用它们可以让开发人员更清晰地组织和管理应用程序的状态和逻辑，提高代码的可维护性和复用性。
+————————————————
+
+
