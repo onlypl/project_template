@@ -22,10 +22,36 @@ None of your spec sources contain a spec satisfying the dependency: `zolozkit (=
 无效#source 'https://github.com/CocoaPods/Specs.git'
 pod install --repo-update
 
+
+
+
+3.布局底部按钮被软键盘顶上解决：
+Scaffold(
+      resizeToAvoidBottomInset: false, Scaffold这里为false
+      
+Column(
+    children: [
+            Flexible(
+                child: Column(
+                  children: [输入框等控件集合],
+                    )
+            ),
+            Button(),
+    ]
+)
+    //判断是否注册了控制器
+ if (Get.isRegistered<AccountCenterController>()) {
+        final acontroller = Get.find<AccountCenterController>();
+        acontroller.configData();
+      }
+
 环境配置:
 export PATH="$PATH:/Users/luke/Documents/flutter/bin"
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn 
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH=/Users/luke/Documents/flutter/bing\cache\dart-sdk\nbin:$PATH
+
 source ~/.bash_profile
 
 Sourcetree忽略设置： 设置->Git->全局忽略列表-》编辑文件
@@ -207,10 +233,9 @@ get create page:featured on fund
 ---------------------插件--------------------------------
 cbor 二进制对象编码/解码
 flutter_easyloading HUD
-
-Riverpod
-FlutterBoost
-
+ 
+Riverpod  状态管理 比较好用
+auto_size_text 自适应字体大小文本
 
 --------------------------------
 GetxService:
