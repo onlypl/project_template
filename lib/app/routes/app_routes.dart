@@ -5,10 +5,12 @@ abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
   static const CHAT = _Paths.CHAT;
+  static const TABS = _Paths.TABS;
 }
 
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
   static const CHAT = '/chat';
+  static const TABS = '/tabs';
 }

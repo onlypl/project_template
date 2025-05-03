@@ -18,8 +18,11 @@ None of your spec sources contain a spec satisfying the dependency: `zolozkit (=
 2.2:Unable to find a specification for `OrderedSet (~> 6.0.3)` depended     upon by `flutter_inappwebview_ios`
 
 解决：
-无效#source 'https://github.com/zoloz-pte-ltd/zoloz-demo-ios'
-无效#source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/zoloz-pte-ltd/zoloz-demo-ios'
+source 'https://github.com/CocoaPods/Specs.git'
+target 'Runner' do 上面加上上两行
+
+然后:
 pod install --repo-update
 
 
@@ -219,7 +222,8 @@ get generate model on models from "https://miapp.itying.com/api/pcontent?id=59f6
 // fund是目录下
 get create page:featured on fund  
 
-
+//kyc_base_info是要创建的页面  mine是文件夹 kyc是文件夹 mine/kyc文件目录下
+get create page:kyc_base_info on mine/kyc
 
 
 
@@ -236,7 +240,11 @@ flutter_easyloading HUD
  
 Riverpod  状态管理 比较好用
 auto_size_text 自适应字体大小文本
-
+app_installer 打开应用商店和安装 APK iOS 评分
+onesignal_flutter 消息推送
+  forui: ^0.9.0 底部tabbar
+  forui_assets: ^0.9.0
+  forui_hooks: ^0.9.0
 --------------------------------
 GetxService:
 区别：
