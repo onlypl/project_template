@@ -2,6 +2,8 @@
 class Assets {
   Assets._();
 
+  static const String assetsChatData = 'assets/chatData.json';
+  static const String assetsDepth = 'assets/depth.json';
   static const String barrageDanmuClickClose333 =
       'assets/images/barrage/danmu_click_close_333.png';
   static const String barrageDanmuClickClose666 =

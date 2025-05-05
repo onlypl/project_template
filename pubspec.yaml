@@ -151,6 +151,8 @@ flutter:
     - assets/images/tabs/
     - assets/vectors/
     - assets/fonts/
+    - assets/depth.json
+    - assets/chatData.json
   fonts:
 #    - family: tvIcon   #指定一个字体名 根据自己的需求定义
 #      fonts:
