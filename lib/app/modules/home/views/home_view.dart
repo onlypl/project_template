@@ -9,7 +9,6 @@ class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
   @override
   Widget build(BuildContext context) {
-    // Get.put(ChatController());
     return Scaffold(
       appBar: AppBar(title: const Text('Demo首页'), centerTitle: true),
       body: Center(

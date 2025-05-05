@@ -24,6 +24,24 @@ class Assets {
   static const String fontsPoppinsSemiBold =
       'assets/fonts/Poppins-SemiBold.ttf';
   static const String imagesDummyProfile = 'assets/images/dummy_profile.png';
+  static const String tabsDiscoverSelected =
+      'assets/images/tabs/discover_selected.png';
+  static const String tabsDiscoverUnselected =
+      'assets/images/tabs/discover_unselected.png';
+  static const String tabsHomeSelected = 'assets/images/tabs/home_selected.png';
+  static const String tabsHomeUnselected =
+      'assets/images/tabs/home_unselected.png';
+  static const String tabsMineSelected = 'assets/images/tabs/mine_selected.png';
+  static const String tabsMineUnselected =
+      'assets/images/tabs/mine_unselected.png';
+  static const String tabsRangkingSelected =
+      'assets/images/tabs/rangking_selected.png';
+  static const String tabsRangkingUnselected =
+      'assets/images/tabs/rangking_unselected.png';
+  static const String tabsTopicsSelected =
+      'assets/images/tabs/topics_selected.png';
+  static const String tabsTopicsUnselected =
+      'assets/images/tabs/topics_unselected.png';
   static const String vectorsArrowLeft = 'assets/vectors/arrow_left.svg';
   static const String vectorsArrowNext = 'assets/vectors/arrow_next.svg';
   static const String vectorsArrowRight = 'assets/vectors/arrow_right.svg';

@@ -82,6 +82,7 @@ dependencies:
   get: ^4.7.2
   awesome_notifications: ^0.10.1 #远程/本地推送通知自定义布局 Build Libraries for Distributio 要设置为NO
   web_socket_channel: ^3.0.2 #webSocket
+  animated_bottom_navigation_bar: ^1.4.0 #底部导航栏
   rxdart: ^0.28.0 # 配合Bloc使用
   equatable: ^2.0.7  #增强组件相等性判断 配合Bloc使用
   flutter_bloc: ^9.1.0 #Bloc状态管理
@@ -147,6 +148,7 @@ flutter:
     - assets/images/
     - assets/images/barrage/
     - assets/images/common/
+    - assets/images/tabs/
     - assets/vectors/
     - assets/fonts/
   fonts:

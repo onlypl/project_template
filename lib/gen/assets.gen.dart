@@ -54,6 +54,9 @@ class $AssetsImagesGen {
   AssetGenImage get dummyProfile =>
       const AssetGenImage('assets/images/dummy_profile.png');
 
+  /// Directory path: assets/images/tabs
+  $AssetsImagesTabsGen get tabs => const $AssetsImagesTabsGen();
+
   /// List of all assets
   List<AssetGenImage> get values => [dummyProfile];
 }
@@ -141,6 +144,64 @@ class $AssetsImagesCommonGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [arrowRight, back];
+}
+
+class $AssetsImagesTabsGen {
+  const $AssetsImagesTabsGen();
+
+  /// File path: assets/images/tabs/discover_selected.png
+  AssetGenImage get discoverSelected =>
+      const AssetGenImage('assets/images/tabs/discover_selected.png');
+
+  /// File path: assets/images/tabs/discover_unselected.png
+  AssetGenImage get discoverUnselected =>
+      const AssetGenImage('assets/images/tabs/discover_unselected.png');
+
+  /// File path: assets/images/tabs/home_selected.png
+  AssetGenImage get homeSelected =>
+      const AssetGenImage('assets/images/tabs/home_selected.png');
+
+  /// File path: assets/images/tabs/home_unselected.png
+  AssetGenImage get homeUnselected =>
+      const AssetGenImage('assets/images/tabs/home_unselected.png');
+
+  /// File path: assets/images/tabs/mine_selected.png
+  AssetGenImage get mineSelected =>
+      const AssetGenImage('assets/images/tabs/mine_selected.png');
+
+  /// File path: assets/images/tabs/mine_unselected.png
+  AssetGenImage get mineUnselected =>
+      const AssetGenImage('assets/images/tabs/mine_unselected.png');
+
+  /// File path: assets/images/tabs/rangking_selected.png
+  AssetGenImage get rangkingSelected =>
+      const AssetGenImage('assets/images/tabs/rangking_selected.png');
+
+  /// File path: assets/images/tabs/rangking_unselected.png
+  AssetGenImage get rangkingUnselected =>
+      const AssetGenImage('assets/images/tabs/rangking_unselected.png');
+
+  /// File path: assets/images/tabs/topics_selected.png
+  AssetGenImage get topicsSelected =>
+      const AssetGenImage('assets/images/tabs/topics_selected.png');
+
+  /// File path: assets/images/tabs/topics_unselected.png
+  AssetGenImage get topicsUnselected =>
+      const AssetGenImage('assets/images/tabs/topics_unselected.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    discoverSelected,
+    discoverUnselected,
+    homeSelected,
+    homeUnselected,
+    mineSelected,
+    mineUnselected,
+    rangkingSelected,
+    rangkingUnselected,
+    topicsSelected,
+    topicsUnselected,
+  ];
 }
 
 class Assets {
