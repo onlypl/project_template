@@ -48,6 +48,14 @@ Column(
         acontroller.configData();
       }
 
+
+
+4.这个属性的效果是 body 部分的背景图片会扩展到 AppBar 后面，从而实现一个完整的背景覆盖效果。如果你希望 AppBar 的背景颜色透明，并且 body 的内容能够显示在 AppBar 后面，那么这个属性是非常有用的。
+Scaffold(
+     extendBodyBehindAppBar: true,
+);
+
+
 环境配置:
 export PATH="$PATH:/Users/luke/Documents/flutter/bin"
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
