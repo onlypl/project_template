@@ -47,6 +47,12 @@ void main() async {
     statusBarColor: Colors.transparent,
   );
   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+
+  // ///停留操作
+  // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  // ///移除操作
+  // //FlutterNativeSplash.remove();
   runApp(
     // MultiProvider(
     //   providers: [
@@ -63,7 +69,6 @@ void main() async {
       builder: (context, child) {
         bool themeIsLight = AppSharedPreferences.getThemeIsLight();
         final botToastBuilder = BotToastInit(); //1.提示初始化
-
         return GetMaterialApp(
           //   initialBinding: , //全局
           debugShowCheckedModeBanner: false, //去掉deBug横幅
@@ -75,7 +80,11 @@ void main() async {
           theme: AppTheme.getThemeData(isLight: true), //明亮模式主题
           darkTheme: AppTheme.getThemeData(isLight: false), //暗黑模式主题
           themeMode: themeIsLight ? ThemeMode.light : ThemeMode.dark, //设置当前主题
-          builder: BotToastInit(),
+          builder: (context, child) {
+            //  child  = othersBuilder(context, child); //其它构造器
+            child = botToastBuilder(context, child);
+            return child;
+          },
           initialRoute: AppPages.INITIAL,
           // home: const SplashPage(),
           getPages: AppPages.routes,
