@@ -26,6 +26,9 @@ class Assets {
   static const String fontsPoppinsSemiBold =
       'assets/fonts/Poppins-SemiBold.ttf';
   static const String imagesDummyProfile = 'assets/images/dummy_profile.png';
+  static const String imagesSplash = 'assets/images/splash.png';
+  static const String projectTemplateAssetsChatData = 'assets/chatData.json';
+  static const String projectTemplateAssetsDepth = 'assets/depth.json';
   static const String tabsDiscoverSelected =
       'assets/images/tabs/discover_selected.png';
   static const String tabsDiscoverUnselected =

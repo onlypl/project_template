@@ -37,6 +37,7 @@ dependencies:
   #status_bar_control: ^3.2.1 #状态栏控件，可让您控制 iOS 和 Android 上的状态栏颜色、样式（主题）、可见性和半透明属性。
   transparent_image: ^2.0.1 #淡入淡出图片
   webview_flutter: ^4.11.0 #webView组件
+  flutter_html: ^3.0.0 #html标签解析
   loading_animation_widget: ^1.3.0 #全局加载动画
   shared_preferences: any #数据持久化缓存 //2.5.3
   fl_chart: ^0.71.0 #图表库
@@ -67,7 +68,7 @@ dependencies:
   flutter_bloc: ^9.1.1 #Bloc状态管理
   bloc: ^9.0.0
   go_router: ^15.1.1 #路由 配合Bloc使用
-
+  #syncfusion_flutter_xlsio: ^29.1.41 #导出Excel 国际化翻译时候需要 调用 :AppUtils.exportLanguageExcel();
   #flutter_native_splash: ^2.4.6 #启动页 生成启动屏：dart run flutter_native_splash:create
   #或删除启动屏：dart run flutter_native_splash:remove
   #图标 512x512 px 启动图 1242x2436 px

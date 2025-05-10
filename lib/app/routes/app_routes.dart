@@ -10,6 +10,7 @@ abstract class Routes {
   static const BLOC = _Paths.BLOC;
   static const CHART = _Paths.CHART;
   static const OTHER = _Paths.OTHER;
+  static const BASE_WEB = _Paths.BASE_WEB;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const BLOC = '/bloc';
   static const CHART = '/chart';
   static const OTHER = '/other';
+  static const BASE_WEB = '/base-web';
 }

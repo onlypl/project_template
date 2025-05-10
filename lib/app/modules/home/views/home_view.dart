@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_template/app/config/app_colors.dart';
 
+import '../../../db/app_shared_preferences.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -38,6 +40,32 @@ class HomeView extends GetView<HomeController> {
                   return Colors.white;
                 }),
                 backgroundColor: WidgetStatePropertyAll(AppColor.themeColor),
+              ),
+            ),
+
+            TextButton(
+              onPressed: () {
+                print('进入webView');
+                Get.toNamed(
+                  Routes.BASE_WEB,
+                  arguments: {
+                    'title': '加载网页',
+                    'url':
+                        (AppSharedPreferences.getCurrentDomain() ?? '').trim(),
+                    // 'url': 'http://www.google.com',
+                  },
+                );
+              },
+              child: Text('  进入网页  '),
+              style: ButtonStyle(
+                // 文字颜色（包括禁用状态）
+                foregroundColor: WidgetStateProperty.resolveWith<Color>((
+                  Set<WidgetState> states,
+                ) {
+                  if (states.contains(WidgetState.disabled)) return Colors.grey;
+                  return Colors.white;
+                }),
+                backgroundColor: WidgetStatePropertyAll(AppColor.textMain),
               ),
             ),
           ],
