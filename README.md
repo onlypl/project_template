@@ -55,6 +55,10 @@ Scaffold(
      extendBodyBehindAppBar: true,
 );
 
+5.头部可滑动有最大高和最小高 悬浮部分高度,而且有list可以下拉刷新 上拉加载更多等操作 
+    解决：NestedScrollView headerSliverBuilder:设置SliverPersistentHeader 的delegate头部视图
+                          body:TabBarView里面嵌套SmartRefresher 再嵌套ListView
+
 
 环境配置:
 export PATH="$PATH:/Users/luke/Documents/flutter/bin"
