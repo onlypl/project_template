@@ -1,6 +1,9 @@
+import 'package:project_template/app/db/app_shared_preferences.dart';
+
 class APIs {
   /// url
-  static const String baseUrl = 'https://tv.myhunan.cn';
+  static String baseUrl =
+      AppSharedPreferences.getCurrentDomain() ?? 'https://tv.myhunan.cn';
   static const String wsUrl = 'ws://pet.myhunan.cn:9502';
 
   /// 刷新token
