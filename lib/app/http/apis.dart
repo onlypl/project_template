@@ -1,6 +1,7 @@
 import 'package:project_template/app/db/app_shared_preferences.dart';
 
 class APIs {
+  //测试git修改1
   /// url
   static String baseUrl =
       AppSharedPreferences.getCurrentDomain() ?? 'https://tv.myhunan.cn';
