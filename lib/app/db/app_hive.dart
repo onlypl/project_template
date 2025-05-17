@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:project_template/app/models/user_model.dart';
+//import 'package:project_template/app/models/user_model.dart';
 
 //不支持跨平台
 //hive 是一个高性能的 NoSQL 数据库，支持存储各种类型的数据，
@@ -54,7 +54,7 @@ class MyHive {
   MyHive._();
 
   // hive box to store user data
-  static late Box<UserModel> _userBox;
+  // static late Box<UserModel> _userBox;
   // box name its like table name
   static const String _userBoxName = 'user';
   // store current user as (key => value)
@@ -72,45 +72,45 @@ class MyHive {
       await Hive.initFlutter();
     }
     await registerAdapters?.call(Hive);
-    await initUserBox();
+    // await initUserBox();
   }
 
   /// initialize user box
-  static Future<void> initUserBox() async {
-    _userBox = await Hive.openBox(_userBoxName);
-  }
-
-  /// save user to database
-  static Future<bool> saveUserToHive(UserModel user) async {
-    try {
-      await _userBox.put(_currentUserKey, user);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  }
-
-  /// get current logged user
-  static UserModel? getCurrentUser() {
-    try {
-      return _userBox.get(_currentUserKey);
-    } catch (error) {
-      return null;
-    }
-  }
-
-  /// delete the current user
-  static Future<bool> deleteCurrentUser() async {
-    try {
-      await _userBox.delete(_currentUserKey);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  }
-
-  // setter for _userBox (only using it for testing)
-  set userBox(Box<UserModel> box) {
-    _userBox = box;
-  }
+  // static Future<void> initUserBox() async {
+  //   _userBox = await Hive.openBox(_userBoxName);
+  // }
+  //
+  // /// save user to database
+  // static Future<bool> saveUserToHive(UserModel user) async {
+  //   try {
+  //     await _userBox.put(_currentUserKey, user);
+  //     return true;
+  //   } catch (error) {
+  //     return false;
+  //   }
+  // }
+  //
+  // /// get current logged user
+  // static UserModel? getCurrentUser() {
+  //   try {
+  //     return _userBox.get(_currentUserKey);
+  //   } catch (error) {
+  //     return null;
+  //   }
+  // }
+  //
+  // /// delete the current user
+  // static Future<bool> deleteCurrentUser() async {
+  //   try {
+  //     await _userBox.delete(_currentUserKey);
+  //     return true;
+  //   } catch (error) {
+  //     return false;
+  //   }
+  // }
+  //
+  // // setter for _userBox (only using it for testing)
+  // set userBox(Box<UserModel> box) {
+  //   _userBox = box;
+  // }
 }

@@ -4,49 +4,10 @@ class Assets {
 
   static const String assetsChatData = 'assets/chatData.json';
   static const String assetsDepth = 'assets/depth.json';
-  static const String barrageDanmuClickClose333 =
-      'assets/images/barrage/danmu_click_close_333.png';
-  static const String barrageDanmuClickClose666 =
-      'assets/images/barrage/danmu_click_close_666.png';
-  static const String barrageDanmuClickCloseWhite =
-      'assets/images/barrage/danmu_click_close_white.png';
-  static const String barrageDanmuClickOpen333 =
-      'assets/images/barrage/danmu_click_open_333.png';
-  static const String barrageDanmuClickOpen666 =
-      'assets/images/barrage/danmu_click_open_666.png';
-  static const String barrageDanmuClickOpenWhite =
-      'assets/images/barrage/danmu_click_open_white.png';
   static const String commonArrowRight = 'assets/images/common/arrow_right.png';
   static const String commonBack = 'assets/images/common/back.png';
-  static const String fontsCairoMedium = 'assets/fonts/Cairo-Medium.ttf';
-  static const String fontsCairoRegular = 'assets/fonts/Cairo-Regular.ttf';
-  static const String fontsCairoSemiBold = 'assets/fonts/Cairo-SemiBold.ttf';
-  static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
-  static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
-  static const String fontsPoppinsSemiBold =
-      'assets/fonts/Poppins-SemiBold.ttf';
   static const String imagesDummyProfile = 'assets/images/dummy_profile.png';
   static const String imagesSplash = 'assets/images/splash.png';
-  static const String projectTemplateAssetsChatData = 'assets/chatData.json';
-  static const String projectTemplateAssetsDepth = 'assets/depth.json';
-  static const String tabsDiscoverSelected =
-      'assets/images/tabs/discover_selected.png';
-  static const String tabsDiscoverUnselected =
-      'assets/images/tabs/discover_unselected.png';
-  static const String tabsHomeSelected = 'assets/images/tabs/home_selected.png';
-  static const String tabsHomeUnselected =
-      'assets/images/tabs/home_unselected.png';
-  static const String tabsMineSelected = 'assets/images/tabs/mine_selected.png';
-  static const String tabsMineUnselected =
-      'assets/images/tabs/mine_unselected.png';
-  static const String tabsRangkingSelected =
-      'assets/images/tabs/rangking_selected.png';
-  static const String tabsRangkingUnselected =
-      'assets/images/tabs/rangking_unselected.png';
-  static const String tabsTopicsSelected =
-      'assets/images/tabs/topics_selected.png';
-  static const String tabsTopicsUnselected =
-      'assets/images/tabs/topics_unselected.png';
   static const String vectorsArrowLeft = 'assets/vectors/arrow_left.svg';
   static const String vectorsArrowNext = 'assets/vectors/arrow_next.svg';
   static const String vectorsArrowRight = 'assets/vectors/arrow_right.svg';

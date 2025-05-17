@@ -154,7 +154,7 @@ class HttpUtils {
         } else {
           ///未登录错误
           if (resultMap[CODE_NAME] == ExceptionHandler.cookie_expired) {
-            AppHive.shared.isLogin = false;
+            // AppHive.shared.isLogin = false;
           }
           // 其他状态，弹出错误提示信息
           ProgressHUD.showText(resultMap[MSG_NAME]);

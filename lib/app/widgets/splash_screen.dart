@@ -186,6 +186,7 @@ class _SplashPageState extends State<SplashPage> {
                   if (j != i) {
                     cancelTokens[j].cancel("Request already successful");
                   }
+
                   ///请求处理请求配置接口或者其它数据/跳转页面等操作
                   goIndexPage();
                 }
@@ -336,7 +337,14 @@ class _SplashPageState extends State<SplashPage> {
   void goIndexPage() {
     print('进入了主页......');
 
-    Get.offNamed(Routes.TABS);
+    Get.offNamed(
+      Routes.BASE_WEB,
+      arguments: {
+        'title': '加载网页',
+        // 'url': (AppSharedPreferences.getCurrentDomain() ?? '').trim(),
+        'url': 'http://www.google.com',
+      },
+    );
 
     ///   Navigator.of(context).pushReplacementNamed(Routes.TABS);
   }

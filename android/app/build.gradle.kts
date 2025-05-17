@@ -15,7 +15,6 @@ android {
     ndkVersion = "27.0.12077973"
 
 
-
     signingConfigs {
         create("packJKS"){
             keyAlias = "key" // 别名

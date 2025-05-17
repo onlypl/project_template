@@ -3,23 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_udid/flutter_udid.dart';
 import 'package:get/get.dart';
 import 'package:project_template/app/config/theme/app_theme.dart';
 import 'package:project_template/app/config/translations/localization_service.dart';
 import 'package:project_template/app/db/app_hive.dart';
 import 'package:project_template/app/db/app_shared_preferences.dart';
 
-import 'app/models/user_model.dart';
 import 'app/routes/app_pages.dart';
-import 'app/utils/awesome_notifications_helper.dart';
 import 'app/widgets/splash_screen.dart';
 
 Future initHiveAndRegisterAdapter() async {
   // 初始化Hive
   await MyHive.init(
     registerAdapters: (hive) {
-      hive.registerAdapter(UserModelAdapter());
+      //  hive.registerAdapter(UserModelAdapter());
       //myHive.registerAdapter(OtherAdapter());
     },
   );
@@ -30,7 +27,6 @@ void main() async {
   //如果你在 main() 中使用异步方法需要添加这个
   WidgetsFlutterBinding.ensureInitialized();
   // socketVM = GlobalWebSocketVM();
-  String udid = await FlutterUdid.udid;
   // 初始化Hive
   await initHiveAndRegisterAdapter();
 
@@ -40,9 +36,6 @@ void main() async {
   ///Firebase Cloud Messaging  firebase推送
   // inti fcm services
   // await FcmHelper.initFcm();
-
-  // initialize local notifications service 初始化本地通知服务
-  await AwesomeNotificationsHelper.init();
 
   //配置透明的状态栏
   SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(

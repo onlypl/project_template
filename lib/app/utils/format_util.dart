@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:html/parser.dart';
-import 'package:intl/intl.dart';
 
 ///数字转万
 String countFormat(int count) {
@@ -32,33 +31,9 @@ String durationTransForm(int seconds, bool isShowHour) {
   return payTime;
 }
 
-///几分钟前
-String formatRelativeTime(DateTime date, DateTime nowDate) {
-  // final now = DateTime.now();
-  final diff = nowDate.difference(date);
-  if (diff.inMinutes == 0) {
-    return '刚刚';
-  } else if (diff.inMinutes <= 60) {
-    return '${diff.inMinutes}分钟前';
-  } else if (diff.inHours < 24) {
-    return '${diff.inHours}小时前';
-  } else if (diff.inDays >= 1) {
-    return '${DateFormat.Hm().format(date)}}';
-  } else {
-    return '${DateFormat.yMd().format(date)} : ${DateFormat.Hm().format(date)}'; // 或者其他你希望的格式
-  }
-}
-
 ///小于10则前面补0
 String formatNumberWithLeadingZero(int number) {
   return number.toString().padLeft(2, '0');
-}
-
-///10位时间戳转换时间字符串
-String timestampToDate(int timestamp) {
-  DateTime nowDate = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
-  var formatter = DateFormat('yyyy-MM-dd HH:mm'); //ss
-  return formatter.format(nowDate);
 }
 
 ///播放时间格式化
