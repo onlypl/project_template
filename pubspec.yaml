@@ -94,6 +94,7 @@ flutter:
     - assets/fonts/
     - assets/depth.json
     - assets/chatData.json
+    - android/app/src/main/res-baidu/
   fonts:
 #    - family: tvIcon   #指定一个字体名 根据自己的需求定义
 #      fonts:

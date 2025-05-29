@@ -125,6 +125,11 @@ AndroidManifest.xml文件下
             signingConfig = mySignConfig
         }
     }
+ 
+ 
+ 打包渠道:   
+    flutter build apk --flavor pro --dart-define=CHANEl=pro
+        flutter build apk --flavor yyb --dart-define=CHANEl=yyb
 
 环境配置:
 export PATH="$PATH:/Users/luke/Documents/flutter/bin"
