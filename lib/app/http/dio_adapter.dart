@@ -11,6 +11,7 @@ import '../utils/log.dart';
 import 'apis.dart';
 import 'net_error.dart';
 
+//测试git修改2
 //默认dio配置
 String _baseUrl = APIs.baseUrl;
 Duration _connectTimeout = const Duration(seconds: 30); //连接超时时间

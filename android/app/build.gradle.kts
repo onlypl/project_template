@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.Packaging
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -59,9 +60,12 @@ android {
         val mySignConfig = signingConfigs.getByName("packJKS")
         release {
            // isDebuggable = true
+            // 启用 ProGuard
             isMinifyEnabled = true
             isShrinkResources  = true
+            ndk.abiFilters.addAll(arrayOf("armeabi-v7a", "arm64-v8a")) //优化体积 ，主流App都不包含x86/x86_64架构
           //  isCrunchPngs = true
+            // 使用默认的 ProGuard 文件
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -91,6 +95,61 @@ android {
             signingConfig = mySignConfig
         }
     }
+
+
+    /////////多渠道多资源
+
+    ////纬度
+    ///flavorDimensions表示flavor的维度。比如我们可以根据渠道区分打包方式，
+    // 可以根据国家区分打包方式。在上面的例子中，我们以国家区分打包方式，
+    // 假定了我们需要两个国家的包：china和usa。
+//    flavorDimensions += listOf( "market", "environment") // 市场维度 环境维度
+//    //dimension
+//    // 配置渠道对应appid，还支持配置其他渠道参数
+//    productFlavors {
+//        ///dev测试
+//        /// baidu 百度手机助手 yyb 应用宝  m360 360手机助手 pp pp助手
+//        /// anzhi安智市场 xiaomi小米商店 letv乐视商店 huawei华为商店 lenovomm联想乐商店
+//        /// other其它市场 official 官方版本
+//        ///applicationIdSuffix 版本名称后添加后缀
+//        create("dev") {
+//            dimension = "environment" //环境维度
+//            applicationId = "com.template.channeldev"
+//            applicationIdSuffix = ".DEV"
+//            buildConfigField("String", "API_ENV", "\"DEV\"")
+//            resValue("string", "flavor_name", "Dev")
+//            matchingFallbacks += listOf("qa", "prod")  // 回退策略
+//        }
+//        create("pro") {
+//            dimension = "environment" //环境维度
+//            applicationId = "com.template.channelpro"
+//            applicationIdSuffix = ".PRO"
+//            buildConfigField("String", "API_ENV", "\"PRO\"")
+//            resValue("string", "flavor_name", "Pro")
+//          //  minSdk = 24  // 专业版提高最低API要求
+//        }
+//
+//        register("baidu") {
+//            dimension = "market" //市场维度
+//            applicationId = "com.template.channelbaidu"
+//            applicationIdSuffix = ".BAIDU"
+//            buildConfigField("String", "MARKET", "\"BAIDU\"")
+//    //        manifestPlaceholders += ["app_icon": "@mipmap/ic_launcher_cn"]
+//        }
+//        create("yyb") {
+//            dimension = "market" //市场维度
+//            applicationId = "com.template.channelyingyongbao"
+//            buildConfigField("String", "MARKET", "\"YYB\"")
+//            applicationIdSuffix = ".YYB"
+//        }
+//    }
+//    //配置渠道对应的安卓资源目录
+//    sourceSets {
+//        getByName("dev").assets.srcDirs("src/main/res-dev");
+//        getByName("pro").assets.srcDirs("src/main/res-pro");
+//        getByName("baidu").assets.srcDirs("src/main/res-baidu");
+//        getByName("yyb").jniLibs.srcDirs("src/main/res-yyb");
+//    }
 }
 
 flutter {
