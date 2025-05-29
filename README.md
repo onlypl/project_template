@@ -60,6 +60,72 @@ Scaffold(
                           body:TabBarView里面嵌套SmartRefresher 再嵌套ListView
 
 
+6.体积优化
+AndroidManifest.xml文件下
+<!--        AndroidManifest.xml-->
+<!--     android:usesCleartextTraffic="true" 允许http-->
+    <!--    android:extractNativeLibs="true" 包体积优化-->
+
+配置签名：
+    app目录下build.gradle.kts文件
+ signingConfigs {
+        create("packJKS"){
+            keyAlias = "key" // 别名
+            keyPassword = "pl7611346" // 密码
+            storeFile = file("${rootDir.absolutePath}/key.jks")//file("${rootDir.absolutePath}/keystore/key.jks") //file("/Users/onlypl/key.jks") // 存储keystore或者是jks文件的路径
+            storePassword = "pl7611346" // 存储密码
+          //  enableV1Signing = true
+         //   enableV2Signing = true
+        }
+
+    }
+    
+ buildTypes {
+//        release {
+//            // TODO: Add your own signing config for the release build.
+//            // Signing with the debug keys for now, so `flutter run --release` works.
+//            signingConfig = signingConfigs.getByName("debug")
+//        }
+
+        // 通过前面配置的签名信息对应的标识符：packJKS拿到签名的配置信息
+        // 保存在mySignConfig中，分别在debug和release中配置上就行了
+        val mySignConfig = signingConfigs.getByName("packJKS")
+        release {
+           // isDebuggable = true
+            isMinifyEnabled = true
+            isShrinkResources  = true
+            ndk.abiFilters.addAll(arrayOf("armeabi-v7a", "arm64-v8a")) //优化体积主流App都不包含x86/x86_64架构
+          //  isCrunchPngs = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            // 配置release 的签名信息
+            signingConfig = mySignConfig
+            applicationVariants.all {
+                val variant = this
+                variant.outputs
+                    .filterIsInstance<com.android.build.gradle.internal.api.BaseVariantOutputImpl>()
+                    .forEach { output ->
+                        val outputFileName = "app-${variant.name}-v${variant.versionName}-${SimpleDateFormat("yyyyMMddHHmm").format(Date())}.apk"
+                        output.outputFileName = outputFileName
+                    }
+            }
+        }
+
+        debug {
+         ///   isDebuggable = true
+            isMinifyEnabled = false
+            isShrinkResources  = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            // 配置debug的签名信息
+            signingConfig = mySignConfig
+        }
+    }
+
 环境配置:
 export PATH="$PATH:/Users/luke/Documents/flutter/bin"
 export PUB_HOSTED_URL=https://pub.flutter-io.cn

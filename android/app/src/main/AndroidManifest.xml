@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--        AndroidManifest.xml-->
+    <!--     android:usesCleartextTraffic="true" 允许http-->
+    <!--    android:extractNativeLibs="true" 包体积优化-->
     <application
-        adnroid:useCleartextTraffic="true"
+        android:usesCleartextTraffic="true"
+        android:extractNativeLibs="true"
         android:label="project_template"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
