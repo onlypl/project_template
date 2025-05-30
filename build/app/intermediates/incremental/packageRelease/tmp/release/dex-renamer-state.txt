@@ -1,4 +1,0 @@
-#Thu May 29 17:30:00 MYT 2025
-base.0=/Users/luke/Desktop/code/project_template/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex

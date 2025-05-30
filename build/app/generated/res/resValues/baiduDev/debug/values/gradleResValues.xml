@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <!-- Automatically generated file. DO NOT MODIFY -->
-
-    <!-- Value from product flavor: dev -->
-    <string name="flavor_name" translatable="false">Dev</string>
-
-</resources>
