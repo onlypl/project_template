@@ -1,3 +1,5 @@
+#flutter路径
+export PATH="$PATH:/Users/luke/Documents/flutter/bin"
 # 创建文件夹 与 clean操作
 if [ ! -d '../output_dir' ]; then
   mkdir '../output_dir'
