@@ -11,7 +11,7 @@ platform=$2
 channel_low=`echo $channel | tr 'A-Z' 'a-z'}`
 echo "[channel]：${channel}"
 echo "[platform]：${platform}"
-
+echo "[～～～～～channel_low]：${channel_low}"
 # 打包操作
 if [ ! -n "$platform" ]; then
   echo 'all'
