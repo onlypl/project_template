@@ -23,7 +23,7 @@ if [ ! -n "$platform" ]; then
 else
   if [ $platform == 'android' ]; then
     flutter build apk --flavor ${channel} --dart-define=CHANNEL=${channel}
-    mv ./build/app/outputs/flutter-apk/app-${channel_low}-release.apk ./output_dir/app-${channel}-release.apk
+    mv ../build/app/outputs/flutter-apk/app-${channel_low}-release.apk ./output_dir/app-${channel}-release.apk
   elif [ $platform == 'ios' ]; then
     flutter build ios --release
     flutter build ipa --flavor ${channel} --dart-define=CHANNEL=${channel}
@@ -31,7 +31,7 @@ else
   else
     echo 'all'
     flutter build apk --flavor ${channel} --dart-define=CHANNEL=${channel}
-    mv ./build/app/outputs/flutter-apk/app-${channel_low}-release.apk ./output_dir/app-${channel}-release.apk
+    mv ../build/app/outputs/flutter-apk/app-${channel_low}-release.apk ./output_dir/app-${channel}-release.apk
     flutter build ios --release
     flutter build ipa --flavor ${channel} --dart-define=CHANNEL=${channel}
     mv ./build/ios/archive/${channel}.xcarchive ./output_dir/${channel}.xcarchive
