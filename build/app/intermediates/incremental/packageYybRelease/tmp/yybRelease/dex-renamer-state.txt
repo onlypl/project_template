@@ -1,0 +1,4 @@
+#Thu May 29 21:44:31 MYT 2025
+base.0=/Users/luke/Desktop/code/project_template/build/app/intermediates/dex/yybRelease/minifyYybReleaseWithR8/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

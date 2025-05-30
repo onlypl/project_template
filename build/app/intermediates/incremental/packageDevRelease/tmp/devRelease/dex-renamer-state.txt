@@ -1,0 +1,4 @@
+#Fri May 30 17:39:58 MYT 2025
+base.0=/Users/luke/Desktop/code/project_template/build/app/intermediates/dex/devRelease/minifyDevReleaseWithR8/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

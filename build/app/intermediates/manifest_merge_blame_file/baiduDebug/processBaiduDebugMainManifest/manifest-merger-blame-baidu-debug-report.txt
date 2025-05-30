@@ -1,0 +1,340 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.template.channelbaidu.BAIDU"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+9        android:targetSdkVersion="35" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->/Users/luke/Desktop/code/project_template/android/app/src/debug/AndroidManifest.xml:6:5-66
+15-->/Users/luke/Desktop/code/project_template/android/app/src/debug/AndroidManifest.xml:6:22-64
+16    <!--
+17     Required to query activities that can process text, see:
+18         https://developer.android.com/training/package-visibility and
+19         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
+20
+21         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
+22    -->
+23    <queries>
+23-->/Users/luke/Desktop/code/project_template/android/app/src/main/AndroidManifest.xml:44:5-49:15
+24        <intent>
+24-->/Users/luke/Desktop/code/project_template/android/app/src/main/AndroidManifest.xml:45:9-48:18
+25            <action android:name="android.intent.action.PROCESS_TEXT" />
+25-->/Users/luke/Desktop/code/project_template/android/app/src/main/AndroidManifest.xml:46:13-72
+25-->/Users/luke/Desktop/code/project_template/android/app/src/main/AndroidManifest.xml:46:21-70
+26
+27            <data android:mimeType="text/plain" />
+27-->/Users/luke/Desktop/code/project_template/android/app/src/main/AndroidManifest.xml:47:13-50
+27-->/Users/luke/Desktop/code/project_template/android/app/src/main/AndroidManifest.xml:47:19-48
+28        </intent>
+29    </queries>
+30
+31    <uses-permission android:name="android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS" />
+31-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7:5-89
+31-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7:22-86
+32    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+32-->[me.carda:AndroidAwnCore:0.10.0] /Users/luke/.gradle/caches/8.10.2/transforms/86fa6b229a97f66608697e5e8d59fbae/transformed/jetified-AndroidAwnCore-0.10.0/AndroidManifest.xml:8:5-77
+32-->[me.carda:AndroidAwnCore:0.10.0] /Users/luke/.gradle/caches/8.10.2/transforms/86fa6b229a97f66608697e5e8d59fbae/transformed/jetified-AndroidAwnCore-0.10.0/AndroidManifest.xml:8:22-74
+33    <uses-permission
+33-->[me.carda:AndroidAwnCore:0.10.0] /Users/luke/.gradle/caches/8.10.2/transforms/86fa6b229a97f66608697e5e8d59fbae/transformed/jetified-AndroidAwnCore-0.10.0/AndroidManifest.xml:9:5-12:47
+34        android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+34-->[me.carda:AndroidAwnCore:0.10.0] /Users/luke/.gradle/caches/8.10.2/transforms/86fa6b229a97f66608697e5e8d59fbae/transformed/jetified-AndroidAwnCore-0.10.0/AndroidManifest.xml:10:9-77
+35        android:maxSdkVersion="22" />
+35-->[me.carda:AndroidAwnCore:0.10.0] /Users/luke/.gradle/caches/8.10.2/transforms/86fa6b229a97f66608697e5e8d59fbae/transformed/jetified-AndroidAwnCore-0.10.0/AndroidManifest.xml:11:9-35
+36    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+36-->[:connectivity_plus] /Users/luke/Desktop/code/project_template/build/connectivity_plus/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7:5-79
+36-->[:connectivity_plus] /Users/luke/Desktop/code/project_template/build/connectivity_plus/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7:22-76
+37
+38    <permission
+38-->[androidx.core:core:1.13.1] /Users/luke/.gradle/caches/8.10.2/transforms/8e1e3c89016dc268c9ab20acb5aac965/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+39        android:name="com.template.channelbaidu.BAIDU.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+39-->[androidx.core:core:1.13.1] /Users/luke/.gradle/caches/8.10.2/transforms/8e1e3c89016dc268c9ab20acb5aac965/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+40        android:protectionLevel="signature" />
+40-->[androidx.core:core:1.13.1] /Users/luke/.gradle/caches/8.10.2/transforms/8e1e3c89016dc268c9ab20acb5aac965/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+41
+42    <uses-permission android:name="com.template.channelbaidu.BAIDU.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- for android -->
+42-->[androidx.core:core:1.13.1] /Users/luke/.gradle/caches/8.10.2/transforms/8e1e3c89016dc268c9ab20acb5aac965/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+42-->[androidx.core:core:1.13.1] /Users/luke/.gradle/caches/8.10.2/transforms/8e1e3c89016dc268c9ab20acb5aac965/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+43    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
+44    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
+45    <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
+46    <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> -->
+47    <!-- for Samsung -->
+48    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+48-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
+48-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
+49    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- for htc -->
+49-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
+49-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
+50    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
+50-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
+50-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
+51    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- for sony -->
+51-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
+51-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
+52    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+52-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
+52-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
+53    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> <!-- for apex -->
+53-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
+53-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
+54    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- for solid -->
+54-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
+54-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
+55    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" /> <!-- for huawei -->
+55-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
+55-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
+56    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+56-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
+56-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
+57    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+57-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
+57-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
+58    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- for ZUK -->
+58-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
+58-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
+59    <uses-permission android:name="android.permission.READ_APP_BADGE" /> <!-- for OPPO -->
+59-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
+59-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
+60    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+60-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
+60-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
+61    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- for EvMe -->
+61-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
+61-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
+62    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
+62-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
+62-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
+63    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" /> <!-- AndroidManifest.xml -->
+63-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
+63-->[me.leolin:ShortcutBadger:1.1.22] /Users/luke/.gradle/caches/8.10.2/transforms/b8007325192854b7a0ca7e02df179875/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86
+64    <!-- android:usesCleartextTraffic="true" 允许http -->
+65    <!-- android:extractNativeLibs="true" 包体积优化 -->
+66    <application
+67        android:name="android.app.Application"
+68        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+68-->[androidx.core:core:1.13.1] /Users/luke/.gradle/caches/8.10.2/transforms/8e1e3c89016dc268c9ab20acb5aac965/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+69        android:debuggable="true"
+70        android:extractNativeLibs="true"
+71        android:icon="@mipmap/ic_launcher"
+72        android:label="百度名称"
+73        android:usesCleartextTraffic="true" >
+74        <activity
+75            android:name="com.template.project_template.MainActivity"
+76            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+77            android:exported="true"
+78            android:hardwareAccelerated="true"
+79            android:launchMode="singleTop"
+80            android:taskAffinity=""
+81            android:theme="@style/LaunchTheme"
+82            android:windowSoftInputMode="adjustResize" >
+83
+84            <!--
+85                 Specifies an Android theme to apply to this Activity as soon as
+86                 the Android process has started. This theme is visible to the user
+87                 while the Flutter UI initializes. After that, this theme continues
+88                 to determine the Window background behind the Flutter UI.
+89            -->
+90            <meta-data
+91                android:name="io.flutter.embedding.android.NormalTheme"
+92                android:resource="@style/NormalTheme" />
+93
+94            <intent-filter>
+95                <action android:name="android.intent.action.MAIN" />
+96
+97                <category android:name="android.intent.category.LAUNCHER" />
+98            </intent-filter>
+99        </activity>
+100        <!--
+101             Don't delete the meta-data below.
+102             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+103        -->
+104        <meta-data
+105            android:name="flutterEmbedding"
+106            android:value="2" />
+107
+108        <receiver
+108-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:10:9-12:39
+109            android:name="me.carda.awesome_notifications.DartNotificationActionReceiver"
+109-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:13-89
+110            android:exported="true" />
+110-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:12:13-36
+111        <receiver
+111-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:9-15:39
+112            android:name="me.carda.awesome_notifications.DartDismissedNotificationReceiver"
+112-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:14:13-92
+113            android:exported="true" />
+113-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:15:13-36
+114        <receiver
+114-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:16:9-18:39
+115            android:name="me.carda.awesome_notifications.DartScheduledNotificationReceiver"
+115-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:17:13-92
+116            android:exported="true" />
+116-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:18:13-36
+117        <receiver
+117-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:19:9-33:20
+118            android:name="me.carda.awesome_notifications.DartRefreshSchedulesReceiver"
+118-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:20:13-87
+119            android:enabled="true"
+119-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:21:13-35
+120            android:exported="true" >
+120-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:13-36
+121            <intent-filter>
+121-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:23:13-32:29
+122                <category android:name="android.intent.category.DEFAULT" />
+122-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:24:17-76
+122-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:24:27-73
+123
+124                <action android:name="android.intent.action.BOOT_COMPLETED" />
+124-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:26:17-79
+124-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:26:25-76
+125                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+125-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:27:17-86
+125-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:27:25-83
+126                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+126-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:28:17-84
+126-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:28:25-81
+127                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+127-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:29:17-82
+127-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:29:25-79
+128                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+128-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:30:17-82
+128-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:30:25-79
+129                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+129-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:31:17-107
+129-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:31:25-104
+130            </intent-filter>
+131        </receiver>
+132
+133        <service
+133-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:35:9-38:72
+134            android:name="me.carda.awesome_notifications.DartBackgroundService"
+134-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:36:13-80
+135            android:exported="false"
+135-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:37:13-37
+136            android:permission="android.permission.BIND_JOB_SERVICE" />
+136-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:38:13-69
+137        <service
+137-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:39:9-44:43
+138            android:name="me.carda.awesome_notifications.core.services.ForegroundService"
+138-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:40:13-90
+139            android:enabled="true"
+139-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:41:13-35
+140            android:exported="false"
+140-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:42:13-37
+141            android:foregroundServiceType="phoneCall|phoneCall"
+141-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:43:13-54
+142            android:stopWithTask="true" />
+142-->[:awesome_notifications] /Users/luke/Desktop/code/project_template/build/awesome_notifications/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:44:13-40
+143        <service
+143-->[me.carda:AndroidAwnCore:0.10.0] /Users/luke/.gradle/caches/8.10.2/transforms/86fa6b229a97f66608697e5e8d59fbae/transformed/jetified-AndroidAwnCore-0.10.0/AndroidManifest.xml:21:9-28:19
+144            android:name="me.carda.awesome_notifications.core.managers.StatusBarManager"
+144-->[me.carda:AndroidAwnCore:0.10.0] /Users/luke/.gradle/caches/8.10.2/transforms/86fa6b229a97f66608697e5e8d59fbae/transformed/jetified-AndroidAwnCore-0.10.0/AndroidManifest.xml:22:13-89
+145            android:exported="true"
+145-->[me.carda:AndroidAwnCore:0.10.0] /Users/luke/.gradle/caches/8.10.2/transforms/86fa6b229a97f66608697e5e8d59fbae/transformed/jetified-AndroidAwnCore-0.10.0/AndroidManifest.xml:23:13-36
+146            android:label="My Notification Listener Service" >
+146-->[me.carda:AndroidAwnCore:0.10.0] /Users/luke/.gradle/caches/8.10.2/transforms/86fa6b229a97f66608697e5e8d59fbae/transformed/jetified-AndroidAwnCore-0.10.0/AndroidManifest.xml:24:13-61
+147            <intent-filter>
+147-->[me.carda:AndroidAwnCore:0.10.0] /Users/luke/.gradle/caches/8.10.2/transforms/86fa6b229a97f66608697e5e8d59fbae/transformed/jetified-AndroidAwnCore-0.10.0/AndroidManifest.xml:25:13-27:29
+148                <action android:name="android.service.notification.NotificationListenerService" />
+148-->[me.carda:AndroidAwnCore:0.10.0] /Users/luke/.gradle/caches/8.10.2/transforms/86fa6b229a97f66608697e5e8d59fbae/transformed/jetified-AndroidAwnCore-0.10.0/AndroidManifest.xml:26:17-99
+148-->[me.carda:AndroidAwnCore:0.10.0] /Users/luke/.gradle/caches/8.10.2/transforms/86fa6b229a97f66608697e5e8d59fbae/transformed/jetified-AndroidAwnCore-0.10.0/AndroidManifest.xml:26:25-96
+149            </intent-filter>
+150        </service>
+151        <service
+151-->[androidx.room:room-runtime:2.6.1] /Users/luke/.gradle/caches/8.10.2/transforms/68591aad1c54ff00514ec15dba76943a/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+152            android:name="androidx.room.MultiInstanceInvalidationService"
+152-->[androidx.room:room-runtime:2.6.1] /Users/luke/.gradle/caches/8.10.2/transforms/68591aad1c54ff00514ec15dba76943a/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+153            android:directBootAware="true"
+153-->[androidx.room:room-runtime:2.6.1] /Users/luke/.gradle/caches/8.10.2/transforms/68591aad1c54ff00514ec15dba76943a/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+154            android:exported="false" />
+154-->[androidx.room:room-runtime:2.6.1] /Users/luke/.gradle/caches/8.10.2/transforms/68591aad1c54ff00514ec15dba76943a/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+155
+156        <uses-library
+156-->[androidx.window:window:1.2.0] /Users/luke/.gradle/caches/8.10.2/transforms/2d5f635c18cd020beed517667661a802/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
+157            android:name="androidx.window.extensions"
+157-->[androidx.window:window:1.2.0] /Users/luke/.gradle/caches/8.10.2/transforms/2d5f635c18cd020beed517667661a802/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
+158            android:required="false" />
+158-->[androidx.window:window:1.2.0] /Users/luke/.gradle/caches/8.10.2/transforms/2d5f635c18cd020beed517667661a802/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
+159        <uses-library
+159-->[androidx.window:window:1.2.0] /Users/luke/.gradle/caches/8.10.2/transforms/2d5f635c18cd020beed517667661a802/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
+160            android:name="androidx.window.sidecar"
+160-->[androidx.window:window:1.2.0] /Users/luke/.gradle/caches/8.10.2/transforms/2d5f635c18cd020beed517667661a802/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
+161            android:required="false" />
+161-->[androidx.window:window:1.2.0] /Users/luke/.gradle/caches/8.10.2/transforms/2d5f635c18cd020beed517667661a802/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
+162
+163        <provider
+163-->[androidx.emoji2:emoji2:1.3.0] /Users/luke/.gradle/caches/8.10.2/transforms/851a1473083cef1b7c2927f8c6352b08/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+164            android:name="androidx.startup.InitializationProvider"
+164-->[androidx.emoji2:emoji2:1.3.0] /Users/luke/.gradle/caches/8.10.2/transforms/851a1473083cef1b7c2927f8c6352b08/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:25:13-67
+165            android:authorities="com.template.channelbaidu.BAIDU.androidx-startup"
+165-->[androidx.emoji2:emoji2:1.3.0] /Users/luke/.gradle/caches/8.10.2/transforms/851a1473083cef1b7c2927f8c6352b08/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:26:13-68
+166            android:exported="false" >
+166-->[androidx.emoji2:emoji2:1.3.0] /Users/luke/.gradle/caches/8.10.2/transforms/851a1473083cef1b7c2927f8c6352b08/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:27:13-37
+167            <meta-data
+167-->[androidx.emoji2:emoji2:1.3.0] /Users/luke/.gradle/caches/8.10.2/transforms/851a1473083cef1b7c2927f8c6352b08/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+168                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+168-->[androidx.emoji2:emoji2:1.3.0] /Users/luke/.gradle/caches/8.10.2/transforms/851a1473083cef1b7c2927f8c6352b08/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:30:17-75
+169                android:value="androidx.startup" />
+169-->[androidx.emoji2:emoji2:1.3.0] /Users/luke/.gradle/caches/8.10.2/transforms/851a1473083cef1b7c2927f8c6352b08/transformed/jetified-emoji2-1.3.0/AndroidManifest.xml:31:17-49
+170            <meta-data
+170-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/luke/.gradle/caches/8.10.2/transforms/b90afcd84fc1b6dbc9bf33b67e565725/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+171                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+171-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/luke/.gradle/caches/8.10.2/transforms/b90afcd84fc1b6dbc9bf33b67e565725/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+172                android:value="androidx.startup" />
+172-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/luke/.gradle/caches/8.10.2/transforms/b90afcd84fc1b6dbc9bf33b67e565725/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+173            <meta-data
+173-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+174                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+174-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+175                android:value="androidx.startup" />
+175-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+176        </provider>
+177
+178        <receiver
+178-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+179            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+179-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+180            android:directBootAware="false"
+180-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+181            android:enabled="true"
+181-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+182            android:exported="true"
+182-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+183            android:permission="android.permission.DUMP" >
+183-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+184            <intent-filter>
+184-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+185                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+185-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+185-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+186            </intent-filter>
+187            <intent-filter>
+187-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+188                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+188-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+188-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+189            </intent-filter>
+190            <intent-filter>
+190-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+191                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+191-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+191-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+192            </intent-filter>
+193            <intent-filter>
+193-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+194                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+194-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+194-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/luke/.gradle/caches/8.10.2/transforms/f3f705fb3e7acd8a78843b0e5c575e64/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+195            </intent-filter>
+196        </receiver>
+197    </application>
+198
+199</manifest>

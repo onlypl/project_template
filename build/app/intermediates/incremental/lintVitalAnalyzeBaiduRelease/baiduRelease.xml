@@ -1,0 +1,43 @@
+<variant
+    name="baiduRelease"
+    package="com.template.project_template"
+    minSdkVersion="23"
+    targetSdkVersion="35"
+    shrinking="true"
+    mergedManifest="/Users/luke/Desktop/code/project_template/build/app/intermediates/merged_manifest/baiduRelease/processBaiduReleaseMainManifest/AndroidManifest.xml"
+    proguardFiles="/Users/luke/Desktop/code/project_template/build/app/intermediates/default_proguard_files/global/proguard-android-optimize.txt-8.7.3:/Users/luke/Documents/flutter/packages/flutter_tools/gradle/flutter_proguard_rules.pro:proguard-rules.pro:/Users/luke/Desktop/code/project_template/build/app/intermediates/default_proguard_files/global/proguard-android-optimize.txt-8.7.3:proguard-rules.pro"
+    partialResultsDir="/Users/luke/Desktop/code/project_template/build/app/intermediates/lint_vital_partial_results/baiduRelease/lintVitalAnalyzeBaiduRelease/out"
+    desugaredMethodsFiles="/Users/luke/.gradle/caches/8.10.2/transforms/0b1e2d8521122301a31855f0a8a61852/transformed/D8BackportedDesugaredMethods.txt">
+  <buildFeatures
+      namespacing="REQUIRED"/>
+  <sourceProviders>
+    <sourceProvider
+        manifests="src/main/AndroidManifest.xml"
+        javaDirectories="src/main/java:src/baidu/java:src/release/java:src/baiduRelease/java:src/main/kotlin:src/baidu/kotlin:src/release/kotlin:src/baiduRelease/kotlin"
+        resDirectories="src/main/res:src/baidu/res:src/main/res-baidu:src/release/res:src/baiduRelease/res"
+        assetsDirectories="src/main/assets:src/baidu/assets:src/release/assets:src/baiduRelease/assets"/>
+  </sourceProviders>
+  <testSourceProviders>
+  </testSourceProviders>
+  <testFixturesSourceProviders>
+  </testFixturesSourceProviders>
+  <manifestPlaceholders>
+    <placeholder
+        name="app_icon"
+        value="@mipmap/ic_launcher" />
+    <placeholder
+        name="app_name"
+        value="百度名称" />
+    <placeholder
+        name="applicationName"
+        value="android.app.Application" />
+  </manifestPlaceholders>
+  <artifact
+      classOutputs="/Users/luke/Desktop/code/project_template/build/app/intermediates/javac/baiduRelease/compileBaiduReleaseJavaWithJavac/classes:/Users/luke/Desktop/code/project_template/build/app/tmp/kotlin-classes/baiduRelease:/Users/luke/Desktop/code/project_template/build/app/kotlinToolingMetadata:/Users/luke/Desktop/code/project_template/build/app/intermediates/compile_and_runtime_not_namespaced_r_class_jar/baiduRelease/processBaiduReleaseResources/R.jar"
+      type="MAIN"
+      applicationId="com.template.channelbaidu.BAIDU"
+      generatedSourceFolders="/Users/luke/Desktop/code/project_template/build/app/generated/ap_generated_sources/baiduRelease/out:/Users/luke/Desktop/code/project_template/build/app/generated/source/buildConfig/baidu/release"
+      generatedResourceFolders="/Users/luke/Desktop/code/project_template/build/app/generated/res/resValues/baidu/release"
+      desugaredMethodsFiles="/Users/luke/.gradle/caches/8.10.2/transforms/0b1e2d8521122301a31855f0a8a61852/transformed/D8BackportedDesugaredMethods.txt">
+  </artifact>
+</variant>

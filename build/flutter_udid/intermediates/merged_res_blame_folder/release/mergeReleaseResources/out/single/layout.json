@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/layout/notification_action_tombstone.xml",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/layout/ime_base_split_test_activity.xml",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/layout/ime_base_split_test_activity.xml"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/layout/notification_template_part_time.xml",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/layout/notification_action.xml",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/layout/notification_action.xml"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/layout/notification_template_icon_group.xml",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/layout/custom_dialog.xml",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/layout/notification_template_part_chronometer.xml",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/layout/ime_secondary_split_test_activity.xml",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/layout/ime_secondary_split_test_activity.xml"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/layout/notification_template_custom_big.xml",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/layout/notification_template_custom_big.xml"
+    }
+]

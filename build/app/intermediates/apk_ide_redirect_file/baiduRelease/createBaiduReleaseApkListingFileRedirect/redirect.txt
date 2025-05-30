@@ -1,0 +1,2 @@
+#- File Locator -
+listingFile=../../../../outputs/apk/baidu/release/output-metadata.json

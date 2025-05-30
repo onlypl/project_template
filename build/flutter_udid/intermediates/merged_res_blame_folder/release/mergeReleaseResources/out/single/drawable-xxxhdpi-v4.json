@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/drawable-xxxhdpi-v4/ic_call_answer_low.png",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/drawable-xxxhdpi-v4/ic_call_answer_low.png"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/drawable-xxxhdpi-v4/ic_call_answer_video_low.png",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/drawable-xxxhdpi-v4/ic_call_answer_video_low.png"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/drawable-xxxhdpi-v4/ic_call_decline.png",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/drawable-xxxhdpi-v4/ic_call_decline.png"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/drawable-xxxhdpi-v4/ic_call_answer.png",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/drawable-xxxhdpi-v4/ic_call_answer.png"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/drawable-xxxhdpi-v4/ic_call_decline_low.png",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/drawable-xxxhdpi-v4/ic_call_decline_low.png"
+    },
+    {
+        "merged": "de.gigadroid.flutterudid.flutter_udid-release-25:/drawable-xxxhdpi-v4/ic_call_answer_video.png",
+        "source": "de.gigadroid.flutterudid.flutter_udid-core-1.13.1-7:/drawable-xxxhdpi-v4/ic_call_answer_video.png"
+    }
+]

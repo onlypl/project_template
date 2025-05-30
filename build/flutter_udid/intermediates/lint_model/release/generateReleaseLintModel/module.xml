@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="/Users/luke/.pub-cache/hosted/pub.flutter-io.cn/flutter_udid-4.0.0/android"
+    name=":flutter_udid"
+    type="LIBRARY"
+    maven="de.gigadroid.flutterudid:flutter_udid:1.0-SNAPSHOT"
+    agpVersion="8.7.3"
+    buildFolder="/Users/luke/Desktop/code/project_template/build/flutter_udid"
+    bootClassPath="/Users/luke/Library/Android/sdk/platforms/android-33/android.jar:/Users/luke/Library/Android/sdk/build-tools/34.0.0/core-lambda-stubs.jar"
+    javaSourceLevel="11"
+    compileTarget="android-33"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>

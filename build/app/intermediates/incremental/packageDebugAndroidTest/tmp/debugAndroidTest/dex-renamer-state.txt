@@ -1,0 +1,4 @@
+#Sat May 17 17:43:49 MYT 2025
+base.0=/Users/luke/Desktop/code/project_template/build/app/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/0/classes.dex
+path.0=0/classes.dex
+renamed.0=classes.dex
