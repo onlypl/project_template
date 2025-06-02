@@ -16,4 +16,4 @@ function rollback(){
     done
 }
 
-rollback "../../assets/${channel}"
+rollback "../assets/${channel}"
