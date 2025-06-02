@@ -186,6 +186,7 @@ class _SplashPageState extends State<SplashPage> {
                   if (j != i) {
                     cancelTokens[j].cancel("Request already successful");
                   }
+
                   ///请求处理请求配置接口或者其它数据/跳转页面等操作
                   goIndexPage();
                 }
@@ -268,11 +269,11 @@ class _SplashPageState extends State<SplashPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('正在寻找最佳线路'.tr, style: textWhiteWith75_14_700),
+                  Text('正在寻找最佳线路'.tr, style: textMain14_700),
                   SizedBox(width: 10.w),
                   LoadingAnimationWidget.staggeredDotsWave(
                     size: 30.w,
-                    color: AppColor.white,
+                    color: AppColor.textMain,
                   ),
                 ],
               ),

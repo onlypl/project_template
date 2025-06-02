@@ -1,3 +1,6 @@
+# 设置 Ruby + CocoaPods 路径
+export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
+eval "$(rbenv init -)"
 #flutter路径
 export PATH="$PATH:/Users/luke/Documents/flutter/bin"
 
@@ -7,7 +10,8 @@ channel=$1
 platform=$2
 echo ">>>>>当前渠道[channel]：${channel}"
 echo ">>>>>当前平台[platform]：${platform}"
-
+which pod
+pod --version
 # 步骤1：clean操作
 chmod 777 ./clean_work_space/clean.sh
 bash ./clean_work_space/clean.sh
