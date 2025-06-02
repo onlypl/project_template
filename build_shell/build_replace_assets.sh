@@ -11,13 +11,13 @@ echo ">>>>>当前平台[platform]：${platform}"
 # 步骤1：clean操作
 chmod 777 ./clean_work_space/clean.sh
 cd ./clean_work_space
-clean.sh
+./clean.sh
 cd ..
 
 # 步骤2：资源替换
 chmod 777 ./assets_swap/assets_swap.sh
 cd ./assets_swap
-assets_swap.sh $channel
+./assets_swap.sh $channel
 cd ..
 
 
