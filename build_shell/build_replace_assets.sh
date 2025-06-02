@@ -15,7 +15,6 @@ bash ./clean_work_space/clean.sh
 # 步骤2：资源替换
 chmod 777 ./assets_swap/assets_swap.sh
 bash ./assets_swap/assets_swap.sh $channel
-cd ..
 
 
 # 步骤3： 打包操作
@@ -52,5 +51,4 @@ else
 
   # 步骤4：资源回滚
   chmod 777 ./assets_swap/rollback_assets.sh
-  cd ./assets_swap
-  rollback_assets.sh $channel
+  bash ./assets_swap/rollback_assets.sh $channel
