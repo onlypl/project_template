@@ -7,12 +7,35 @@ import 'package:http/http.dart' as http;
 import '../../../utils/log.dart';
 import '../model/depth_model.dart';
 import '../model/k_line_model.dart';
+import '../renderer/main_renderer.dart';
 import '../utils/data_util.dart';
+import '../views/chart_style.dart';
+import '../views/k_chart_widget.dart';
 
 class ChartController extends GetxController {
   List<KLineModel>? datas;
   RxBool showLoading = true.obs;
   List<DepthModel>? _bids, _asks;
+
+  RxBool isLine = true.obs; //是否显示K线
+  RxBool isTrendLine = false.obs; //是否显示趋势线
+  Rx<MainState> mainState = MainState.MA.obs; //显示MA均线/BOLL布林线/NONE无
+  Rx<SecondaryState> secondaryState =
+      SecondaryState
+          .MACD
+          .obs; //显示MACD指数平滑异同移动平均线/KDJ随机指标/RSI相对强弱指标/WR威廉指标/CCI商品通道指数/NONE/无
+
+  RxBool volHidden = false.obs; //是否隐藏成交量图
+  RxBool hideGrid = false.obs; //是否隐藏网格线
+  RxBool showNowPrice = true.obs; //是否显示当前价
+  RxBool isChinese = true.obs; //是否显示中文
+  RxBool isChangeUI = true.obs; //是否修改UI
+  RxBool priceLeft = true.obs; //价格是否左显示
+
+  Rx<VerticalTextAlignment> verticalTextAlignment =
+      VerticalTextAlignment.left.obs; //价格显示方向
+  Rx<ChartStyle> chartStyle = ChartStyle().obs; //图表样式
+  Rx<ChartColors> chartColors = ChartColors().obs; //图表颜色
   @override
   void onInit() {
     super.onInit();

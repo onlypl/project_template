@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:project_template/app/config/app_colors.dart';
 
-import '../../gen/assets.gen.dart';
+import '../../generated/assets.dart';
+import '../config/app_colors.dart';
 
 const double _elevation = 0;
 const double _titleFontSize = 18.0;
@@ -18,9 +19,9 @@ const Color appbarEndColor = AppColor.gradientEndColor; // 默认appBar 渐变�
 
 /// 渐变导航条
 class GradientAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const GradientAppBar(
-    this.title, {
+  const GradientAppBar({
     Key? key,
+    this.title,
     this.rightText,
     this.rightImgPath,
     this.leftWidget,
@@ -31,9 +32,17 @@ class GradientAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.bottomWidget,
     this.leftItemCallBack,
     this.rightItemCallBack,
+    this.titleColor = AppColor.white,
+    this.leadingWidth,
+    this.titleSpacing,
+    this.backColor,
   }) : super(key: key);
 
-  final String title;
+  final String? title;
+  final double? leadingWidth;
+  final double? titleSpacing;
+  final Color? titleColor;
+  final Color? backColor;
   final String? rightText;
   final String? rightImgPath;
   final Widget? leftWidget;
@@ -68,12 +77,15 @@ class _GradientAppBarState extends State<GradientAppBar> {
     );
     return BaseAppBar(
       title: widget.title,
+      backColor: widget.backColor,
+      leadingWidth: widget.leadingWidth,
+      titleColor: widget.titleColor,
       rightText: widget.rightText,
       rightImgPath: widget.rightImgPath,
       leftWidget: widget.leftWidget,
       titleWidget: widget.titleWidget,
       rightWidgets: widget.rightWidgets,
-      bgColor: Colors.white.withOpacity(0),
+      bgColor: Colors.white.withValues(alpha: 0),
       elevation: widget.elevation,
       bottomWidget: widget.bottomWidget,
       rightItemCallBack: widget.rightItemCallBack,
@@ -84,7 +96,7 @@ class _GradientAppBarState extends State<GradientAppBar> {
 }
 
 class BaseAppBar extends StatefulWidget implements PreferredSizeWidget {
-  final String title;
+  final String? title;
   final Widget? titleWidget; // 标题Widget，优先级高于title
   final double? leadingWidth;
   final PreferredSizeWidget? bottomWidget;
@@ -100,12 +112,13 @@ class BaseAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Color? bgColor; // 背景颜色，默认主题色，设置的颜色优先级高于暗黑模式
   final Color? surfaceTintColor;
   final Color? shadowColor;
+  final Color? backColor;
   final double? titleSpacing;
   final SystemUiOverlayStyle? systemOverlayStyle;
   final Color? titleColor;
   const BaseAppBar({
     super.key,
-    required this.title,
+    this.title,
     this.leadingWidth,
     this.bottomWidget,
     this.leftItemCallBack,
@@ -124,6 +137,7 @@ class BaseAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.titleSpacing,
     this.systemOverlayStyle,
     this.titleColor,
+    this.backColor,
   });
 
   @override
@@ -147,7 +161,7 @@ class _BaseAppBarState extends State<BaseAppBar> {
     var titleWidget =
         widget.titleWidget ??
         Text(
-          widget.title,
+          widget.title ?? '',
           style: TextStyle(
             fontSize: _titleFontSize,
             color:
@@ -157,22 +171,28 @@ class _BaseAppBarState extends State<BaseAppBar> {
           maxLines: 2,
         );
     // 左侧
-    var backWidget = IconButton(
-      //      icon: Icon(Icons.arrow_back_ios,color: _color),
-      icon: Assets.images.common.back.image(
-        color: Get.isDarkMode ? AppColor.white : AppColor.textColor666,
-        width: 24,
-        height: 24,
+    var backWidget = Container(
+      // color: Colors.red,
+      //margin: EdgeInsets.only(left: 12.w),
+      child: IconButton(
+        icon: Image.asset(
+          Assets.commonBack,
+          color:
+              widget.backColor ??
+              (Get.isDarkMode ? AppColor.white : AppColor.textColor666),
+          width: 20.w,
+          height: 20.w,
+        ),
+        iconSize: 20.w,
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+        onPressed: () {
+          if (widget.leftItemCallBack == null) {
+            Get.back();
+          } else {
+            widget.leftItemCallBack!();
+          }
+        },
       ),
-      iconSize: 24,
-      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-      onPressed: () {
-        if (widget.leftItemCallBack == null) {
-          Get.back();
-        } else {
-          widget.leftItemCallBack!();
-        }
-      },
     );
     var leftWidget = widget.leftWidget ?? backWidget;
 
@@ -229,7 +249,7 @@ class _BaseAppBarState extends State<BaseAppBar> {
       leading: leftWidget,
       actions: rightWidgets,
       flexibleSpace: widget.flexibleSpace,
-      titleSpacing: widget.titleSpacing,
+      titleSpacing: widget.titleSpacing ?? 0,
       shadowColor: widget.shadowColor,
       surfaceTintColor: widget.surfaceTintColor ?? bgColor,
       systemOverlayStyle: widget.systemOverlayStyle,
@@ -240,7 +260,7 @@ class _BaseAppBarState extends State<BaseAppBar> {
       //   icon: Assets.images.common.back.image(),
       //   style: ButtonStyle(iconSize: MaterialStateProperty.all(14)),
       // ),
-      leadingWidth: widget.leadingWidth,
+      leadingWidth: widget.leadingWidth ?? 34.w,
       // actions: widget.actions,
     );
   }
