@@ -19,7 +19,7 @@ class ChartView extends GetView<ChartController> {
           Wrap(
             children: [
               buildButton(
-                '时间模式',
+                '分时模式',
                 onPressed: () => controller.isLine.value = true,
               ),
               buildButton(
