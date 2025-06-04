@@ -9,50 +9,95 @@ import '../views/k_chart_widget.dart';
 
 ///------基础绘制图表画布
 abstract class BaseChartPainter extends CustomPainter {
-  List<KLineModel>? datas; //数据
-  int mItemCount = 0; //总数据量
-  double mDataLen = 0.0; //数据占屏幕总长度  计算图表总长度mItemCount * mPointWidth;
-  final ChartStyle chartStyle; //图表样式
-  late double mPointWidth; //点与点之间的间距 数据之间
+  ///数据源
+  List<KLineModel>? datas;
+
+  ///总数据量
+  int mItemCount = 0;
+
+  ///数据占屏幕总长度  计算图表总长度mItemCount * mPointWidth;
+  double mDataLen = 0.0;
+
+  ///图表样式
+  final ChartStyle chartStyle;
+
+  ///点与点之间的间距 数据之间
+  late double mPointWidth;
+
   ///顶部、底部子容器内间距
   double mTopPadding = 30.0, mBottomPadding = 20.0, mChildPadding = 12.0;
 
   ///图表实际高度和宽度
   late double mDisplayHeight, mWidth;
-  int mGridRows = 4, mGridColumns = 4; //网格线横线数量和纵线数量
-  List<String> mFormats = [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn]; //格式化时间
-  MainState mainState; //主图状态
-  bool volHidden; //是否隐藏成交量图
-  SecondaryState secondaryState; //副图状态
-  //3块区域大小与位置
-  late Rect mMainRect; //主图区域
-  Rect? mVolRect, mSecondaryRect; //交易量区域、副图区域
 
-  static double maxScrollX = 0.0; //最大可横向滚动范围
-  int mStartIndex = 0, mStopIndex = 0; //当前显示的起始和结束索引
-  double scaleX = 1.0, scrollX = 0.0, selectX; //缩放比例、横向滚动的偏移量、用户长按或点击的横向位置
+  ///网格线横线数量和纵线数量
+  int mGridRows = 4, mGridColumns = 4;
 
-  double xFrontPadding; //左侧内间距
-  bool isLongPress = false; //是否是长按状态
-  bool isOnTap; //是否是点击状态
-  bool isTapShowInfoDialog; //是否是点击显示信息弹窗
-  bool isLine; //是否显示(分时)折线图 falseK线 true分时线
+  ///格式化时间
+  List<String> mFormats = [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn];
 
-  double mTranslateX = double.minPositive; //实际位移量
+  ///主图状态
+  MainState mainState;
 
-  double mMainMaxValue = double.minPositive,
-      mMainMinValue = double.maxFinite; //主图最大值和最小值
-  double mVolMaxValue = double.minPositive,
-      mVolMinValue = double.maxFinite; //交易量最大值和最小值
+  ///是否隐藏成交量图
+  bool volHidden;
+
+  ///副图状态
+  SecondaryState secondaryState;
+
+  ///3块区域大小与位置
+  ///主图区域
+  late Rect mMainRect;
+
+  ///交易量区域、副图区域
+  Rect? mVolRect, mSecondaryRect;
+
+  ///最大可横向滚动范围
+  static double maxScrollX = 0.0;
+
+  ///当前显示的起始和结束索引
+  int mStartIndex = 0, mStopIndex = 0;
+
+  ///缩放比例、横向滚动的偏移量、用户长按或点击的横向位置
+  double scaleX = 1.0, scrollX = 0.0, selectX;
+
+  ///左侧内间距
+  double xFrontPadding;
+
+  ///是否是长按状态
+  bool isLongPress = false;
+
+  ///是否是点击状态
+  bool isOnTap;
+
+  ///是否是点击显示信息弹窗
+  bool isTapShowInfoDialog;
+
+  ///是否显示(分时)折线图 falseK线 true分时线
+  bool isLine;
+
+  ///实际位移量
+  double mTranslateX = double.minPositive;
+
+  ///主图最大值和最小值
+  double mMainMaxValue = double.minPositive, mMainMinValue = double.maxFinite;
+
+  ///交易量最大值和最小值
+  double mVolMaxValue = double.minPositive, mVolMinValue = double.maxFinite;
+
+  ///副图最大值和最小值
   double mSecondaryMaxValue = double.minPositive,
-      mSecondaryMinValue = double.maxFinite; //副图最大值和最小值
+      mSecondaryMinValue = double.maxFinite;
 
-  int mMainMaxIndex = 0, mMainMinIndex = 0; //主图最高点/最低点索引
+  ///主图最高点/最低点索引
+  int mMainMaxIndex = 0, mMainMinIndex = 0;
+
+  ///主图最高点/最低点
   double mMainHighMaxValue = double.minPositive,
-      mMainLowMinValue = double.maxFinite; //主图最高点/最低点
+      mMainLowMinValue = double.maxFinite;
   BaseChartPainter(
-    this.chartStyle, //图表样式
-    this.datas, { //数据数组
+    this.chartStyle, { //图表样式
+    this.datas, //数据数组
     required this.scaleX, //缩放比例
     required this.scrollX, //横向滚动的偏移量
     required this.isLongPress, //是否是长按状态

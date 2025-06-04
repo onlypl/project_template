@@ -1,15 +1,24 @@
 import 'k_model.dart';
 
 class KLineModel extends KModel {
-  late double open; //开盘价
-  late double high; //最高价
-  late double low; //最低价
-  late double close; //收盘价
-  late double vol; //成交量
-  late double? amount; //成交额
-  late double? change; //涨跌幅
-  late double? ratio; //涨跌幅
-  late int? time; //时间
+  ///开盘价
+  late double open;
+  ///最高价
+  late double high;
+  ///最低价
+  late double low;
+  ///收盘价
+  late double close;
+  ///成交量
+  late double vol;
+  ///成交额
+  late double? amount;
+  ///涨跌幅
+  late double? change;
+  ///涨跌幅
+  late double? ratio;
+  ///时间
+  late int? time;
 
   KLineModel.fromCustom({
     this.amount,

@@ -6,18 +6,27 @@ import '../utils/date_format_util.dart';
 import 'chart_style.dart';
 
 enum MainState {
-  MA, //平均线
-  BOLL, //布林线
-  NONE, //无
+  ///平均线
+  MA,
+  ///布林线
+  BOLL,
+  ///无
+  NONE,
 }
 
 enum SecondaryState {
-  MACD, // 指数平滑异同移动平均线
-  KDJ, //随机指标
-  RSI, //相对强弱指标
-  WR, // 威廉指标
-  CCI, //商品通道指数
-  NONE, //无
+  /// 指数平滑异同移动平均线
+  MACD,
+  ///随机指标
+  KDJ,
+  ///相对强弱指标
+  RSI,
+  /// 威廉指标
+  WR,
+  ///商品通道指数
+  CCI,
+  ///无
+  NONE,
 }
 
 ///日期格式化

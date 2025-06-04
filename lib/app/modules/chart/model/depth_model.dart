@@ -1,7 +1,8 @@
 class DepthModel {
-  double price; //价格
-  double vol; //成交量指标
-
+  ///价格
+  double price;
+  ///成交量指标
+  double vol;
   DepthModel(this.price, this.vol);
 
   @override

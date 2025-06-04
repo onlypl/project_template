@@ -2,9 +2,18 @@
 
 ///交易量图模型
 mixin VolumeModel {
-  late double open; //开盘价
-  late double close; //收盘价
-  late double vol; //成交量
-  double? MA5Volume; //5日均价
-  double? MA10Volume; //10日均价
+  ///开盘价
+  late double open;
+
+  ///收盘价
+  late double close;
+
+  ///成交量
+  late double vol;
+
+  ///5日均价
+  double? MA5Volume;
+
+  ///10日均价
+  double? MA10Volume;
 }
