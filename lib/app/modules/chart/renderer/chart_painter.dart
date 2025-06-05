@@ -5,6 +5,7 @@ import 'package:project_template/app/modules/chart/model/k_line_model.dart';
 import 'package:project_template/app/modules/chart/renderer/base_chart_painter.dart';
 
 import '../model/info_window_model.dart';
+import '../utils/number_util.dart';
 import '../views/chart_style.dart';
 import 'base_chart_renderer.dart';
 import 'main_renderer.dart';
@@ -106,9 +107,9 @@ class ChartPainter extends BaseChartPainter {
     required xFrontPadding, //左侧内间距
     isOnTap, //是否是点击状态
     isTapShowInfoDialog, //是否是点击显示信息弹窗
-    mainState, //主图状态
+    mainState, //主图类型
     volHidden, //成交量是否隐藏
-    secondaryState, //副图状态
+    secondaryState, //副图类型
     this.sink,
     bool isLine = false, //是否是折线图
     this.hideGrid = false, //隐藏网格
@@ -147,6 +148,36 @@ class ChartPainter extends BaseChartPainter {
         Paint()
           ..strokeWidth = chartStyle.nowPriceLineWidth
           ..isAntiAlias = true;
+  }
+
+  ///初始化图表渲染器
+  @override
+  void initChartRenderer() {
+    if (datas != null && datas!.isNotEmpty) {
+      var t = datas![0];
+      fixedLength = NumberUtil.getMaxDecimalLength(
+        t.open,
+        t.close,
+        t.high,
+        t.low,
+      );
+    }
+
+    ///主图渲染
+    mMainRenderer = MainRenderer(
+      mMainRect,
+      mMainMaxValue,
+      mMainMinValue,
+      mTopPadding,
+      mainState,
+      isLine,
+      fixedLength,
+      this.chartStyle,
+      this.chartColors,
+      this.scaleX,
+      verticalTextAlignment,
+      maDayList,
+    );
   }
 
   @override
@@ -197,10 +228,5 @@ class ChartPainter extends BaseChartPainter {
   @override
   void drawVerticalText(canvas) {
     // TODO: implement drawVerticalText
-  }
-
-  @override
-  void initChartRenderer() {
-    // TODO: implement initChartRenderer
   }
 }

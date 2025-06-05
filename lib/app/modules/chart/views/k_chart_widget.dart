@@ -122,7 +122,7 @@ class _KChartWidgetState extends State<KChartWidget>
               //自定义绘图
               CustomPaint(
                 size: Size(double.infinity, double.infinity),
-                painter: _painter,
+               // painter: _painter,
               ),
               // if (widget.showInfoDialog) _buildInfoDialog()
             ],

@@ -36,13 +36,13 @@ abstract class BaseChartPainter extends CustomPainter {
   ///格式化时间
   List<String> mFormats = [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn];
 
-  ///主图状态
+  ///主图类型
   MainState mainState;
 
   ///是否隐藏成交量图
   bool volHidden;
 
-  ///副图状态
+  ///副图类型
   SecondaryState secondaryState;
 
   ///3块区域大小与位置
