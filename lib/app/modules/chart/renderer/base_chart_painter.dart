@@ -102,7 +102,7 @@ abstract class BaseChartPainter extends CustomPainter {
     required this.scrollX, //横向滚动的偏移量
     required this.isLongPress, //是否是长按状态
     required this.selectX, //用户长按或点击的横向位置
-    required this.xFrontPadding, //左侧内间距
+    required this.xFrontPadding, //X轴内间距
     this.mainState = MainState.MA, //主图状态:平均线
     this.volHidden = false, //成交量是否隐藏
     this.secondaryState = SecondaryState.MACD, //副图状态:平均线
