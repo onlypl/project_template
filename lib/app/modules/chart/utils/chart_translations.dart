@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class ChartTranslations {
   final String date;
   final String open;
@@ -55,3 +57,12 @@ const kChartTranslations = {
     amount: '成交额',
   ),
 };
+
+extension ChartTranslationsMap on Map<String, ChartTranslations> {
+  ChartTranslations of(BuildContext context) {
+    final locale = Localizations.localeOf(context);
+    final languageTag = '${locale.languageCode}_${locale.countryCode}';
+
+    return this[languageTag] ?? ChartTranslations();
+  }
+}
