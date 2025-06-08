@@ -173,6 +173,9 @@ class ChartPainter extends BaseChartPainter {
         t.low,
       );
     }
+    if (fixedLength > 4) {
+      fixedLength = 4;
+    }
 
     ///初始化主图渲染器 MainRenderer，主要用于绘制主图 K 线（蜡烛图或折线图）部分
     ///mMainRect  主图区域的绘图矩形

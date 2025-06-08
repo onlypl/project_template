@@ -15,9 +15,9 @@ import '../views/k_chart_widget.dart';
 class ChartController extends GetxController {
   List<KLineModel>? datas;
   RxBool showLoading = true.obs;
-  List<DepthModel>? _bids, _asks;
+  List<DepthModel>? bids, asks;
 
-  RxBool isLine = true.obs; //是否显示K线
+  RxBool isLine = true.obs; //是否是显示线
   RxBool isTrendLine = false.obs; //是否显示趋势线
   Rx<MainState> mainState = MainState.MA.obs; //显示MA均线/BOLL布林线/NONE无
   Rx<SecondaryState> secondaryState =
@@ -40,6 +40,7 @@ class ChartController extends GetxController {
   void onInit() {
     super.onInit();
     getData('1day');
+    getDepth();
   }
 
   getDepth() {
@@ -62,17 +63,18 @@ class ChartController extends GetxController {
     });
   }
 
+  ///初始化深度图数据
   void initDepth(List<DepthModel>? bids, List<DepthModel>? asks) {
     if (bids == null || asks == null || bids.isEmpty || asks.isEmpty) return;
-    _bids = [];
-    _asks = [];
+    bids = [];
+    asks = [];
     double amount = 0.0;
     bids.sort((left, right) => left.price.compareTo(right.price));
     //累加买入委托量
     bids.reversed.forEach((item) {
       amount += item.vol;
       item.vol = amount;
-      _bids!.insert(0, item);
+      bids!.insert(0, item);
     });
 
     amount = 0.0;
@@ -81,14 +83,14 @@ class ChartController extends GetxController {
     asks.forEach((item) {
       amount += item.vol;
       item.vol = amount;
-      _asks!.add(item);
+      asks!.add(item);
     });
     update();
   }
 
   getData(String period) {
-    final Future<String> future = getChartDataFromInternet('1day');
-    //final Future<String> future = getChatDataFromJson();
+    //final Future<String> future = getChartDataFromInternet('1day');
+    final Future<String> future = getChatDataFromJson();
     future
         .then((String result) {
           solveChartData(result);

@@ -226,6 +226,7 @@ class _KChartWidgetState extends State<KChartWidget>
   @override
   void initState() {
     super.initState();
+    print("-----!-固定---${widget.fixedLength}");
     mInfoWindowStream = StreamController<InfoWindowModel?>();
   }
 
@@ -612,6 +613,7 @@ class _KChartWidgetState extends State<KChartWidget>
 
         ///infos 列表内容
         ///这是传入给 ListView.builder 的数据源，包括格式化后的时间、价格、涨跌幅、成交量（如果有）等信息。
+        print('------${entity.open.toStringAsFixed(widget.fixedLength)}----');
         infos = [
           getDate(entity.time),
           entity.open.toStringAsFixed(widget.fixedLength),
