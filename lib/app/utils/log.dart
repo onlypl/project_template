@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:logger/web.dart';
 
 enum NotificationType { info, warn, success, error }
@@ -7,7 +6,19 @@ class AppLogOutput extends LogOutput {
   @override
   void output(OutputEvent event) {
     for (var line in event.lines) {
-      debugPrint(line);
+      _longPrint(line);
+    }
+  }
+
+  void _longPrint(String text) {
+    const int chunkSize = 800;
+    for (int i = 0; i < text.length; i += chunkSize) {
+      print(
+        text.substring(
+          i,
+          i + chunkSize > text.length ? text.length : i + chunkSize,
+        ),
+      );
     }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_template/app/config/app_colors.dart';
 
 // TODO add your light theme colors palette
 class LightThemeColors {
@@ -8,6 +9,7 @@ class LightThemeColors {
 
   //APPBAR
   static const Color appBarColor = primaryColor;
+  static const Color appBarTitleColor = AppColor.white;
 
   //SCAFFOLD
   static const Color scaffoldBackgroundColor = Color(0xFFF7F7F7);

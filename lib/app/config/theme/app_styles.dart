@@ -19,8 +19,15 @@ class MyStyles {
   static AppBarTheme getAppBarTheme({required bool isLightTheme}) =>
       AppBarTheme(
         elevation: 0,
-        titleTextStyle: getTextTheme(isLightTheme: isLightTheme).bodyLarge!
-            .copyWith(color: Colors.white, fontSize: AppFonts.appBarTittleSize),
+        titleTextStyle: getTextTheme(
+          isLightTheme: isLightTheme,
+        ).bodyLarge!.copyWith(
+          color:
+              isLightTheme
+                  ? LightThemeColors.appBarTitleColor
+                  : DarkThemeColors.appBarTitleColor,
+          fontSize: AppFonts.appBarTittleSize,
+        ),
         iconTheme: IconThemeData(
           color:
               isLightTheme

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../app_colors.dart';
+
 // TODO add your dark theme colors palette
 class DarkThemeColors {
   //dark swatch
@@ -8,7 +10,7 @@ class DarkThemeColors {
 
   //Appbar
   static const Color appbarColor = Color(0xFF1B183E);
-
+  static const Color appBarTitleColor = AppColor.white;
   //SCAFFOLD
   static const Color scaffoldBackgroundColor = Color(0xff110E33);
   static const Color backgroundColor = Color(0xff1B183E);
