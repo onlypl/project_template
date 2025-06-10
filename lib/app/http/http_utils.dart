@@ -55,6 +55,7 @@ class HttpUtils {
     String url,
     Map<String, dynamic>? params, {
     String? loadingText,
+    bool? showError,
     Success? success,
     Fail? fail,
   }) {
@@ -63,6 +64,7 @@ class HttpUtils {
       url,
       params,
       loadingText: loadingText,
+      showError: showError,
       success: success,
       fail: fail,
     );
@@ -73,6 +75,7 @@ class HttpUtils {
     String url,
     params, {
     String? loadingText,
+    bool? showError,
     Success? success,
     Fail? fail,
   }) {
@@ -81,6 +84,7 @@ class HttpUtils {
       url,
       params,
       loadingText: loadingText,
+      showError: showError,
       success: success,
       fail: fail,
     );
@@ -91,6 +95,7 @@ class HttpUtils {
     String url,
     params, {
     String? loadingText,
+    bool? showError,
     Success? success,
     Fail? fail,
   }) {
@@ -99,6 +104,7 @@ class HttpUtils {
       url,
       params,
       loadingText: loadingText,
+      showError: showError,
       success: success,
       fail: fail,
     );
@@ -110,6 +116,7 @@ class HttpUtils {
     String url,
     params, {
     String? loadingText,
+    bool? showError,
     Success? success,
     Fail? fail,
   }) {
@@ -157,7 +164,9 @@ class HttpUtils {
             AppHive.shared.isLogin = false;
           }
           // 其他状态，弹出错误提示信息
-          ProgressHUD.showText(resultMap[MSG_NAME]);
+          if (showError ?? true) {
+            ProgressHUD.showText(resultMap[MSG_NAME]);
+          }
           fail?.call(resultMap[CODE_NAME], resultMap[MSG_NAME]);
         }
       },
