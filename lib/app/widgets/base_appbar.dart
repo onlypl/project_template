@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_template/app/config/app_colors.dart';
 
@@ -240,7 +241,7 @@ class _BaseAppBarState extends State<BaseAppBar> {
       //   icon: Assets.images.common.back.image(),
       //   style: ButtonStyle(iconSize: MaterialStateProperty.all(14)),
       // ),
-      leadingWidth: widget.leadingWidth,
+      leadingWidth: widget.leadingWidth ?? 34.w,
       // actions: widget.actions,
     );
   }

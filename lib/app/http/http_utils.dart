@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-import '../db/app_hive.dart';
 import '../utils/log.dart';
 import '../utils/progress_hud.dart';
 import 'apis.dart';
@@ -123,7 +122,10 @@ class HttpUtils {
     // 参数处理（如果需要加密等统一参数）
     if (!kReleaseMode && isOpenLog) {
       Log().info('---------- HttpUtils URL ----------');
-      Log().info(url);
+      Log().info(APIs.baseUrl + url);
+      final headers = DioAdapter.instance.dio.options.headers;
+      Log().info('---------- HttpUtils headers ----------');
+      Log().info(headers);
       Log().info('---------- HttpUtils params ----------');
       Log().info(params);
     }
@@ -156,18 +158,23 @@ class HttpUtils {
         if (loadingText != null) {
           ProgressHUD.hide();
         }
-        if (resultMap[CODE_NAME] == ExceptionHandler.success) {
-          success?.call(resultMap);
+        if ((int.tryParse(resultMap[CODE_NAME].toString()) ?? -1) ==
+            ExceptionHandler.success) {
+          success?.call(resultMap[DATA_NAME]);
         } else {
           ///未登录错误
-          if (resultMap[CODE_NAME] == ExceptionHandler.cookie_expired) {
-            AppHive.shared.isLogin = false;
+          if ((int.tryParse(resultMap[CODE_NAME].toString()) ?? -1) ==
+              ExceptionHandler.cookie_expired) {
+            //TODO  AppHive.shared.isLogin = false;
           }
           // 其他状态，弹出错误提示信息
           if (showError ?? true) {
             ProgressHUD.showText(resultMap[MSG_NAME]);
           }
-          fail?.call(resultMap[CODE_NAME], resultMap[MSG_NAME]);
+          fail?.call(
+            int.tryParse(resultMap[CODE_NAME].toString()) ?? -1,
+            resultMap[MSG_NAME],
+          );
         }
       },
       onError: (code, msg) {

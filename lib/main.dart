@@ -10,7 +10,6 @@ import 'package:project_template/app/config/translations/localization_service.da
 import 'package:project_template/app/db/app_hive.dart';
 import 'package:project_template/app/db/app_shared_preferences.dart';
 
-import 'app/http/http_utils.dart';
 import 'app/models/user_model.dart';
 import 'app/routes/app_pages.dart';
 import 'app/utils/awesome_notifications_helper.dart';
@@ -29,7 +28,7 @@ Future initHiveAndRegisterAdapter() async {
 //late GlobalWebSocketVM socketVM;
 void main() async {
   ///初始化网络请求类
-  HttpUtils.initDio();
+  //HttpUtils.initDio();
   //如果你在 main() 中使用异步方法需要添加这个
   WidgetsFlutterBinding.ensureInitialized();
   // socketVM = GlobalWebSocketVM();

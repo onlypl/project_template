@@ -58,7 +58,8 @@ class LoginInterceptor extends QueuedInterceptor {
         data: params,
       );
       var res = response.data as dynamic;
-      if (res[CODE_NAME] == ExceptionHandler.success) {
+      if ((int.tryParse(res[CODE_NAME].toString()) ?? -1) ==
+          ExceptionHandler.success) {
         return response.data;
       }
     } catch (e) {
