@@ -64,6 +64,8 @@ dependencies:
   web_socket_channel: ^3.0.3 #webSocket
   animated_bottom_navigation_bar: ^1.4.0 #底部导航栏
   dropdown_button2: ^3.0.0-beta.22 #菜单弹窗
+  flutter_svg: ^2.1.0 #svg图片
+  flutter_sticky_header: ^0.7.0 #悬停顶部
 
 
   rxdart: ^0.28.0 # 配合Bloc使用

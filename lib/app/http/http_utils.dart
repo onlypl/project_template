@@ -150,31 +150,37 @@ class HttpUtils {
       data: data,
       queryParameters: queryParameters,
       onSuccess: (result) {
-        var resultMap = result is String ? jsonDecode(result) : result;
-        if (!kReleaseMode && isOpenLog) {
-          Log().debug('---------- HttpUtils response ----------');
-          Log().debug('!!!!!!$resultMap');
-        }
-        if (loadingText != null) {
-          ProgressHUD.hide();
-        }
-        if ((int.tryParse(resultMap[CODE_NAME].toString()) ?? -1) ==
-            ExceptionHandler.success) {
-          success?.call(resultMap[DATA_NAME]);
-        } else {
-          ///未登录错误
+        try {
+          var resultMap = result is String ? jsonDecode(result) : result;
+          if (!kReleaseMode && isOpenLog) {
+            Log().debug('---------- HttpUtils response ----------');
+            Log().debug('!!!!!!$resultMap');
+          }
+          if (loadingText != null) {
+            ProgressHUD.hide();
+          }
           if ((int.tryParse(resultMap[CODE_NAME].toString()) ?? -1) ==
-              ExceptionHandler.cookie_expired) {
-            //TODO  AppHive.shared.isLogin = false;
+              ExceptionHandler.success) {
+            success?.call(resultMap[DATA_NAME]);
+          } else {
+            ///未登录错误
+            if ((int.tryParse(resultMap[CODE_NAME].toString()) ?? -1) ==
+                ExceptionHandler.cookie_expired) {
+              //TODO  AppHive.shared.isLogin = false;
+            }
+            // 其他状态，弹出错误提示信息
+            if (showError ?? true) {
+              ProgressHUD.showText(resultMap[MSG_NAME]);
+            }
+            fail?.call(
+              int.tryParse(resultMap[CODE_NAME].toString()) ?? -1,
+              resultMap[MSG_NAME],
+            );
           }
-          // 其他状态，弹出错误提示信息
-          if (showError ?? true) {
-            ProgressHUD.showText(resultMap[MSG_NAME]);
-          }
-          fail?.call(
-            int.tryParse(resultMap[CODE_NAME].toString()) ?? -1,
-            resultMap[MSG_NAME],
-          );
+        } catch (e) {
+          Log().error('--------------$e');
+          ProgressHUD.hide();
+          ProgressHUD.showText(e.toString());
         }
       },
       onError: (code, msg) {
