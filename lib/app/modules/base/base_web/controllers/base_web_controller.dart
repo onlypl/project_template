@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:project_template/app/http/apis.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class BaseWebController extends GetxController {
@@ -13,16 +14,18 @@ class BaseWebController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    title = Get.arguments['title'] ?? '';
-    url = Get.arguments['url'] ?? '';
-    richText = Get.arguments['richText'] ?? '';
-    isLocalUrl = Get.arguments['isLocalUrl'] ?? false;
-    isShowAppBar = Get.arguments['isShowAppBar'] ?? true;
+    final Map<String, dynamic>? args = Get.arguments;
+    url = APIs.baseUrl;
+    title = args?['title'] ?? '';
+
+    richText = args?['richText'] ?? '';
+    isLocalUrl = args?['isLocalUrl'] ?? false;
+    isShowAppBar = args?['isShowAppBar'] ?? false;
     intWebController();
   }
 
   void intWebController() {
-    EasyLoading.show(status: '加载中...');
+    // EasyLoading.show(status: '加载中...');
     webViewController =
         WebViewController()
           ..setJavaScriptMode(JavaScriptMode.unrestricted)
@@ -57,9 +60,9 @@ class BaseWebController extends GetxController {
 
               ///拦截请求
               onNavigationRequest: ((NavigationRequest request) {
-                if (request.url.startsWith('https://www.youtube.com/')) {
-                  return NavigationDecision.prevent;
-                }
+                // if (request.url.startsWith('https://www.youtube.com/')) {
+                //   return NavigationDecision.prevent;
+                // }
                 return NavigationDecision.navigate;
               }),
               onHttpError: ((HttpResponseError response) {}),

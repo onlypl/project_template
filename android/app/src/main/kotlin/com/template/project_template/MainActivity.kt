@@ -1,4 +1,4 @@
-package com.template.project_template
+package com.binfincx.bfcx
 
 import io.flutter.embedding.android.FlutterActivity
 

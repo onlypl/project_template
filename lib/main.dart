@@ -10,7 +10,6 @@ import 'package:project_template/app/db/app_hive.dart';
 import 'package:project_template/app/db/app_shared_preferences.dart';
 
 import 'app/routes/app_pages.dart';
-import 'app/widgets/splash_screen.dart';
 
 Future initHiveAndRegisterAdapter() async {
   // 初始化Hive
@@ -83,8 +82,8 @@ void main() async {
             child = botToastBuilder(context, child);
             return child;
           },
-          //initialRoute: AppPages.INITIAL,
-          home: const SplashPage(),
+          initialRoute: AppPages.INITIAL,
+          //  home: const SplashPage(),
           getPages: AppPages.routes,
         );
       },
