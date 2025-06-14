@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -75,6 +77,30 @@ class ChartController extends GetxController {
           update();
           Log().error('### 获取数据错误 $onError');
         });
+  }
+
+  _buildLogoWidget() {
+    return Container(
+      child: Row(
+        children: [
+          Container(
+            width: 73.r,
+            height: 3.r,
+            margin: EdgeInsets.only(
+              top: 20.r,
+              bottom: 10.r,
+              left: 20.w,
+              right: 20.w,
+            ),
+            child: Image.asset(
+              'assets/images/login_and_register/left_line.png',
+              package: 'common_view',
+              fit: BoxFit.cover,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   //获取火币数据，需要翻墙
