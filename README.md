@@ -65,6 +65,10 @@ AndroidManifest.xml文件下
 <!--        AndroidManifest.xml-->
 <!--     android:usesCleartextTraffic="true" 允许http-->
     <!--    android:extractNativeLibs="true" 包体积优化-->
+7.当项目模拟器不能运行时候：
+        在
+     Runner.xcodeproj显示包内容-》  project.pbxproj里面-》  ENABLE_BITCODE = NO;下面
+  "EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "i386 arm64";
 
 配置签名：
     app目录下build.gradle.kts文件
