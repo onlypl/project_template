@@ -68,6 +68,11 @@ dependencies:
   flutter_sticky_header: ^0.7.0 #悬停顶部
   emoji_picker_flutter: ^4.3.0 #聊天emoji选择器
   permission_handler: ^12.0.0+1 #权限申请 不支持web
+  animated_flip_counter: ^0.3.4   #数字动画
+  marquee: ^2.3.0
+
+
+  text_marquee: ^0.0.2
 
   rxdart: ^0.28.0 # 配合Bloc使用
   equatable: ^2.0.7  #增强组件相等性判断 配合Bloc使用

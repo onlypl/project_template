@@ -16,108 +16,194 @@ class Assets {
   static const String assetsDepth = 'assets/depth.json';
   static const String assetsImagesNotData = 'assets/images/not_data.png';
   static const String assetsImagesSplash = 'assets/images/splash.png';
-  static const String barrageDanmuClickClose333 = 'assets/images/barrage/danmu_click_close_333.png';
-  static const String barrageDanmuClickClose666 = 'assets/images/barrage/danmu_click_close_666.png';
-  static const String barrageDanmuClickCloseWhite = 'assets/images/barrage/danmu_click_close_white.png';
-  static const String barrageDanmuClickOpen333 = 'assets/images/barrage/danmu_click_open_333.png';
-  static const String barrageDanmuClickOpen666 = 'assets/images/barrage/danmu_click_open_666.png';
-  static const String barrageDanmuClickOpenWhite = 'assets/images/barrage/danmu_click_open_white.png';
+  static const String barrageDanmuClickClose333 =
+      'assets/images/barrage/danmu_click_close_333.png';
+  static const String barrageDanmuClickClose666 =
+      'assets/images/barrage/danmu_click_close_666.png';
+  static const String barrageDanmuClickCloseWhite =
+      'assets/images/barrage/danmu_click_close_white.png';
+  static const String barrageDanmuClickOpen333 =
+      'assets/images/barrage/danmu_click_open_333.png';
+  static const String barrageDanmuClickOpen666 =
+      'assets/images/barrage/danmu_click_open_666.png';
+  static const String barrageDanmuClickOpenWhite =
+      'assets/images/barrage/danmu_click_open_white.png';
   static const String commonArrowRight = 'assets/images/common/arrow_right.png';
   static const String commonBack = 'assets/images/common/back.png';
-  static const String debugAndroidManifest = 'android/app/src/debug/AndroidManifest.xml';
-  static const String drawableLaunchBackground = 'android/app/src/main/res/drawable/launch_background.xml';
-  static const String drawableV21LaunchBackground = 'android/app/src/main/res/drawable-v21/launch_background.xml';
+  static const String debugAndroidManifest =
+      'android/app/src/debug/AndroidManifest.xml';
+  static const String drawableLaunchBackground =
+      'android/app/src/main/res/drawable/launch_background.xml';
+  static const String drawableV21LaunchBackground =
+      'android/app/src/main/res/drawable-v21/launch_background.xml';
   static const String fontsCairoMedium = 'assets/fonts/Cairo-Medium.ttf';
   static const String fontsCairoRegular = 'assets/fonts/Cairo-Regular.ttf';
   static const String fontsCairoSemiBold = 'assets/fonts/Cairo-SemiBold.ttf';
   static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
   static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
-  static const String fontsPoppinsSemiBold = 'assets/fonts/Poppins-SemiBold.ttf';
-  static const String gradleWrapperGradleWrapper = 'android/gradle/wrapper/gradle-wrapper.properties';
+  static const String fontsPoppinsSemiBold =
+      'assets/fonts/Poppins-SemiBold.ttf';
+  static const String gradleWrapperGradleWrapper =
+      'android/gradle/wrapper/gradle-wrapper.properties';
   static const String imagesDummyProfile = 'assets/images/dummy_profile.png';
+  static const String imagesJackpotAmoutBg =
+      'assets/images/jackpot_amout_bg.png';
+  static const String imagesJackpotBg1 = 'assets/images/jackpot_bg1.png';
+  static const String imagesJackpotBg2 = 'assets/images/jackpot_bg2.png';
+  static const String imagesJackpotBg3 = 'assets/images/jackpot_bg3.png';
   static const String imagesNotData = 'assets/_dev/images/not_data.png';
   static const String imagesSplash = 'assets/_dev/images/splash.png';
-  static const String mainAndroidManifest = 'android/app/src/main/AndroidManifest.xml';
-  static const String mipmapHdpiIcLauncher = 'android/app/src/main/res/mipmap-hdpi/ic_launcher.png';
-  static const String mipmapMdpiIcLauncher = 'android/app/src/main/res/mipmap-mdpi/ic_launcher.png';
-  static const String mipmapXhdpiIcLauncher = 'android/app/src/main/res/mipmap-xhdpi/ic_launcher.png';
-  static const String mipmapXhdpiLaunchImage = 'android/app/src/main/res/mipmap-xhdpi/launch_image.png';
-  static const String mipmapXxhdpiIcLauncher = 'android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png';
-  static const String mipmapXxhdpiLaunchImage = 'android/app/src/main/res/mipmap-xxhdpi/launch_image.png';
-  static const String mipmapXxxhdpiIcLauncher = 'android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png';
-  static const String mipmapXxxhdpiLaunchImage = 'android/app/src/main/res/mipmap-xxxhdpi/launch_image.png';
-  static const String pluginsGeneratedPluginRegistrant = 'android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java';
-  static const String profileAndroidManifest = 'android/app/src/profile/AndroidManifest.xml';
+  static const String mainAndroidManifest =
+      'android/app/src/main/AndroidManifest.xml';
+  static const String mipmapHdpiIcLauncher =
+      'android/app/src/main/res/mipmap-hdpi/ic_launcher.png';
+  static const String mipmapMdpiIcLauncher =
+      'android/app/src/main/res/mipmap-mdpi/ic_launcher.png';
+  static const String mipmapXhdpiIcLauncher =
+      'android/app/src/main/res/mipmap-xhdpi/ic_launcher.png';
+  static const String mipmapXhdpiLaunchImage =
+      'android/app/src/main/res/mipmap-xhdpi/launch_image.png';
+  static const String mipmapXxhdpiIcLauncher =
+      'android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png';
+  static const String mipmapXxhdpiLaunchImage =
+      'android/app/src/main/res/mipmap-xxhdpi/launch_image.png';
+  static const String mipmapXxxhdpiIcLauncher =
+      'android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png';
+  static const String mipmapXxxhdpiLaunchImage =
+      'android/app/src/main/res/mipmap-xxxhdpi/launch_image.png';
+  static const String pluginsGeneratedPluginRegistrant =
+      'android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java';
+  static const String profileAndroidManifest =
+      'android/app/src/profile/AndroidManifest.xml';
   static const String projectTemplateAndroidGradlew = 'android/gradlew.bat';
   static const String projectTemplateAssetsChatData = 'assets/chatData.json';
   static const String projectTemplateAssetsDepth = 'assets/depth.json';
-  static const String projectTemplateMainActivity = 'android/app/src/main/kotlin/com/template/project_template/MainActivity.kt';
-  static const String resBaiduDrawableLaunchBackground = 'android/app/src/main/res-baidu/drawable/launch_background.xml';
-  static const String resBaiduDrawableV21LaunchBackground = 'android/app/src/main/res-baidu/drawable-v21/launch_background.xml';
-  static const String resBaiduMipmapHdpiIcLauncher = 'android/app/src/main/res-baidu/mipmap-hdpi/ic_launcher.png';
-  static const String resBaiduMipmapMdpiIcLauncher = 'android/app/src/main/res-baidu/mipmap-mdpi/ic_launcher.png';
-  static const String resBaiduMipmapXhdpiIcLauncher = 'android/app/src/main/res-baidu/mipmap-xhdpi/ic_launcher.png';
-  static const String resBaiduMipmapXhdpiLaunchImage = 'android/app/src/main/res-baidu/mipmap-xhdpi/launch_image.png';
-  static const String resBaiduMipmapXxhdpiIcLauncher = 'android/app/src/main/res-baidu/mipmap-xxhdpi/ic_launcher.png';
-  static const String resBaiduMipmapXxhdpiLaunchImage = 'android/app/src/main/res-baidu/mipmap-xxhdpi/launch_image.png';
-  static const String resBaiduMipmapXxxhdpiIcLauncher = 'android/app/src/main/res-baidu/mipmap-xxxhdpi/ic_launcher.png';
-  static const String resBaiduMipmapXxxhdpiLaunchImage = 'android/app/src/main/res-baidu/mipmap-xxxhdpi/launch_image.png';
-  static const String resBaiduValuesNightStyles = 'android/app/src/main/res-baidu/values-night/styles.xml';
-  static const String resBaiduValuesStyles = 'android/app/src/main/res-baidu/values/styles.xml';
-  static const String resDevDrawableLaunchBackground = 'android/app/src/main/res-dev/drawable/launch_background.xml';
-  static const String resDevDrawableV21LaunchBackground = 'android/app/src/main/res-dev/drawable-v21/launch_background.xml';
-  static const String resDevMipmapHdpiIcLauncher = 'android/app/src/main/res-dev/mipmap-hdpi/ic_launcher.png';
-  static const String resDevMipmapMdpiIcLauncher = 'android/app/src/main/res-dev/mipmap-mdpi/ic_launcher.png';
-  static const String resDevMipmapXhdpiIcLauncher = 'android/app/src/main/res-dev/mipmap-xhdpi/ic_launcher.png';
-  static const String resDevMipmapXhdpiLaunchImage = 'android/app/src/main/res-dev/mipmap-xhdpi/launch_image.png';
-  static const String resDevMipmapXxhdpiIcLauncher = 'android/app/src/main/res-dev/mipmap-xxhdpi/ic_launcher.png';
-  static const String resDevMipmapXxhdpiLaunchImage = 'android/app/src/main/res-dev/mipmap-xxhdpi/launch_image.png';
-  static const String resDevMipmapXxxhdpiIcLauncher = 'android/app/src/main/res-dev/mipmap-xxxhdpi/ic_launcher.png';
-  static const String resDevMipmapXxxhdpiLaunchImage = 'android/app/src/main/res-dev/mipmap-xxxhdpi/launch_image.png';
-  static const String resDevValuesNightStyles = 'android/app/src/main/res-dev/values-night/styles.xml';
-  static const String resDevValuesStyles = 'android/app/src/main/res-dev/values/styles.xml';
-  static const String resProDrawableLaunchBackground = 'android/app/src/main/res-pro/drawable/launch_background.xml';
-  static const String resProDrawableV21LaunchBackground = 'android/app/src/main/res-pro/drawable-v21/launch_background.xml';
-  static const String resProMipmapHdpiIcLauncher = 'android/app/src/main/res-pro/mipmap-hdpi/ic_launcher.png';
-  static const String resProMipmapMdpiIcLauncher = 'android/app/src/main/res-pro/mipmap-mdpi/ic_launcher.png';
-  static const String resProMipmapXhdpiIcLauncher = 'android/app/src/main/res-pro/mipmap-xhdpi/ic_launcher.png';
-  static const String resProMipmapXhdpiLaunchImage = 'android/app/src/main/res-pro/mipmap-xhdpi/launch_image.png';
-  static const String resProMipmapXxhdpiIcLauncher = 'android/app/src/main/res-pro/mipmap-xxhdpi/ic_launcher.png';
-  static const String resProMipmapXxhdpiLaunchImage = 'android/app/src/main/res-pro/mipmap-xxhdpi/launch_image.png';
-  static const String resProMipmapXxxhdpiIcLauncher = 'android/app/src/main/res-pro/mipmap-xxxhdpi/ic_launcher.png';
-  static const String resProMipmapXxxhdpiLaunchImage = 'android/app/src/main/res-pro/mipmap-xxxhdpi/launch_image.png';
-  static const String resProValuesNightStyles = 'android/app/src/main/res-pro/values-night/styles.xml';
-  static const String resProValuesStyles = 'android/app/src/main/res-pro/values/styles.xml';
-  static const String resYybDrawableLaunchBackground = 'android/app/src/main/res-yyb/drawable/launch_background.xml';
-  static const String resYybDrawableV21LaunchBackground = 'android/app/src/main/res-yyb/drawable-v21/launch_background.xml';
-  static const String resYybMipmapHdpiIcLauncher = 'android/app/src/main/res-yyb/mipmap-hdpi/ic_launcher.png';
-  static const String resYybMipmapMdpiIcLauncher = 'android/app/src/main/res-yyb/mipmap-mdpi/ic_launcher.png';
-  static const String resYybMipmapXhdpiIcLauncher = 'android/app/src/main/res-yyb/mipmap-xhdpi/ic_launcher.png';
-  static const String resYybMipmapXhdpiLaunchImage = 'android/app/src/main/res-yyb/mipmap-xhdpi/launch_image.png';
-  static const String resYybMipmapXxhdpiIcLauncher = 'android/app/src/main/res-yyb/mipmap-xxhdpi/ic_launcher.png';
-  static const String resYybMipmapXxhdpiLaunchImage = 'android/app/src/main/res-yyb/mipmap-xxhdpi/launch_image.png';
-  static const String resYybMipmapXxxhdpiIcLauncher = 'android/app/src/main/res-yyb/mipmap-xxxhdpi/ic_launcher.png';
-  static const String resYybMipmapXxxhdpiLaunchImage = 'android/app/src/main/res-yyb/mipmap-xxxhdpi/launch_image.png';
-  static const String resYybValuesNightStyles = 'android/app/src/main/res-yyb/values-night/styles.xml';
-  static const String resYybValuesStyles = 'android/app/src/main/res-yyb/values/styles.xml';
-  static const String tabsDiscoverSelected = 'assets/images/tabs/discover_selected.png';
-  static const String tabsDiscoverUnselected = 'assets/images/tabs/discover_unselected.png';
+  static const String projectTemplateMainActivity =
+      'android/app/src/main/kotlin/com/template/project_template/MainActivity.kt';
+  static const String resBaiduDrawableLaunchBackground =
+      'android/app/src/main/res-baidu/drawable/launch_background.xml';
+  static const String resBaiduDrawableV21LaunchBackground =
+      'android/app/src/main/res-baidu/drawable-v21/launch_background.xml';
+  static const String resBaiduMipmapHdpiIcLauncher =
+      'android/app/src/main/res-baidu/mipmap-hdpi/ic_launcher.png';
+  static const String resBaiduMipmapMdpiIcLauncher =
+      'android/app/src/main/res-baidu/mipmap-mdpi/ic_launcher.png';
+  static const String resBaiduMipmapXhdpiIcLauncher =
+      'android/app/src/main/res-baidu/mipmap-xhdpi/ic_launcher.png';
+  static const String resBaiduMipmapXhdpiLaunchImage =
+      'android/app/src/main/res-baidu/mipmap-xhdpi/launch_image.png';
+  static const String resBaiduMipmapXxhdpiIcLauncher =
+      'android/app/src/main/res-baidu/mipmap-xxhdpi/ic_launcher.png';
+  static const String resBaiduMipmapXxhdpiLaunchImage =
+      'android/app/src/main/res-baidu/mipmap-xxhdpi/launch_image.png';
+  static const String resBaiduMipmapXxxhdpiIcLauncher =
+      'android/app/src/main/res-baidu/mipmap-xxxhdpi/ic_launcher.png';
+  static const String resBaiduMipmapXxxhdpiLaunchImage =
+      'android/app/src/main/res-baidu/mipmap-xxxhdpi/launch_image.png';
+  static const String resBaiduValuesNightStyles =
+      'android/app/src/main/res-baidu/values-night/styles.xml';
+  static const String resBaiduValuesStyles =
+      'android/app/src/main/res-baidu/values/styles.xml';
+  static const String resDevDrawableLaunchBackground =
+      'android/app/src/main/res-dev/drawable/launch_background.xml';
+  static const String resDevDrawableV21LaunchBackground =
+      'android/app/src/main/res-dev/drawable-v21/launch_background.xml';
+  static const String resDevMipmapHdpiIcLauncher =
+      'android/app/src/main/res-dev/mipmap-hdpi/ic_launcher.png';
+  static const String resDevMipmapMdpiIcLauncher =
+      'android/app/src/main/res-dev/mipmap-mdpi/ic_launcher.png';
+  static const String resDevMipmapXhdpiIcLauncher =
+      'android/app/src/main/res-dev/mipmap-xhdpi/ic_launcher.png';
+  static const String resDevMipmapXhdpiLaunchImage =
+      'android/app/src/main/res-dev/mipmap-xhdpi/launch_image.png';
+  static const String resDevMipmapXxhdpiIcLauncher =
+      'android/app/src/main/res-dev/mipmap-xxhdpi/ic_launcher.png';
+  static const String resDevMipmapXxhdpiLaunchImage =
+      'android/app/src/main/res-dev/mipmap-xxhdpi/launch_image.png';
+  static const String resDevMipmapXxxhdpiIcLauncher =
+      'android/app/src/main/res-dev/mipmap-xxxhdpi/ic_launcher.png';
+  static const String resDevMipmapXxxhdpiLaunchImage =
+      'android/app/src/main/res-dev/mipmap-xxxhdpi/launch_image.png';
+  static const String resDevValuesNightStyles =
+      'android/app/src/main/res-dev/values-night/styles.xml';
+  static const String resDevValuesStyles =
+      'android/app/src/main/res-dev/values/styles.xml';
+  static const String resProDrawableLaunchBackground =
+      'android/app/src/main/res-pro/drawable/launch_background.xml';
+  static const String resProDrawableV21LaunchBackground =
+      'android/app/src/main/res-pro/drawable-v21/launch_background.xml';
+  static const String resProMipmapHdpiIcLauncher =
+      'android/app/src/main/res-pro/mipmap-hdpi/ic_launcher.png';
+  static const String resProMipmapMdpiIcLauncher =
+      'android/app/src/main/res-pro/mipmap-mdpi/ic_launcher.png';
+  static const String resProMipmapXhdpiIcLauncher =
+      'android/app/src/main/res-pro/mipmap-xhdpi/ic_launcher.png';
+  static const String resProMipmapXhdpiLaunchImage =
+      'android/app/src/main/res-pro/mipmap-xhdpi/launch_image.png';
+  static const String resProMipmapXxhdpiIcLauncher =
+      'android/app/src/main/res-pro/mipmap-xxhdpi/ic_launcher.png';
+  static const String resProMipmapXxhdpiLaunchImage =
+      'android/app/src/main/res-pro/mipmap-xxhdpi/launch_image.png';
+  static const String resProMipmapXxxhdpiIcLauncher =
+      'android/app/src/main/res-pro/mipmap-xxxhdpi/ic_launcher.png';
+  static const String resProMipmapXxxhdpiLaunchImage =
+      'android/app/src/main/res-pro/mipmap-xxxhdpi/launch_image.png';
+  static const String resProValuesNightStyles =
+      'android/app/src/main/res-pro/values-night/styles.xml';
+  static const String resProValuesStyles =
+      'android/app/src/main/res-pro/values/styles.xml';
+  static const String resYybDrawableLaunchBackground =
+      'android/app/src/main/res-yyb/drawable/launch_background.xml';
+  static const String resYybDrawableV21LaunchBackground =
+      'android/app/src/main/res-yyb/drawable-v21/launch_background.xml';
+  static const String resYybMipmapHdpiIcLauncher =
+      'android/app/src/main/res-yyb/mipmap-hdpi/ic_launcher.png';
+  static const String resYybMipmapMdpiIcLauncher =
+      'android/app/src/main/res-yyb/mipmap-mdpi/ic_launcher.png';
+  static const String resYybMipmapXhdpiIcLauncher =
+      'android/app/src/main/res-yyb/mipmap-xhdpi/ic_launcher.png';
+  static const String resYybMipmapXhdpiLaunchImage =
+      'android/app/src/main/res-yyb/mipmap-xhdpi/launch_image.png';
+  static const String resYybMipmapXxhdpiIcLauncher =
+      'android/app/src/main/res-yyb/mipmap-xxhdpi/ic_launcher.png';
+  static const String resYybMipmapXxhdpiLaunchImage =
+      'android/app/src/main/res-yyb/mipmap-xxhdpi/launch_image.png';
+  static const String resYybMipmapXxxhdpiIcLauncher =
+      'android/app/src/main/res-yyb/mipmap-xxxhdpi/ic_launcher.png';
+  static const String resYybMipmapXxxhdpiLaunchImage =
+      'android/app/src/main/res-yyb/mipmap-xxxhdpi/launch_image.png';
+  static const String resYybValuesNightStyles =
+      'android/app/src/main/res-yyb/values-night/styles.xml';
+  static const String resYybValuesStyles =
+      'android/app/src/main/res-yyb/values/styles.xml';
+  static const String tabsDiscoverSelected =
+      'assets/images/tabs/discover_selected.png';
+  static const String tabsDiscoverUnselected =
+      'assets/images/tabs/discover_unselected.png';
   static const String tabsHomeSelected = 'assets/images/tabs/home_selected.png';
-  static const String tabsHomeUnselected = 'assets/images/tabs/home_unselected.png';
+  static const String tabsHomeUnselected =
+      'assets/images/tabs/home_unselected.png';
   static const String tabsMineSelected = 'assets/images/tabs/mine_selected.png';
-  static const String tabsMineUnselected = 'assets/images/tabs/mine_unselected.png';
-  static const String tabsRangkingSelected = 'assets/images/tabs/rangking_selected.png';
-  static const String tabsRangkingUnselected = 'assets/images/tabs/rangking_unselected.png';
-  static const String tabsTopicsSelected = 'assets/images/tabs/topics_selected.png';
-  static const String tabsTopicsUnselected = 'assets/images/tabs/topics_unselected.png';
-  static const String valuesNightStyles = 'android/app/src/main/res/values-night/styles.xml';
-  static const String valuesStyles = 'android/app/src/main/res/values/styles.xml';
+  static const String tabsMineUnselected =
+      'assets/images/tabs/mine_unselected.png';
+  static const String tabsRangkingSelected =
+      'assets/images/tabs/rangking_selected.png';
+  static const String tabsRangkingUnselected =
+      'assets/images/tabs/rangking_unselected.png';
+  static const String tabsTopicsSelected =
+      'assets/images/tabs/topics_selected.png';
+  static const String tabsTopicsUnselected =
+      'assets/images/tabs/topics_unselected.png';
+  static const String valuesNightStyles =
+      'android/app/src/main/res/values-night/styles.xml';
+  static const String valuesStyles =
+      'android/app/src/main/res/values/styles.xml';
   static const String vectorsArrowLeft = 'assets/vectors/arrow_left.svg';
   static const String vectorsArrowNext = 'assets/vectors/arrow_next.svg';
   static const String vectorsArrowRight = 'assets/vectors/arrow_right.svg';
   static const String vectorsClose = 'assets/vectors/close.svg';
   static const String vectorsCloseIc = 'assets/vectors/close_ic.svg';
   static const String vectorsDeleteIc = 'assets/vectors/delete_ic.svg';
-  static const String wrapperGradleWrapper = 'android/gradle/wrapper/gradle-wrapper.jar';
-
+  static const String wrapperGradleWrapper =
+      'android/gradle/wrapper/gradle-wrapper.jar';
 }
