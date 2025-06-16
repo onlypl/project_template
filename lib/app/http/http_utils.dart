@@ -193,4 +193,188 @@ class HttpUtils {
       },
     );
   }
+
+  /// 上传文件（通用方法）
+  /// [filePath] 本地文件路径
+  /// [url] 上传接口地址
+  /// [fieldName] 表单字段名，默认 'file'
+  /// [onSendProgress]上传进度
+  /// [onReceiveProgress]下载进度
+  /// [cancelToken] 可用于取消请求
+  static void uploadFile(
+    String url,
+    String filePath, {
+    String fieldName = 'file',
+    Map<String, dynamic>? extraData,
+    String? loadingText,
+    bool? showError,
+    Success? success,
+    Fail? fail,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+    CancelToken? cancelToken,
+  }) async {
+    if (loadingText != null) {
+      ProgressHUD.showLoadingText(loadingText);
+    }
+
+    final formData = FormData.fromMap({
+      fieldName: await MultipartFile.fromFile(
+        filePath,
+        filename: filePath.split('/').last,
+      ),
+      if (extraData != null) ...extraData,
+    });
+
+    if (!kReleaseMode && isOpenLog) {
+      Log().info('---------- Upload File ----------');
+      Log().info(APIs.baseUrl + url);
+      Log().info(formData.fields);
+    }
+
+    DioAdapter.instance.request(
+      Method.post,
+      url,
+      data: formData,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onSendProgress,
+      onSuccess: (result) {
+        try {
+          var resultMap = result is String ? jsonDecode(result) : result;
+          if ((int.tryParse(resultMap[CODE_NAME].toString()) ?? -1) ==
+              ExceptionHandler.success) {
+            success?.call(resultMap[DATA_NAME]);
+          } else {
+            if (showError ?? true) {
+              ProgressHUD.showText(resultMap[MSG_NAME]);
+            }
+            fail?.call(
+              int.tryParse(resultMap[CODE_NAME].toString()) ?? -1,
+              resultMap[MSG_NAME],
+            );
+          }
+        } catch (e) {
+          Log().error('上传文件抛出异常: $e');
+          ProgressHUD.showText(e.toString());
+        } finally {
+          if (loadingText != null) ProgressHUD.hide();
+        }
+      },
+      onError: (code, msg) {
+        Log().error('上传文件错误: $msg');
+        if (loadingText != null) ProgressHUD.hide();
+        ProgressHUD.showError(msg);
+        fail?.call(code, msg);
+      },
+    );
+  }
+
+  /// 上传图片（封装 uploadFile，字段名默认 'image'）
+  /// [imagePath] 图片路径
+  /// [fieldName] 字段名默认 'image'
+  /// [onSendProgress] 上传进度监听
+  /// [onReceiveProgress]下载进度
+  /// [cancelToken] 可用于取消请求
+  static void uploadImage(
+    String url,
+    String imagePath, {
+    String fieldName = 'file',
+    Map<String, dynamic>? extraData,
+    String? loadingText,
+    bool? showError,
+    Success? success,
+    Fail? fail,
+    ProgressCallback? onSendProgress,
+    CancelToken? cancelToken,
+  }) {
+    uploadFile(
+      url,
+      imagePath,
+      fieldName: fieldName,
+      extraData: extraData,
+      loadingText: loadingText,
+      showError: showError,
+      success: success,
+      fail: fail,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+    );
+  }
+
+  /// 上传多文件（支持图片）
+  /// [filePaths] 文件路径列表
+  /// [fieldName] 接收字段名，通常为 'files'
+  /// [onSendProgress] 上传进度监听
+  /// [cancelToken] 可用于取消请求
+  static void uploadMultipleFiles(
+    String url,
+    List<String> filePaths, {
+    String fieldName = 'files',
+    Map<String, dynamic>? extraData,
+    String? loadingText,
+    bool? showError,
+    Success? success,
+    Fail? fail,
+    ProgressCallback? onSendProgress,
+    CancelToken? cancelToken,
+  }) async {
+    if (loadingText != null) {
+      ProgressHUD.showLoadingText(loadingText);
+    }
+
+    final List<MultipartFile> files = await Future.wait(
+      filePaths.map(
+        (path) async =>
+            await MultipartFile.fromFile(path, filename: path.split('/').last),
+      ),
+    );
+
+    final formData = FormData.fromMap({
+      fieldName: files,
+      if (extraData != null) ...extraData,
+    });
+
+    if (!kReleaseMode && isOpenLog) {
+      Log().info('---------- 上传多个文件 ----------');
+      Log().info(APIs.baseUrl + url);
+      Log().info(formData.fields);
+    }
+
+    DioAdapter.instance.request(
+      Method.post,
+      url,
+      data: formData,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onSuccess: (result) {
+        try {
+          var resultMap = result is String ? jsonDecode(result) : result;
+          if ((int.tryParse(resultMap[CODE_NAME].toString()) ?? -1) ==
+              ExceptionHandler.success) {
+            success?.call(resultMap[DATA_NAME]);
+          } else {
+            if (showError ?? true) {
+              ProgressHUD.showText(resultMap[MSG_NAME]);
+            }
+            fail?.call(
+              int.tryParse(resultMap[CODE_NAME].toString()) ?? -1,
+              resultMap[MSG_NAME],
+            );
+          }
+        } catch (e) {
+          Log().error('Upload Multiple Files Exception: $e');
+          ProgressHUD.showText(e.toString());
+        } finally {
+          if (loadingText != null) ProgressHUD.hide();
+        }
+      },
+      onError: (code, msg) {
+        Log().error('Upload Multiple Files Error: $msg');
+        if (loadingText != null) ProgressHUD.hide();
+        ProgressHUD.showError(msg);
+        fail?.call(code, msg);
+      },
+    );
+  }
 }

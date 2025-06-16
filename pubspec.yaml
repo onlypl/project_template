@@ -68,8 +68,11 @@ dependencies:
   flutter_sticky_header: ^0.7.0 #悬停顶部
   emoji_picker_flutter: ^4.3.0 #聊天emoji选择器
   permission_handler: ^12.0.0+1 #权限申请 不支持web
-  animated_flip_counter: ^0.3.4   #数字动画
-  marquee: ^2.3.0
+  animated_flip_counter: ^0.3.4 #数字上下翻转动画
+  percent_indicator: ^4.2.5 #进度条
+  flutter_image_compress: ^2.4.0 #图片压缩
+
+  marquee: ^2.3.0 #跑马灯
 
 
   text_marquee: ^0.0.2

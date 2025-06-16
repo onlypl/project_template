@@ -52,7 +52,7 @@ class _VideoViewState extends State<VideoView> {
   //封面
   get _placeholder => FractionallySizedBox(
     widthFactor: 1,
-    child: cachedImage(widget.cover ?? "", placeholderImg: Container()),
+    child: cachedImage(widget.cover ?? "", placeholderWidget: Container()),
   );
 
   get _progressColors => ChewieProgressColors(

@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/services.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 
 class AppUtils {
   static void copy(String value) async {
@@ -8,6 +11,37 @@ class AppUtils {
     } catch (e) {
       print(e);
     }
+  }
+
+  ///压缩图片到1MB以下
+  static Future<XFile?> compressImageToMax1MB(File originalFile) async {
+    const int maxSizeInBytes = 1024 * 1024; // 1MB
+    int quality = 95; // 初始压缩质量
+
+    XFile? compressedFile;
+    String targetPath = originalFile.path.replaceFirst(
+      RegExp(r'\.(\w+)$'),
+      '_compressed.jpg',
+    );
+
+    while (quality >= 20) {
+      compressedFile = await FlutterImageCompress.compressAndGetFile(
+        originalFile.absolute.path,
+        targetPath,
+        quality: quality,
+        format: CompressFormat.jpeg,
+      );
+
+      if (compressedFile != null &&
+          await compressedFile.length() <= maxSizeInBytes) {
+        return compressedFile;
+      }
+
+      quality -= 5;
+    }
+
+    // 最后一次压缩都失败就返回最小质量版本
+    return compressedFile;
   }
 
   ///导出当前国际化语言的excel文件

@@ -23,7 +23,8 @@ Widget cachedImage(
   double? width,
   double? height,
   BoxFit? boxFit,
-  Widget? placeholderImg,
+  Widget? placeholderWidget,
+  Widget? errorWidget,
   bool isShowPlaceholderImg = true,
 }) {
   return CachedNetworkImage(
@@ -36,7 +37,7 @@ Widget cachedImage(
         isShowPlaceholderImg == false
             ? null
             : (BuildContext context, String url) {
-              return placeholderImg ??
+              return placeholderWidget ??
                   // Assets.images.common.imgDefault.image(
                   //   width: width,
                   //   height: height,
@@ -45,15 +46,9 @@ Widget cachedImage(
                   Container(color: Colors.grey[200]);
               // return Container(color: Colors.grey[200]);
             },
-    // errorWidget: (
-    //   BuildContext context,
-    //   String url,
-    //   Object error,
-    // ) =>
-    //     const Icon(
-    //   Icons.error,
-    //   color: Colors.red,
-    // ),
+    errorWidget:
+        (BuildContext context, String url, Object error) =>
+            errorWidget ?? const Icon(Icons.error, color: Colors.red),
   );
 }
 

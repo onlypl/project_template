@@ -113,6 +113,8 @@ class DioAdapter {
     NetErrorCallback? onError,
     CancelToken? cancelToken,
     Options? options,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
   }) async {
     try {
       //  没有网络 调用错误异常回调
@@ -126,6 +128,8 @@ class DioAdapter {
         url,
         data: data,
         queryParameters: queryParameters,
+        onSendProgress: onSendProgress, // ✅ 加上这个
+        onReceiveProgress: onReceiveProgress, // ✅ 可选
         options: _checkOptions(_methodValues[method], options),
         cancelToken: cancelToken,
       );
