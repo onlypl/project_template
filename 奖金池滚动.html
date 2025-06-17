@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>奖池演示</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .amount {
+            font-size: 36px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div>🎰 当前奖池金额： <span class="amount" id="jackpot">加载中...</span></div>
+
+    <script>
+        const config = {
+            base_amount: 1000000,
+            base_time: 1749691340, // UTC 秒
+            rules: [
+                { start: 0, duration: 5, rate: 20.9 },
+                { start: 5, duration: 2, rate: 10.1 },
+                { start: 7, duration: 3, rate: 5.3 },
+                { start: 10, duration: 4, rate: 38.3 },
+                { start: 14, duration: 3, rate: 18.2 },
+                { start: 17, duration: 4, rate: 12.4 },
+                { start: 21, duration: 4, rate: 13.5 },
+                { start: 25, duration: 5, rate: 9.4 },
+                { start: 30, duration: 2, rate: 49.2 },
+                { start: 32, duration: 3, rate: 12.5 },
+                { start: 35, duration: 2, rate: 3.5 },
+                { start: 37, duration: 3, rate: 8.3 },
+                { start: 40, duration: 5, rate: 7.2 },
+                { start: 45, duration: 2, rate: 6.1 },
+                { start: 47, duration: 3, rate: 36.4 },
+                { start: 50, duration: 4, rate: 12.2 },
+                { start: 54, duration: 3, rate: 5.4 },
+                { start: 57, duration: 3, rate: 4.8 }
+            ]
+        };
+
+        function calculateCurrentAmount() {
+            const now = Math.floor(Date.now() / 1000);
+            const totalElapsed = now - config.base_time;
+            if (totalElapsed <= 0) return config.base_amount;
+
+            const totalDuration = config.rules.reduce((sum, r) => sum + r.duration, 0);
+            const cycleCount = Math.floor(totalElapsed / totalDuration);
+            const elapsedInCycle = totalElapsed % totalDuration;
+
+            let amount = config.base_amount;
+
+            // 计算完整周期带来的总变化
+            for (const rule of config.rules) {
+                amount += rule.rate * rule.duration * cycleCount;
+            }
+
+            // 当前周期内的增减
+            let accTime = 0;
+            for (const rule of config.rules) {
+                if (elapsedInCycle > accTime + rule.duration) {
+                    amount += rule.rate * rule.duration;
+                    accTime += rule.duration;
+                } else {
+                    amount += rule.rate * (elapsedInCycle - accTime);
+                    break;
+                }
+            }
+
+            return amount;
+        }
+
+        function updateJackpot() {
+            const amount = calculateCurrentAmount();
+            document.getElementById("jackpot").textContent =
+                amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        updateJackpot();
+        setInterval(updateJackpot, 5000);
+    </script>
+</body>
+
+</html>

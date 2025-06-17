@@ -32,30 +32,30 @@ class _JackpotWidgetState extends State<JackpotWidget> {
   final int baseTime = 1749691340; // UTC秒（与JS一致）
   final List<_Rule> rules = [
     _Rule(start: 0, duration: 5, rate: 20.9),
-    _Rule(start: 5, duration: 2, rate: -19.1),
-    _Rule(start: 7, duration: 3, rate: -10.3),
+    _Rule(start: 5, duration: 2, rate: 10.1),
+    _Rule(start: 7, duration: 3, rate: 5.3),
     _Rule(start: 10, duration: 4, rate: 38.3),
     _Rule(start: 14, duration: 3, rate: 18.2),
-    _Rule(start: 17, duration: 4, rate: -18.4),
+    _Rule(start: 17, duration: 4, rate: 12.4),
     _Rule(start: 21, duration: 4, rate: 13.5),
     _Rule(start: 25, duration: 5, rate: 9.4),
     _Rule(start: 30, duration: 2, rate: 49.2),
-    _Rule(start: 32, duration: 3, rate: -12.5),
-    _Rule(start: 35, duration: 2, rate: -3.5),
+    _Rule(start: 32, duration: 3, rate: 12.5),
+    _Rule(start: 35, duration: 2, rate: 3.5),
     _Rule(start: 37, duration: 3, rate: 8.3),
-    _Rule(start: 40, duration: 5, rate: -7.2),
+    _Rule(start: 40, duration: 5, rate: 7.2),
     _Rule(start: 45, duration: 2, rate: 6.1),
     _Rule(start: 47, duration: 3, rate: 36.4),
-    _Rule(start: 50, duration: 4, rate: -12.2),
-    _Rule(start: 54, duration: 3, rate: -5.4),
+    _Rule(start: 50, duration: 4, rate: 12.2),
+    _Rule(start: 54, duration: 3, rate: 5.4),
     _Rule(start: 57, duration: 3, rate: 4.8),
   ];
-  int style = 0;
+  int style = 3;
   String imgPath = 'assets/images/jackpot_bg3.png';
 
   ///金额滚动的顶部间距
   double numberMarginTop = 38.w;
-  Axis scrollAxis = Axis.horizontal;
+  Axis scrollAxis = Axis.vertical;
 
   ///文字
   double textBgMaxWidth = 257.w;
@@ -64,7 +64,7 @@ class _JackpotWidgetState extends State<JackpotWidget> {
   @override
   void initState() {
     super.initState();
-    style = 4;
+    style = 3;
 
     ///样式1
     if (style == 1) {
@@ -87,7 +87,7 @@ class _JackpotWidgetState extends State<JackpotWidget> {
       textBgMarginBottom = 7.w;
     }
     _updateAmount();
-    _timer = Timer.periodic(const Duration(seconds: 1), (_) => _updateAmount());
+    _timer = Timer.periodic(const Duration(seconds: 5), (_) => _updateAmount());
   }
 
   void _updateAmount() {
@@ -184,10 +184,10 @@ class _JackpotWidgetState extends State<JackpotWidget> {
                   ],
                 ),
               ),
-              child:
-                  scrollAxis == Axis.horizontal
-                      ? buildTextVerticalMarquee(textBgHeight)
-                      : buildTextVerticalMarquee(textBgHeight),
+              child: buildTextVerticalMarquee(
+                textBgHeight,
+                isOneLine: style != 1,
+              ),
             ),
           ),
         ],
@@ -196,28 +196,28 @@ class _JackpotWidgetState extends State<JackpotWidget> {
   }
 }
 
-///普通的显示文本
-buildWithdrawalMessage() {
-  return Center(
-    child: Text(
-      maxLines: 1,
-      textAlign: TextAlign.center,
-      '玩家：tia*** 提现12690元刚刚 玩家：tia*** 提现12690元刚刚',
-      style: TextStyle(color: Colors.white, fontSize: 8.sp),
-    ),
-  );
-}
-
 ///垂直向上无限滚动
-Widget buildTextVerticalMarquee(double textBgHeight) {
+Widget buildTextVerticalMarquee(double textBgHeight, {bool? isOneLine}) {
   return VerticalMarqueePager(
     messages: [
-      '1.玩家：tia*** 提现12690元刚刚',
-      '2.玩家：luc*** 提现33330元刚刚',
-      '3.玩家：zha*** 提现22330元刚刚',
-      '4.玩家：lee*** 提现9880元刚刚',
+      '玩家 Tia*** 提现1680元 玩家 Jak*** 提现5800元',
+      '玩家 Lia*** 提现3200元 玩家 Pau*** 提现9800元',
+      '玩家 Poo*** 提现7500元 玩家 lili*** 提现4500元',
+      '玩家 Ken*** 提现2800元 玩家 Sun*** 提现1200元',
+      '玩家 Ping*** 提现6000元 玩家 Che*** 提现8000元',
+      '玩家 Ger*** 提现15000元 玩家 Chen*** 提现1800元',
+      '玩家 Yan*** 提现11000元 玩家 Li*** 提现3000元',
+      '玩家 Fly*** 提现5000元 玩家 Hoo*** 提现18000元',
+      '玩家 Line*** 提现10000元 玩家 Fim*** 提现7000元',
+      '玩家 Lin*** 提现2200元 玩家 Zho*** 提现6000元',
+      '玩家 Dak*** 提现8000元 玩家 Tim*** 提现4000元',
+      '玩家 Jun*** 提现13000元 玩家 Sun*** 提现9000元',
+      '玩家 Wu*** 提现5500元 玩家 Re*** 提现1500元',
+      '玩家 Jer*** 提现7700元 玩家 Xu*** 提现12400元',
+      '玩家 Kai*** 提现1900元 玩家 Lin*** 提现8800元'
     ],
     height: textBgHeight,
+    isOneLine: isOneLine,
   );
 }
 //
@@ -270,7 +270,7 @@ Widget buildGradientNumber(double amount) {
 class VerticalMarqueePager extends StatefulWidget {
   final List<String> messages;
   final double? height;
-  final bool isOneLine;
+  final bool? isOneLine;
   final Duration interval;
   VerticalMarqueePager({
     super.key,
@@ -288,6 +288,7 @@ class _VerticalMarqueePagerState extends State<VerticalMarqueePager> {
   late ScrollController _scrollController;
   late Timer _timer;
   late double height;
+  late bool isOneLine;
   @override
   void initState() {
     super.initState();
@@ -295,9 +296,9 @@ class _VerticalMarqueePagerState extends State<VerticalMarqueePager> {
     _scrollController = ScrollController();
     _timer = Timer.periodic(widget.interval, (_) {
       if (_scrollController.hasClients) {
-        final double singleItemHeight = 16.w; // 每行文字高度
+        final double singleItemHeight = height / 2; // 每行文字高度
         final double pageHeight =
-            widget.isOneLine
+            widget.isOneLine ?? true
                 ? widget.height ?? singleItemHeight
                 : singleItemHeight * 2;
         final maxScrollExtent = _scrollController.position.maxScrollExtent;
@@ -344,23 +345,31 @@ class _VerticalMarqueePagerState extends State<VerticalMarqueePager> {
                   ? start + 2
                   : repeatedMessages.length;
           final pageMessages = repeatedMessages.sublist(start, end);
-          return Container(
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children:
-                  pageMessages.map((msg) {
-                    return Container(
-                      height: height,
-                      child: Text(
-                        msg,
-                        style: TextStyle(fontSize: 8.sp, color: Colors.white),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    );
-                  }).toList(),
-            ),
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children:
+                pageMessages.asMap().entries.map((entry) {
+                  final index = entry.key;
+                  final msg = entry.value;
+                  return Container(
+                    padding:
+                        (widget.isOneLine ?? true)
+                            ? null
+                            : index == 0
+                            ? EdgeInsets.only(top: 2.w, bottom: 2.w)
+                            : EdgeInsets.zero,
+                    height:
+                        (widget.isOneLine ?? true) ? height : ((height) / 2),
+                    child: Text(
+                      msg,
+                      style: TextStyle(fontSize: 8.sp, color: Colors.white),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  );
+                }).toList(),
           );
         },
       ),
