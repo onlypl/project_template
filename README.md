@@ -373,3 +373,35 @@ GetxService 的使用场景：
 ————————————————
 
 
+Melos
+melos 是一个用于 管理 Dart/Flutter 多包（monorepo）项目 的工具，功能类似于 Lerna (JavaScript) 或 nx。它可以帮助你：
+    •    管理多个 package 的依赖关系；
+    •    同步运行构建、测试或发布命令；
+    •    自动链接本地包；
+    •    只对变更的包执行操作；
+    •    简化版本发布和打 tag。
+
+安装 melos
+dart pub global activate melos
+
+
+安装完后，确认是否成功：
+melos --version
+
+1.    查找 melos.yaml 中列出的所有子目录中的 pubspec.yaml；
+2.    为每个 package 执行 flutter pub get（或 dart pub get）；
+3.    如果有子包之间是 path 引用（本地依赖），则自动建立软连接；
+4.    如果依赖图中存在错误（如循环依赖、缺失包），则会报错。
+melos clean
+melos bootstrap
+
+
+Monorepo 项目结构
+my_repo/
+├── melos.yaml
+├── packages/
+│   ├── common/
+│   │   └── ui_components/
+│   └── apps/
+│       ├── app1/
+│       └── app2/

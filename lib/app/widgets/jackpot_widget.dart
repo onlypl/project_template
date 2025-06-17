@@ -4,7 +4,6 @@ import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:marquee/marquee.dart';
 
 class _Rule {
   final int start;
@@ -187,7 +186,7 @@ class _JackpotWidgetState extends State<JackpotWidget> {
               ),
               child:
                   scrollAxis == Axis.horizontal
-                      ? buildTextMarquee()
+                      ? buildTextVerticalMarquee(textBgHeight)
                       : buildTextVerticalMarquee(textBgHeight),
             ),
           ),
@@ -221,25 +220,25 @@ Widget buildTextVerticalMarquee(double textBgHeight) {
     height: textBgHeight,
   );
 }
-
-///文本跑马灯
-Widget buildTextMarquee() {
-  return Marquee(
-    text:
-        '1.玩家：tia*** 提现12690元刚刚 玩家：tia*** 提现12690元刚刚,2.玩家：tia*** 提现12690元刚刚 玩家：tia*** 提现12690元刚刚',
-    style: TextStyle(color: Colors.white, fontSize: 8.sp),
-    scrollAxis: Axis.horizontal,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    blankSpace: 20.0,
-    velocity: 30.0,
-    pauseAfterRound: Duration(seconds: 1),
-    //startPadding: 10.0,
-    accelerationDuration: Duration(seconds: 1),
-    accelerationCurve: Curves.linear,
-    decelerationDuration: Duration(milliseconds: 1000),
-    decelerationCurve: Curves.easeOut,
-  );
-}
+//
+// ///文本跑马灯
+// Widget buildTextMarquee() {
+//   return Marquee(
+//     text:
+//         '1.玩家：tia*** 提现12690元刚刚 玩家：tia*** 提现12690元刚刚,2.玩家：tia*** 提现12690元刚刚 玩家：tia*** 提现12690元刚刚',
+//     style: TextStyle(color: Colors.white, fontSize: 8.sp),
+//     scrollAxis: Axis.horizontal,
+//     crossAxisAlignment: CrossAxisAlignment.center,
+//     blankSpace: 20.0,
+//     velocity: 30.0,
+//     pauseAfterRound: Duration(seconds: 1),
+//     //startPadding: 10.0,
+//     accelerationDuration: Duration(seconds: 1),
+//     accelerationCurve: Curves.linear,
+//     decelerationDuration: Duration(milliseconds: 1000),
+//     decelerationCurve: Curves.easeOut,
+//   );
+// }
 
 ///动画翻转奖金池金额
 Widget buildGradientNumber(double amount) {
@@ -271,12 +270,14 @@ Widget buildGradientNumber(double amount) {
 class VerticalMarqueePager extends StatefulWidget {
   final List<String> messages;
   final double? height;
+  final bool isOneLine;
   final Duration interval;
   VerticalMarqueePager({
     super.key,
     required this.messages,
     this.height,
     this.interval = const Duration(seconds: 3),
+    this.isOneLine = true,
   });
 
   @override
@@ -295,7 +296,10 @@ class _VerticalMarqueePagerState extends State<VerticalMarqueePager> {
     _timer = Timer.periodic(widget.interval, (_) {
       if (_scrollController.hasClients) {
         final double singleItemHeight = 16.w; // 每行文字高度
-        final double pageHeight = singleItemHeight * 2;
+        final double pageHeight =
+            widget.isOneLine
+                ? widget.height ?? singleItemHeight
+                : singleItemHeight * 2;
         final maxScrollExtent = _scrollController.position.maxScrollExtent;
         final nextOffset = _scrollController.offset + pageHeight;
 
@@ -331,25 +335,29 @@ class _VerticalMarqueePagerState extends State<VerticalMarqueePager> {
       height: height,
       child: ListView.builder(
         controller: _scrollController,
-        itemCount: (repeatedMessages.length / 2).ceil(),
+        itemCount: repeatedMessages.length ~/ 2,
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           final start = index * 2;
-          final end = (start + 2).clamp(0, repeatedMessages.length);
+          final end =
+              (start + 2 <= repeatedMessages.length)
+                  ? start + 2
+                  : repeatedMessages.length;
           final pageMessages = repeatedMessages.sublist(start, end);
-
           return Container(
-            padding: EdgeInsets.only(bottom: 2.w),
-            height: height,
+            alignment: Alignment.center,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.min,
               children:
                   pageMessages.map((msg) {
-                    return Text(
-                      msg,
-                      style: TextStyle(fontSize: 8.sp, color: Colors.white),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                    return Container(
+                      height: height,
+                      child: Text(
+                        msg,
+                        style: TextStyle(fontSize: 8.sp, color: Colors.white),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     );
                   }).toList(),
             ),
