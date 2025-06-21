@@ -29,6 +29,7 @@ class BaseWebController extends GetxController {
     webViewController =
         WebViewController()
           ..setJavaScriptMode(JavaScriptMode.unrestricted)
+          ..clearCache() // 避免缓存问题
           ..setNavigationDelegate(
             NavigationDelegate(
               onProgress: ((progress) {
@@ -68,7 +69,6 @@ class BaseWebController extends GetxController {
               onHttpError: ((HttpResponseError response) {}),
             ),
           );
-
     if (isLocalUrl) {
       loadHtmlFromAssets();
     } else {
