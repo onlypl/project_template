@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 
@@ -42,6 +43,16 @@ class AppUtils {
 
     // 最后一次压缩都失败就返回最小质量版本
     return compressedFile;
+  }
+
+  ///计算文本宽度
+  double measureTextWidth(String text, TextStyle style) {
+    final textPainter = TextPainter(
+      text: TextSpan(text: text, style: style),
+      textDirection: TextDirection.ltr,
+    )..layout(); // 触发布局计算
+
+    return textPainter.width;
   }
 
   ///导出当前国际化语言的excel文件

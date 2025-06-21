@@ -151,11 +151,12 @@ class HttpUtils {
       queryParameters: queryParameters,
       onSuccess: (result) {
         try {
-          var resultMap = result is String ? jsonDecode(result) : result;
           if (!kReleaseMode && isOpenLog) {
             Log().debug('---------- HttpUtils response ----------');
-            Log().debug('!!!!!!$resultMap');
+            Log().debug('数据:$url----$result');
           }
+          var resultMap = result is String ? jsonDecode(result) : result;
+
           if (loadingText != null) {
             ProgressHUD.hide();
           }
@@ -178,18 +179,16 @@ class HttpUtils {
             );
           }
         } catch (e) {
-          Log().error('--------------$e');
+          Log().error('接口数据异常--------------$e');
           ProgressHUD.hide();
-          ProgressHUD.showText(e.toString());
         }
       },
       onError: (code, msg) {
-        Log().error('---------- $msg ----------');
+        Log().error('接口请求异常---------- $msg ----------');
         if (loadingText != null) {
           ProgressHUD.hide();
         }
-        ProgressHUD.showError(msg);
-        fail?.call(code, msg);
+        // fail?.call(code, msg);
       },
     );
   }
@@ -227,7 +226,7 @@ class HttpUtils {
     });
 
     if (!kReleaseMode && isOpenLog) {
-      Log().info('---------- Upload File ----------');
+      Log().info('---------- 上传单个文件 ----------');
       Log().info(APIs.baseUrl + url);
       Log().info(formData.fields);
     }
@@ -255,17 +254,17 @@ class HttpUtils {
             );
           }
         } catch (e) {
-          Log().error('上传文件抛出异常: $e');
+          Log().error('上传文件数据异常: $e');
           ProgressHUD.showText(e.toString());
         } finally {
           if (loadingText != null) ProgressHUD.hide();
         }
       },
       onError: (code, msg) {
-        Log().error('上传文件错误: $msg');
+        Log().error('上传文件接口异常: $msg');
         if (loadingText != null) ProgressHUD.hide();
-        ProgressHUD.showError(msg);
-        fail?.call(code, msg);
+        // ProgressHUD.showError(msg);
+        // fail?.call(code, msg);
       },
     );
   }
@@ -340,7 +339,6 @@ class HttpUtils {
       Log().info(APIs.baseUrl + url);
       Log().info(formData.fields);
     }
-
     DioAdapter.instance.request(
       Method.post,
       url,
@@ -363,17 +361,17 @@ class HttpUtils {
             );
           }
         } catch (e) {
-          Log().error('Upload Multiple Files Exception: $e');
-          ProgressHUD.showText(e.toString());
+          Log().error('上传多个文件数据异常: $e');
+          //  ProgressHUD.showText(e.toString());
         } finally {
           if (loadingText != null) ProgressHUD.hide();
         }
       },
       onError: (code, msg) {
-        Log().error('Upload Multiple Files Error: $msg');
+        Log().error('上传多个文件接口异常: $msg');
         if (loadingText != null) ProgressHUD.hide();
-        ProgressHUD.showError(msg);
-        fail?.call(code, msg);
+        // ProgressHUD.showError(msg);
+        // fail?.call(code, msg);
       },
     );
   }
