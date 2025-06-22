@@ -8,7 +8,7 @@ class ExceptionHandler {
   static const int success_not_content = 204;
   static const int not_modified = 304;
   static const int unauthorized = 401;
-  static const int cookie_expired = 403; //cookie过期user_cookie
+  static const int token_expired = 403; //cookie过期user_cookie
 
   ///
   static const int not_found = 404;
@@ -71,7 +71,8 @@ class NetError {
 }
 
 extension DioErrorTypeExtension on DioExceptionType {
-  int get errorCode => [
+  int get errorCode =>
+      [
         ExceptionHandler.connect_timeout_error,
         ExceptionHandler.send_timeout_error,
         ExceptionHandler.receive_timeout_error,

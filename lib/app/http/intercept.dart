@@ -75,7 +75,7 @@ class LoginInterceptor extends QueuedInterceptor {
     ResponseInterceptorHandler handler,
   ) async {
     // 403代表Cookie过期
-    if (response.statusCode == ExceptionHandler.cookie_expired) {
+    if (response.statusCode == ExceptionHandler.token_expired) {
       Log().debug('---------- 自动刷新Cookie ----------');
 
       var res = await refreshCookieRequest(); // 获取Cookie

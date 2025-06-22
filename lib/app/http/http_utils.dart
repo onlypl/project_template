@@ -10,9 +10,25 @@ import 'dio_adapter.dart';
 import 'intercept.dart';
 import 'net_error.dart';
 
-typedef Success<T> = Function(T data);
-typedef Fail = Function(int code, String msg);
+enum FailType {
+  interface(1, '接口异常'), // 1 - 接口异常
+  data(2, '数据异常'), // 2 -  数据异常
+  network(3, '网络请求异常'); //3 - 网络请求异常
 
+  final int code;
+  final String desc;
+
+  const FailType(this.code, this.desc);
+  static FailType? fromCode(int code) {
+    return FailType.values.firstWhere(
+      (e) => e.code == code,
+      orElse: () => FailType.network,
+    );
+  }
+}
+
+typedef Success<T> = Function(T data);
+typedef Fail = Function(FailType failType, int code, String msg);
 // 日志开关
 const bool isOpenLog = true;
 const bool isOpenAllLog = false;
@@ -29,7 +45,7 @@ class HttpUtils {
     final List<Interceptor> interceptors = <Interceptor>[];
 
     /// 统一添加身份验证请求头
-    //interceptors.add(AuthInterceptor());
+    interceptors.add(AuthInterceptor());
 
     /// 刷新Token
     interceptors.add(TokenInterceptor());
@@ -41,7 +57,6 @@ class HttpUtils {
     if (!kReleaseMode && isOpenAllLog) {
       interceptors.add(LoggingInterceptor()); // 调试打开
     }
-
     configDio(baseUrl: APIs.baseUrl, interceptors: interceptors);
   }
 
@@ -151,12 +166,23 @@ class HttpUtils {
       queryParameters: queryParameters,
       onSuccess: (result) {
         try {
-          if (!kReleaseMode && isOpenLog) {
-            Log().debug('---------- HttpUtils response ----------');
-            Log().debug('数据:$url----$result');
+          //  if (!kReleaseMode && isOpenLog) {
+          Log().debug('---------- HttpUtils response ----------');
+          Log().debug('数据:$url----$result');
+          //  }
+          Map<String, dynamic> resultMap = {};
+          if (result is String) {
+            if (result.trim().isNotEmpty) {
+              resultMap = jsonDecode(result);
+            }
+            {
+              Log().debug('----------数据为空 ----------');
+            }
+          } else if (result is Map<String, dynamic>) {
+            resultMap = result;
+          } else {
+            Log().debug('----------数据类型不确定 ----------');
           }
-          var resultMap = result is String ? jsonDecode(result) : result;
-
           if (loadingText != null) {
             ProgressHUD.hide();
           }
@@ -166,7 +192,7 @@ class HttpUtils {
           } else {
             ///未登录错误
             if ((int.tryParse(resultMap[CODE_NAME].toString()) ?? -1) ==
-                ExceptionHandler.cookie_expired) {
+                ExceptionHandler.token_expired) {
               //TODO  AppHive.shared.isLogin = false;
             }
             // 其他状态，弹出错误提示信息
@@ -174,21 +200,23 @@ class HttpUtils {
               ProgressHUD.showText(resultMap[MSG_NAME]);
             }
             fail?.call(
+              FailType.interface,
               int.tryParse(resultMap[CODE_NAME].toString()) ?? -1,
               resultMap[MSG_NAME],
             );
           }
         } catch (e) {
           Log().error('接口数据异常--------------$e');
+          fail?.call(FailType.data, -1, '数据解析异常');
           ProgressHUD.hide();
         }
       },
       onError: (code, msg) {
-        Log().error('接口请求异常---------- $msg ----------');
+        Log().error('网络请求异常---------- $msg ----------');
         if (loadingText != null) {
           ProgressHUD.hide();
         }
-        // fail?.call(code, msg);
+        fail?.call(FailType.network, code, msg);
       },
     );
   }
@@ -249,12 +277,14 @@ class HttpUtils {
               ProgressHUD.showText(resultMap[MSG_NAME]);
             }
             fail?.call(
+              FailType.interface,
               int.tryParse(resultMap[CODE_NAME].toString()) ?? -1,
               resultMap[MSG_NAME],
             );
           }
         } catch (e) {
           Log().error('上传文件数据异常: $e');
+          fail?.call(FailType.data, -1, '数据解析异常');
           ProgressHUD.showText(e.toString());
         } finally {
           if (loadingText != null) ProgressHUD.hide();
@@ -264,7 +294,7 @@ class HttpUtils {
         Log().error('上传文件接口异常: $msg');
         if (loadingText != null) ProgressHUD.hide();
         // ProgressHUD.showError(msg);
-        // fail?.call(code, msg);
+        fail?.call(FailType.network, code, msg);
       },
     );
   }
@@ -356,12 +386,14 @@ class HttpUtils {
               ProgressHUD.showText(resultMap[MSG_NAME]);
             }
             fail?.call(
+              FailType.interface,
               int.tryParse(resultMap[CODE_NAME].toString()) ?? -1,
               resultMap[MSG_NAME],
             );
           }
         } catch (e) {
           Log().error('上传多个文件数据异常: $e');
+          fail?.call(FailType.data, -1, '数据解析异常');
           //  ProgressHUD.showText(e.toString());
         } finally {
           if (loadingText != null) ProgressHUD.hide();
@@ -371,7 +403,7 @@ class HttpUtils {
         Log().error('上传多个文件接口异常: $msg');
         if (loadingText != null) ProgressHUD.hide();
         // ProgressHUD.showError(msg);
-        // fail?.call(code, msg);
+        fail?.call(FailType.network, code, msg);
       },
     );
   }
