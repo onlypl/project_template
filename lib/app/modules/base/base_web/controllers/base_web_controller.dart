@@ -82,7 +82,7 @@ class BaseWebController extends GetxController {
   //   }
   //   ;
   // }
-
+  //
   // loadHtmlFromAssets() async {
   //   String fileText = await DefaultAssetBundle.of(
   //     Get.context!,

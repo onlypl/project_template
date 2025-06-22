@@ -12,7 +12,7 @@ dependencies:
   dio: ^5.8.0+1 #网络请求
   dio_cookie_manager: ^3.2.0 #cookie管理
   cookie_jar: ^4.0.8 #cookie管理
-  #webview_flutter: ^4.11.0 #webView组件
+  webview_flutter: ^4.13.0 #webView组件
   cached_network_image: ^3.4.1 #图片下载缓存库
   flutter_html: ^3.0.0 #html标签解析
   get: ^4.7.2 #状态管理
@@ -26,8 +26,11 @@ dependencies:
   flutter_easyloading: ^3.0.5 #加载动画
   hive: ^2.2.3 #数据库
   hive_flutter: ^1.1.0 #数据库
-  image_picker: ^1.0.0
-  flutter_inappwebview: ^6.1.5 #webView
+  image_picker: ^1.1.2
+  file_picker: ^10.2.0
+  path_provider: ^2.1.5
+  flutter_inappwebview: ^6.0.0 #webView
+
   #introduction_screen: ^3.1.17 #引导页
 dev_dependencies:
   flutter_test:
