@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:project_template/app/http/apis.dart';
 //import 'package:webview_flutter/webview_flutter.dart';
 
@@ -28,6 +29,20 @@ class BaseWebController extends GetxController {
     isLocalUrl = args?['isLocalUrl'] ?? false;
     isShowAppBar = args?['isShowAppBar'] ?? false;
     //intWebController();
+    _requestPermissions();
+  }
+
+  Future<void> _requestPermissions() async {
+    if (await Permission.photos.isDenied || await Permission.storage.isDenied) {
+      await [
+        Permission.camera,
+        Permission.storage, // Android ≤12
+        Permission.photos, // iOS 和部分安卓厂商
+        Permission.videos, // Android 13+
+        Permission.audio, // Android 13+
+        Permission.photosAddOnly, // Android 13+
+      ].request();
+    }
   }
 
   // void intWebController() {

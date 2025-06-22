@@ -50,6 +50,12 @@ class BaseWebView extends GetView<BaseWebController> {
       onWebViewCreated: (cont) {
         controller.inWebViewController = cont;
       },
+      onPermissionRequest: (controller, request) async {
+        return PermissionResponse(
+          resources: request.resources,
+          action: PermissionResponseAction.GRANT,
+        );
+      },
       // androidOnShowFileChooser: (controller, fileChooserParams) async {
       //   final picker = ImagePicker();
       //   final XFile? file = await picker.pickImage(source: ImageSource.gallery);
