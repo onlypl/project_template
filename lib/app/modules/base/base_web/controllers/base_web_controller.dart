@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
 import 'package:project_template/app/http/apis.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+//import 'package:webview_flutter/webview_flutter.dart';
 
 class BaseWebController extends GetxController {
   late String title = '';
   late String url = '';
-  late WebViewController webViewController;
+  //late WebViewController webViewController;
   late String richText = '';
   late bool isLocalUrl = false;
   late bool isShowAppBar = true;
+
+  final GlobalKey webViewKey = GlobalKey();
+
+  late InAppWebViewController inWebViewController;
+
   @override
   void onInit() {
     super.onInit();
@@ -21,68 +27,68 @@ class BaseWebController extends GetxController {
     richText = args?['richText'] ?? '';
     isLocalUrl = args?['isLocalUrl'] ?? false;
     isShowAppBar = args?['isShowAppBar'] ?? false;
-    intWebController();
+    //intWebController();
   }
 
-  void intWebController() {
-    // EasyLoading.show(status: '加载中...');
-    webViewController =
-        WebViewController()
-          ..setJavaScriptMode(JavaScriptMode.unrestricted)
-          ..clearCache() // 避免缓存问题
-          ..setNavigationDelegate(
-            NavigationDelegate(
-              onProgress: ((progress) {
-                ///更新加载进度
-              }),
-              onPageStarted: ((url) {
-                ///开始加载
-                // webViewController.clearCache();
-              }),
-              onPageFinished: ((url) {
-                ///加载完成
-                if (isLocalUrl) {
-                  // //加载js文件
-                  // String jsContent = rootBundle.loadString(jsPath);
-                  // webViewController.runJavaScript(jsContent);
-                  //js脚本
-                  // webViewController
-                  //     .runJavaScriptReturningResult("setname(pl)")
-                  //     .then((value) {
-                  //       print(value);
-                  //     });
-                }
-                EasyLoading.dismiss();
-              }),
-              onWebResourceError: ((WebResourceError error) {
-                ///加载失败
-                EasyLoading.dismiss();
-              }),
+  // void intWebController() {
+  //   // EasyLoading.show(status: '加载中...');
+  //   webViewController =
+  //       WebViewController()
+  //         ..setJavaScriptMode(JavaScriptMode.unrestricted)
+  //         ..clearCache() // 避免缓存问题
+  //         ..setNavigationDelegate(
+  //           NavigationDelegate(
+  //             onProgress: ((progress) {
+  //               ///更新加载进度
+  //             }),
+  //             onPageStarted: ((url) {
+  //               ///开始加载
+  //               // webViewController.clearCache();
+  //             }),
+  //             onPageFinished: ((url) {
+  //               ///加载完成
+  //               if (isLocalUrl) {
+  //                 // //加载js文件
+  //                 // String jsContent = rootBundle.loadString(jsPath);
+  //                 // webViewController.runJavaScript(jsContent);
+  //                 //js脚本
+  //                 // webViewController
+  //                 //     .runJavaScriptReturningResult("setname(pl)")
+  //                 //     .then((value) {
+  //                 //       print(value);
+  //                 //     });
+  //               }
+  //               EasyLoading.dismiss();
+  //             }),
+  //             // onWebResourceError: ((WebResourceError error) {
+  //             //   ///加载失败
+  //             //   EasyLoading.dismiss();
+  //             // }),
+  //
+  //             ///拦截请求
+  //             onNavigationRequest: ((NavigationRequest request) {
+  //               // if (request.url.startsWith('https://www.youtube.com/')) {
+  //               //   return NavigationDecision.prevent;
+  //               // }
+  //               return NavigationDecision.navigate;
+  //             }),
+  //             onHttpError: ((HttpResponseError response) {}),
+  //           ),
+  //         );
+  //   if (isLocalUrl) {
+  //     loadHtmlFromAssets();
+  //   } else {
+  //     webViewController.loadRequest(Uri.parse(url));
+  //   }
+  //   ;
+  // }
 
-              ///拦截请求
-              onNavigationRequest: ((NavigationRequest request) {
-                // if (request.url.startsWith('https://www.youtube.com/')) {
-                //   return NavigationDecision.prevent;
-                // }
-                return NavigationDecision.navigate;
-              }),
-              onHttpError: ((HttpResponseError response) {}),
-            ),
-          );
-    if (isLocalUrl) {
-      loadHtmlFromAssets();
-    } else {
-      webViewController.loadRequest(Uri.parse(url));
-    }
-    ;
-  }
-
-  loadHtmlFromAssets() async {
-    String fileText = await DefaultAssetBundle.of(
-      Get.context!,
-    ).loadString(url); //'assets/html/test.html'
-    webViewController.loadHtmlString(fileText);
-  }
+  // loadHtmlFromAssets() async {
+  //   String fileText = await DefaultAssetBundle.of(
+  //     Get.context!,
+  //   ).loadString(url); //'assets/html/test.html'
+  //   webViewController.loadHtmlString(fileText);
+  // }
 
   @override
   void onReady() {
