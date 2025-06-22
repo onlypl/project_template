@@ -9,7 +9,7 @@
     <application
         android:usesCleartextTraffic="true"
         android:extractNativeLibs="true"
-        android:label="BFCX"
+        android:label="上海证券"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
