@@ -3,7 +3,7 @@ class APIs {
   /// url
   //static String baseUrl =
   //   AppSharedPreferences.getCurrentDomain() ?? 'https://tv.myhunan.cn';
-  static String baseUrl = 'https://d1hd6ebv7k6jpa.cloudfront.net';
+  static String baseUrl = 'https://www.binfincx.com';
   static const String wsUrl = 'ws://pet.myhunan.cn:9502';
 
   /// 刷新token

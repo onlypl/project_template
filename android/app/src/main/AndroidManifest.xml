@@ -24,7 +24,7 @@
     <application
         android:usesCleartextTraffic="true"
         android:extractNativeLibs="true"
-        android:label="上海证券"
+        android:label="BFCX"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 <!--        <provider-->

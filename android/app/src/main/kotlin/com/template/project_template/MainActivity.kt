@@ -1,4 +1,4 @@
-package com.binfincx.bfcx
+package com.binfincx.bfcx2
 
 import android.app.Activity
 import android.content.Intent
