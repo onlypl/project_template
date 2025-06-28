@@ -139,7 +139,13 @@ class DioAdapter {
 
       /// 获取Cookie，CookieManager 为插件cookie管理类，CookieHandle.cookieJar 是获取Cookie
       dio.interceptors.add(CookieManager(await CookieHandle.cookieJar));
-      onSuccess?.call(response.data);
+      Log().error('!!!!!!!!!-${response.statusCode}----');
+      if (response.statusCode == 200) {
+        onSuccess?.call(response.data);
+      } else {
+        _onError(response.statusCode, "请求接口异常", onError);
+      }
+
     } on DioException catch (e) {
       _cancelLogPrint(e, url);
       Log().error('错误 $e');
