@@ -1,4 +1,4 @@
-package com.binfincx.bfcx2
+package net.cloudfront.d3m1rqd6jhw0z0
 
 import android.app.Activity
 import android.content.Intent
