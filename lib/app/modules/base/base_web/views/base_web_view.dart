@@ -15,17 +15,21 @@ class BaseWebView extends GetView<BaseWebController> {
     return Scaffold(
       appBar:
           controller.isShowAppBar ? BaseAppBar(title: controller.title) : null,
-      body: PopScope(
-        //canPop: false, //手机返回键
-        child: //buildAppWebView(),
-            buildAppWebView(),
+      body: SafeArea(
+        child: Container(
+          child: PopScope(
+            //canPop: false, //手机返回键
+            child: //buildAppWebView(),
+                buildAppWebView(),
 
-        onPopInvokedWithResult: (didPop, result) async {
-          // if (didPop) {
-          //   goBack();
-          //   return;
-          // }
-        },
+            onPopInvokedWithResult: (didPop, result) async {
+              // if (didPop) {
+              //   goBack();
+              //   return;
+              // }
+            },
+          ),
+        ),
       ),
     );
   }

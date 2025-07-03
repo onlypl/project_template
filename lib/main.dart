@@ -1,6 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -37,10 +36,10 @@ void main() async {
   // await FcmHelper.initFcm();
 
   //配置透明的状态栏
-  SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-  );
-  SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+  // SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(
+  //   statusBarColor: Colors.transparent,
+  // );
+  // SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 
   // ///停留操作
   // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
