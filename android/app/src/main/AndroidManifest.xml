@@ -24,7 +24,7 @@
     <application
         android:usesCleartextTraffic="true"
         android:extractNativeLibs="true"
-        android:label="SHZQ专业版"
+        android:label="EonChat"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 <!--        <provider-->

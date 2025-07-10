@@ -1,4 +1,4 @@
-package net.cloudfront.d3m1rqd6jhw0z0
+package co.imchat.zhixin
 
 import android.app.Activity
 import android.content.Intent
@@ -10,7 +10,7 @@ import android.webkit.WebView
 import android.webkit.WebChromeClient.FileChooserParams
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
-
+//co.imchat.zhixin
 class MainActivity : FlutterActivity() {
 
     private val REQUEST_FILE_CHOOSER = 1001
