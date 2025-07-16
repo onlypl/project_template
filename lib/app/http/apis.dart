@@ -4,7 +4,7 @@ class APIs {
   //static String baseUrl =
   //   AppSharedPreferences.getCurrentDomain() ?? 'https://tv.myhunan.cn';
   //static String baseUrl = 'https://d3m1rqd6jhw0z0.cloudfront.net';
-  static String baseUrl = 'https://zhixin-h5.imchat.co';
+  static String baseUrl = 'https://www.binfincx.net';
   static const String wsUrl = 'ws://pet.myhunan.cn:9502';
 
   /// 刷新token
