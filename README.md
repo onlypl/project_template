@@ -65,10 +65,6 @@ AndroidManifest.xml文件下
 <!--        AndroidManifest.xml-->
 <!--     android:usesCleartextTraffic="true" 允许http-->
     <!--    android:extractNativeLibs="true" 包体积优化-->
-7.当项目模拟器不能运行时候：
-        在
-     Runner.xcodeproj显示包内容-》  project.pbxproj里面-》  ENABLE_BITCODE = NO;下面
-  "EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "i386 arm64";
 
 配置签名：
     app目录下build.gradle.kts文件
@@ -129,11 +125,6 @@ AndroidManifest.xml文件下
             signingConfig = mySignConfig
         }
     }
- 
- 
- 打包渠道:   
-    flutter build apk --flavor pro --dart-define=CHANEl=pro
-        flutter build apk --flavor yyb --dart-define=CHANEl=yyb
 
 环境配置:
 export PATH="$PATH:/Users/luke/Documents/flutter/bin"
@@ -373,35 +364,49 @@ GetxService 的使用场景：
 ————————————————
 
 
-Melos
-melos 是一个用于 管理 Dart/Flutter 多包（monorepo）项目 的工具，功能类似于 Lerna (JavaScript) 或 nx。它可以帮助你：
-    •    管理多个 package 的依赖关系；
-    •    同步运行构建、测试或发布命令；
-    •    自动链接本地包；
-    •    只对变更的包执行操作；
-    •    简化版本发布和打 tag。
+使用 jenv 管理多个 JDK 版本（推荐）
 
-安装 melos
-dart pub global activate melos
+✅ 1. 安装 jenv（通过 Homebrew）：
 
+brew install jenv
 
-安装完后，确认是否成功：
-melos --version
+然后把 jenv 加入 shell：
 
-1.    查找 melos.yaml 中列出的所有子目录中的 pubspec.yaml；
-2.    为每个 package 执行 flutter pub get（或 dart pub get）；
-3.    如果有子包之间是 path 引用（本地依赖），则自动建立软连接；
-4.    如果依赖图中存在错误（如循环依赖、缺失包），则会报错。
-melos clean
-melos bootstrap
+echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(jenv init -)"' >> ~/.zshrc
+source ~/.zshrc
 
+ ✅ 2. 添加多个 JDK 到 jenv：
+ 
+ jenv add /Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home
+jenv add /Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
 
-Monorepo 项目结构
-my_repo/
-├── melos.yaml
-├── packages/
-│   ├── common/
-│   │   └── ui_components/
-│   └── apps/
-│       ├── app1/
-│       └── app2/
+你可以通过以下命令查看支持的版本：
+jenv versions
+
+ ✅ 3. 在不同项目中设置 JDK 版本
+ jenv local 17
+ 或者其他需要 JDK 21 的项目中：
+ jenv local 21
+ jenv 会在项目目录下写一个 .java-version 文件自动切换。
+ 
+ 
+ 👉 安装 JDK 17
+ brew install openjdk@17
+ sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
+ 👉 安装 JDK 21（如果你也需要）
+ brew install openjdk@21
+ 
+ sudo ln -sfn /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/jdk-21.jdk
+ 
+ ✅ 安装后配置 jenv（如需版本切换）
+ jenv add /Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home
+jenv add /Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+jenv versions
+
+设置某个项目使用 JDK 17：
+cd your_flutter_project
+jenv local 17
+✅ 检查是否生效
+java -version
+echo $JAVA_HOME
