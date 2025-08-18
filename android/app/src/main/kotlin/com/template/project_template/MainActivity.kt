@@ -1,4 +1,4 @@
-package net.binfincx.bfcx
+package com.cloudfront.caida
 
 import android.app.Activity
 import android.content.Intent

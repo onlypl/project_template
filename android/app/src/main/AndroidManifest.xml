@@ -24,7 +24,7 @@
     <application
         android:usesCleartextTraffic="true"
         android:extractNativeLibs="true"
-        android:label="BFCX"
+        android:label="CaiDa专业版"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 <!--        <provider-->

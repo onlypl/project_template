@@ -42,10 +42,40 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    getDomains();
+    //getDomains();
     // getAPPConfig();
     // getCategoryList();
     //  getData();
+    getLocalDomain();
+  }
+
+  getLocalDomain() {
+    List<String> linkList = [
+      "https://d1rp11327rkstd.cloudfront.net",
+      "https://d3f0xzf0cooqt.cloudfront.net",
+      "http://dfeuwq02htvy3.cloudfront.net",
+      "https://app.yiidx.cn",
+      "https://app.dacaida.com",
+    ];
+    //获取缓存的域名池
+    var domainUrlList = AppSharedPreferences.getDomainPool() ?? [];
+    for (var tmpUrl in linkList) {
+      //如果当前缓存域名池没有接口域名池的域名时 则添加到缓存数组中
+      if (domainUrlList.contains(tmpUrl) == false) {
+        domainUrlList.add(tmpUrl);
+      }
+    }
+    //看是否当前域名是否存在 不存在则初始化添加
+    var currentUrl = AppSharedPreferences.getCurrentDomain();
+    if (currentUrl == null || currentUrl.isEmpty) {
+      //如果当前域名不存在 则初始化添加
+      if (domainUrlList.isNotEmpty) {
+        AppSharedPreferences.setCurrentDomain(domainUrlList[0]);
+      }
+    }
+    //更新缓存的域名池
+    AppSharedPreferences.setDomainPool(domainUrlList);
+    checkDomainAvailable(true);
   }
 
   ///网络获取接口域名列表
@@ -159,7 +189,8 @@ class _SplashPageState extends State<SplashPage> {
       AppSharedPreferences.setDomainPool(domainUrlList);
       checkDomainAvailable(isSuccess);
     } else {
-      getDomains(); //重新请求接口域名池
+      //TODO getDomains(); //重新请求接口域名池
+      getLocalDomain();
     }
   }
 
