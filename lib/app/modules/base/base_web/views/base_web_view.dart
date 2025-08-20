@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
 import 'package:project_template/app/widgets/base_appbar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 //import 'package:webview_flutter/webview_flutter.dart';
 
@@ -50,11 +51,36 @@ class BaseWebView extends GetView<BaseWebController> {
         useOnLoadResource: true,
         useOnDownloadStart: true,
         useHybridComposition: true,
+        allowsBackForwardNavigationGestures: true, // iOS
+        javaScriptCanOpenWindowsAutomatically: true, // 允许 window.open
+        thirdPartyCookiesEnabled: true,
+        supportMultipleWindows: true,
       ),
-      onWebViewCreated: (cont) {
+      onWebViewCreated: (cont) async {
         controller.inWebViewController = cont;
       },
-      onPermissionRequest: (controller, request) async {
+      onCreateWindow: (cont, action) async {
+        final uri = action.request.url;
+        if (uri == null) return false;
+        // 统一在当前 WebView 内打开（处理 target="_blank" 等新窗口）
+        await controller.inWebViewController.loadUrl(
+          urlRequest: URLRequest(url: uri),
+        );
+        return true; // 告诉 WebView 我们自己处理了
+      },
+      shouldOverrideUrlLoading: (cont, action) async {
+        final uri = action.request.url;
+        if (uri == null) return NavigationActionPolicy.ALLOW;
+        final scheme = uri.scheme;
+        // http/https 全部在应用内打开（修复登录等跳转到子域名被外部打开的问题）
+        if (scheme == 'http' || scheme == 'https') {
+          return NavigationActionPolicy.ALLOW;
+        }
+        // 其它自定义 scheme（tel:/mailto:/weixin:/alipays: 等）交给系统
+        await _openExternal(uri);
+        return NavigationActionPolicy.CANCEL;
+      },
+      onPermissionRequest: (cont, request) async {
         return PermissionResponse(
           resources: request.resources,
           action: PermissionResponseAction.GRANT,
@@ -68,6 +94,12 @@ class BaseWebView extends GetView<BaseWebController> {
       //   return [uri];
       // },
     );
+  }
+
+  Future<void> _openExternal(Uri uri) async {
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 
   // buildWebView() {
