@@ -12,4 +12,8 @@ const Map<String, String> zhCn = {
   Strings.apiNotFound: 'Route not found!',
   Strings.serverError: 'Server error',
   Strings.urlNotFound: 'Url not found',
+  Strings.findingBestRoute: '正在寻找最佳线路',
+  Strings.domainUnavailable: '所有线路均不可用，请检查网络后重试',
+  Strings.pageLoadFailed: '页面加载失败',
+  Strings.retry: '重试',
 };

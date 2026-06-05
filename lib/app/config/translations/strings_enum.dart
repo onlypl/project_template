@@ -13,4 +13,9 @@ class Strings {
   static const String apiNotFound = 'api not found';
   static const String serverError = 'Server error';
   static const String urlNotFound = 'Url not found';
+
+  static const String findingBestRoute = 'finding_best_route';
+  static const String domainUnavailable = 'domain_unavailable';
+  static const String pageLoadFailed = 'page_load_failed';
+  static const String retry = 'retry';
 }

@@ -2,8 +2,8 @@ import '../db/app_shared_preferences.dart';
 
 class APIs {
   //测试git修改1
-  /// url
-  static String baseUrl = AppSharedPreferences.getCurrentDomain() ?? '';
+  /// 运行时读取当前可用域名，避免类加载时 SharedPreferences 尚未初始化。
+  static String get baseUrl => AppSharedPreferences.getCurrentDomain() ?? '';
   //static String baseUrl = 'https://d3m1rqd6jhw0z0.cloudfront.net';
   // static String baseUrl = 'https://www.binfincx.net';
   static const String wsUrl = 'ws://pet.myhunan.cn:9502';

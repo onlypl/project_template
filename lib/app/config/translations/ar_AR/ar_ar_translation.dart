@@ -14,4 +14,8 @@ final Map<String, String> arAR =
   Strings.apiNotFound : 'الرابط الذي تحاول الوصول اليه غير موجود!',
   Strings.serverError : 'مشكلة من السيرفر',
   Strings.urlNotFound : 'مشكلة في الرابط',
+  Strings.findingBestRoute : 'البحث عن أفضل مسار',
+  Strings.domainUnavailable : 'جميع المسارات غير متاحة، يرجى التحقق من الشبكة والمحاولة مرة أخرى',
+  Strings.pageLoadFailed : 'فشل تحميل الصفحة',
+  Strings.retry : 'إعادة المحاولة',
 };

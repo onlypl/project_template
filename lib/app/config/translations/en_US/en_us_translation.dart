@@ -13,4 +13,8 @@ const Map<String, String> enUs = {
   Strings.apiNotFound : 'Route not found!',
   Strings.serverError : 'Server error',
   Strings.urlNotFound : 'Url not found',
+  Strings.findingBestRoute : 'Finding the best route',
+  Strings.domainUnavailable : 'All routes are unavailable. Please check your network and retry.',
+  Strings.pageLoadFailed : 'Failed to load page',
+  Strings.retry : 'Retry',
 };

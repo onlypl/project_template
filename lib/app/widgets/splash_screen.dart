@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:project_template/app/config/translations/strings_enum.dart';
 import 'package:project_template/app/db/app_shared_preferences.dart';
 import 'package:project_template/app/utils/log.dart';
 import 'package:project_template/app/widgets/skip_down_time_progress.dart';
@@ -23,57 +24,43 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  //final HomeController controller = Get.put(HomeController());
   String netImgUrl = '';
   String tagUrl = '';
-  // String netImgUrlPlaceholder = 'https://hbimg.b0.upaiyun.com/bb7e3b7ba10a607e0efd72b23087fa5415ca3cd040cc-7Ncw9V_fw236';//一个loading的图片
+  bool _hasNavigated = false;
+  bool _showDomainError = false;
+  int _failureCount = 0;
+  static const int _maxDomainRetryRounds = 2;
+
   final Dio.Dio dio = Dio.Dio(
     Dio.BaseOptions(
       responseType: Dio.ResponseType.json,
-      // validateStatus: (status) {
-      //   // 不使用http状态码判断状态，使用AdapterInterceptor来处理（适用于标准REST风格）
-      //   return true;
-      // },
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
-      //sendTimeout: _sendTimeout,
     ),
   );
+
   @override
   void initState() {
     super.initState();
-    //getDomains();
-    // getAPPConfig();
-    // getCategoryList();
-    //  getData();
     getLocalDomain();
   }
 
   getLocalDomain() {
     List<String> linkList = [
-      "https://d1rp11327rkstd.cloudfront.net",
-      "https://d3f0xzf0cooqt.cloudfront.net",
-      "http://dfeuwq02htvy3.cloudfront.net",
-      "https://app.yiidx.cn",
-      "https://app.dacaida.com",
+      "https://ox4utkt.vip",
     ];
-    //获取缓存的域名池
     var domainUrlList = AppSharedPreferences.getDomainPool() ?? [];
     for (var tmpUrl in linkList) {
-      //如果当前缓存域名池没有接口域名池的域名时 则添加到缓存数组中
       if (domainUrlList.contains(tmpUrl) == false) {
         domainUrlList.add(tmpUrl);
       }
     }
-    //看是否当前域名是否存在 不存在则初始化添加
     var currentUrl = AppSharedPreferences.getCurrentDomain();
     if (currentUrl == null || currentUrl.isEmpty) {
-      //如果当前域名不存在 则初始化添加
       if (domainUrlList.isNotEmpty) {
         AppSharedPreferences.setCurrentDomain(domainUrlList[0]);
       }
     }
-    //更新缓存的域名池
     AppSharedPreferences.setDomainPool(domainUrlList);
     checkDomainAvailable(true);
   }
@@ -86,35 +73,31 @@ class _SplashPageState extends State<SplashPage> {
         )
         .then(
           (response) {
-            print(response.data);
             var resultMap =
                 response.data is String
                     ? jsonDecode(response.data) as Map<String, dynamic>
                     : response.data as Map<String, dynamic>;
             List<String> linkList = List<String>.from(resultMap["links"] ?? []);
-            //获取缓存的域名池
             var domainUrlList = AppSharedPreferences.getDomainPool() ?? [];
             for (var tmpUrl in linkList) {
-              //如果当前缓存域名池没有接口域名池的域名时 则添加到缓存数组中
               if (domainUrlList.contains(tmpUrl) == false) {
                 domainUrlList.add(tmpUrl);
               }
             }
 
-            //看是否当前域名是否存在 不存在则初始化添加
             var currentUrl = AppSharedPreferences.getCurrentDomain();
             if (currentUrl == null || currentUrl.isEmpty) {
-              //如果当前域名不存在 则初始化添加
               if (domainUrlList.isNotEmpty) {
                 AppSharedPreferences.setCurrentDomain(domainUrlList[0]);
               }
             }
-            //更新缓存的域名池
             AppSharedPreferences.setDomainPool(domainUrlList);
+            _failureCount = 0;
             checkDomainAvailable(true);
           },
           onError: (error, stackTrace) {
             Log().error("域名池请求异常-----$error");
+            _onDomainFailed(fetchRemoteOnExhausted: false);
           },
         );
   }
@@ -123,41 +106,66 @@ class _SplashPageState extends State<SplashPage> {
   checkDomainAvailable(bool isSuccess) {
     var currentUrl = AppSharedPreferences.getCurrentDomain();
     if (currentUrl == null || currentUrl.isEmpty) {
-      getDomains(); //重新请求接口域名池
+      getDomains();
       return;
     }
     final stopwatch = Stopwatch()..start();
-    try {
-      dio
-          .get(currentUrl)
-          .then(
-            (response) {
-              stopwatch.stop();
-              if (response.statusCode == 200) {
-                print('请求成功，耗时: ${stopwatch.elapsedMilliseconds} 毫秒');
-                Log().info("$currentUrl------域名可用------");
+    dio
+        .get(currentUrl)
+        .then(
+          (response) {
+            stopwatch.stop();
+            if (response.statusCode == 200) {
+              Log().info("$currentUrl------域名可用------");
+              goIndexPage();
+            } else {
+              Log().error("$currentUrl------域名不可用，状态码: ${response.statusCode}");
+              _onDomainFailed();
+            }
+          },
+          onError: (error, stackTrace) {
+            Log().error("url检测是否可用请求异常-----$error");
+            stopwatch.stop();
+            _onDomainFailed();
+          },
+        );
+  }
 
-                ///请求处理请求配置接口或者其它数据/跳转页面等操作
-                goIndexPage();
-              }
-            },
-            onError: (error, stackTrace) {
-              Log().error("url检测是否可用请求异常-----$error");
-              stopwatch.stop();
-              sortDomainArray(); //排序域名池,访问失败的url排在最后
-              reCheckDomainAvailable(false); //新的域名下载备用域名列表
-            },
-          );
-    } catch (e) {
-      stopwatch.stop();
-      Log().error("url检测是否可用捕获到异常-----$e");
+  void _onDomainFailed({bool fetchRemoteOnExhausted = true}) {
+    _failureCount++;
+    final poolSize = (AppSharedPreferences.getDomainPool() ?? []).length;
+    if (poolSize > 0 && _failureCount >= poolSize * _maxDomainRetryRounds) {
+      if (fetchRemoteOnExhausted) {
+        _failureCount = 0;
+        getDomains();
+        return;
+      }
+      _showDomainErrorUI();
+      return;
     }
+    sortDomainArray();
+    reCheckDomainAvailable(false);
+  }
+
+  void _showDomainErrorUI() {
+    if (!mounted) return;
+    setState(() {
+      _showDomainError = true;
+    });
+  }
+
+  void _retryDomainCheck() {
+    setState(() {
+      _showDomainError = false;
+      _failureCount = 0;
+      _hasNavigated = false;
+    });
+    getDomains();
   }
 
   ///排序域名池
   sortDomainArray() {
     var currentUrl = AppSharedPreferences.getCurrentDomain();
-    //获取缓存的域名池
     var domainUrlList = AppSharedPreferences.getDomainPool() ?? [];
 
     if ((currentUrl == null || currentUrl.isEmpty) && domainUrlList.isEmpty) {
@@ -165,156 +173,99 @@ class _SplashPageState extends State<SplashPage> {
     }
     for (var i = 0; i < domainUrlList.length; i++) {
       if (currentUrl == domainUrlList[i]) {
-        //移除域名添加到末尾
         domainUrlList.removeAt(i);
         domainUrlList.add(currentUrl!);
         break;
       }
     }
-    //更新缓存的域名池
     AppSharedPreferences.setDomainPool(domainUrlList);
   }
 
   ///重新检测
   reCheckDomainAvailable(bool isSuccess) {
-    //获取缓存的域名池
     var domainUrlList = AppSharedPreferences.getDomainPool() ?? [];
     if (domainUrlList.isNotEmpty) {
-      //更新当前域名 设置为第一个
       AppSharedPreferences.setCurrentDomain(domainUrlList.first);
-      //大于30个域名时 移除掉最后一个
       if (domainUrlList.length > 30) {
         domainUrlList.removeLast();
       }
       AppSharedPreferences.setDomainPool(domainUrlList);
       checkDomainAvailable(isSuccess);
     } else {
-      //TODO getDomains(); //重新请求接口域名池
       getLocalDomain();
     }
   }
 
-  ///一次性请求多个接口
-  requestMultipleInterfaces() {
-    //获取缓存的域名池
-    var domainUrlList = AppSharedPreferences.getDomainPool() ?? [];
-    // 存储每个请求的CancelToken
-    List<Dio.CancelToken> cancelTokens = List.generate(
-      domainUrlList.length,
-      (_) => Dio.CancelToken(),
-    );
-    // 存储每个请求的Future
-    List<Future<Dio.Response>> futures = [];
-    // 并发请求所有URLs
-    for (int i = 0; i < domainUrlList.length; i++) {
-      futures.add(
-        dio
-            .get(domainUrlList[i], cancelToken: cancelTokens[i])
-            .then((response) {
-              // 检查状态码是否为200，如果是，则取消其他请求
-              if (response.statusCode == 200) {
-                for (int j = 0; j < cancelTokens.length; j++) {
-                  if (j != i) {
-                    cancelTokens[j].cancel("Request already successful");
-                  }
-
-                  ///请求处理请求配置接口或者其它数据/跳转页面等操作
-                  goIndexPage();
-                }
-              }
-              return response; // 返回响应以便后续处理
-            })
-            .catchError((error) {
-              // 处理错误情况，例如打印日志或进行其他操作
-              Log().error('Error fetching data: $error');
-            }),
-      );
-    }
-
-    // 等待所有请求完成（无论成功或失败）
-    try {
-      Future.wait(futures).then((responseList) {
-        Log().info('所有请求完成（无论成功或失败）');
-        //可以获取到请求列表
-        Log().info('responseList: $responseList');
-      });
-    } catch (e) {
-      Log().error('An error occurred: $e');
-    } finally {
-      // 清理资源：取消所有剩余的请求（理论上这一步在上面的循环中已经完成）
-      cancelTokens.forEach((token) => token.cancel());
-    }
-  }
-
-  // getData(){
-  //   //模拟广告图接口请求
-  //   HttpUtils.get(
-  //     APIs.startUp,
-  //     {},
-  //     success: (result) {
-  //       var model = ConfigModel.fromJson(result[DATA_NAME]);
-  //       netImgUrl = model.ads?.startupAdv?.imgUrl ?? '';
-  //       tagUrl = model.ads?.startupAdv?.targetUrl ?? '';
-  //       var resultMap = result[DATA_NAME];
-  //       AppSharedPreferences.setStorage(AppConstants.appConfig, resultMap);
-  //       if (netImgUrl.isNotEmpty) {
-  //         /**刷新页面使广告图显示**/
-  //         setState(() {});
-  //         //无广告页：netImgUrl为空""
-  //       } else {
-  //         /**跳转到主页**/
-  //         Future.delayed(const Duration(microseconds: 10), goIndexPage);
-  //       }
-  //     },
-  //     fail: (int code, String msg) {},
-  //   );
-  //   Future.delayed(const Duration(microseconds: 1000), () {
-  //     //   netImgUrl =
-  //     //     'https://img2.baidu.com/it/u=1170834292,3580907519&fm=253&fmt=auto&app=138&f=JPG?w=500&h=889';
-  //   });
-  // }
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Stack(
         children: <Widget>[
-          //普通写法
           Container(
             constraints: const BoxConstraints.expand(),
             color: Colors.white,
+            alignment: Alignment.center,
             child:
                 netImgUrl.isNotEmpty
                     ? Image.network(netImgUrl, fit: BoxFit.fill)
                     : Image.asset(
-                      "assets/images/splash.png",
-                      fit: BoxFit.fill,
-                    ), //未请求回来之前，用启动页图片作为占位图
+                      "assets/icon/app_icon.png",
+                      width: 160.w,
+                      height: 160.w,
+                      fit: BoxFit.contain,
+                    ),
           ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: Get.mediaQuery.padding.bottom + 100.h,
-            child: Container(
-              alignment: Alignment.center,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text('正在寻找最佳线路'.tr, style: textWhiteWith75_14_700),
-                  SizedBox(width: 10.w),
-                  LoadingAnimationWidget.staggeredDotsWave(
-                    size: 30.w,
-                    color: AppColor.white,
-                  ),
-                ],
-              ),
-            ),
-          ),
+          if (_showDomainError)
+            _buildDomainError()
+          // else
+          //   Positioned(
+          //     left: 0,
+          //     right: 0,
+          //     bottom: Get.mediaQuery.padding.bottom + 100.h,
+          //     child: Container(
+          //       alignment: Alignment.center,
+          //       child: Row(
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         crossAxisAlignment: CrossAxisAlignment.center,
+          //         children: [
+          //           Text(
+          //             Strings.findingBestRoute.tr,
+          //             style: textMain14_700,
+          //           ),
+          //           SizedBox(width: 10.w),
+          //           LoadingAnimationWidget.staggeredDotsWave(
+          //             size: 30.w,
+          //             color: Colors.white,
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+        ],
+      ),
+    );
+  }
 
-          // // 使用 CachedNetworkImage
-          // _buildSplashBg(),
-          // //倒计时：跳过
-          // _buildCountdown(),
+  Widget _buildDomainError() {
+    return Container(
+      color: Colors.black54,
+      alignment: Alignment.center,
+      padding: EdgeInsets.symmetric(horizontal: 32.w),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.wifi_off, size: 48.w, color: AppColor.white),
+          SizedBox(height: 16.h),
+          Text(
+            Strings.domainUnavailable.tr,
+            style: textWhiteWith75_14_700.copyWith(fontSize: 16.sp),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 24.h),
+          ElevatedButton(
+            onPressed: _retryDomainCheck,
+            child: Text(Strings.retry.tr),
+          ),
         ],
       ),
     );
@@ -330,11 +281,11 @@ class _SplashPageState extends State<SplashPage> {
             (context, url) => Image.asset(
               "assets/images/splash.png",
               fit: BoxFit.fill,
-            ), ////未请求回来之前，用启动页图片作为占位图
+            ),
         imageUrl:
             netImgUrl.isNotEmpty
                 ? netImgUrl
-                : 'https://s2.loli.net/2024/09/24/hdEtiwT2WVGl5fo.png', //在netImgUrl请求回来之前占位url，防止CachedNetworkImage加载空url报错
+                : 'https://s2.loli.net/2024/09/24/hdEtiwT2WVGl5fo.png',
         fit: BoxFit.cover,
         errorWidget:
             (context, url, error) =>
@@ -364,41 +315,23 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 
-  // 跳转主页
   void goIndexPage() {
-    print('进入了主页......');
+    if (_hasNavigated) return;
 
+    final url = (AppSharedPreferences.getCurrentDomain() ?? '').trim();
+    if (url.isEmpty) {
+      _showDomainErrorUI();
+      return;
+    }
+
+    _hasNavigated = true;
     Get.offNamed(
       Routes.BASE_WEB,
       arguments: {
-        'title': '加载网页',
-        // 'url': (AppSharedPreferences.getCurrentDomain() ?? '').trim(),
-        'url': 'http://www.google.com',
+        'title': '',
+        'url': url,
+        'isShowAppBar': false,
       },
     );
-
-    ///   Navigator.of(context).pushReplacementNamed(Routes.TABS);
   }
-
-  ///获取APP配置
-  // void getAPPConfig() async {
-  //   HttpUtils.get(APIs.startUp, {}, success: (result) {
-  //     //var model = ConfigModel.fromJson(result[DATA_NAME]);
-  //     // AppBox.shared.configInfo = model;
-  //     var resultMap = result[DATA_NAME];
-  //     var ps = Storage();
-  //     ps.setStorage(TvConstants.appConfig, resultMap);
-  //   }, fail: (int code, String msg) {});
-  // }
-
-  ///获取首页分类
-  // void getCategoryList() async {
-  //   HttpUtils.get(APIs.types, {}, success: (result) {
-  //     var categoryMap = result[DATA_NAME];
-  //     var list = categoryMap[LIST_NAME];
-  //     // var ps = Storage();
-  //     // ps.setStorage(TvConstants.categoryList, list);
-  //     controller.updateCategory(list);
-  //   }, fail: (int code, String msg) {});
-  // }
 }
