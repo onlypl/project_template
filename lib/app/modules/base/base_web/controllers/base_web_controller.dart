@@ -7,6 +7,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:project_template/app/http/apis.dart';
+import 'package:project_template/app/services/open_install_service.dart';
 import 'package:project_template/app/utils/log.dart';
 
 class BaseWebController extends GetxController {
@@ -68,7 +69,12 @@ class BaseWebController extends GetxController {
               'top': safeAreaTop,
               'bottom': safeAreaBottom,
             },
+            'openInstall': OpenInstallService.activeParams,
           };
+        }
+        if (data is Map && data['action'] == 'reportRegister') {
+          OpenInstallService.reportRegister();
+          return {'status': 'ok'};
         }
         if (data is Map && data['action'] == 'requestPermission') {
           return requestPermissionByName(data['permission'] as String?);
@@ -88,6 +94,8 @@ class BaseWebController extends GetxController {
         document.documentElement.style.setProperty('--app-safe-area-top', top + 'px');
         document.documentElement.style.setProperty('--app-safe-area-bottom', bottom + 'px');
 
+        ${OpenInstallService.injectScript}
+
         if (!window.FlutterBridge) {
           window.FlutterBridge = {
             postMessage: function(data) {
@@ -98,6 +106,9 @@ class BaseWebController extends GetxController {
             },
             requestPermission: function(permission) {
               return window.flutter_inappwebview.callHandler('FlutterBridge', {action: 'requestPermission', permission: permission});
+            },
+            reportRegister: function() {
+              return window.flutter_inappwebview.callHandler('FlutterBridge', {action: 'reportRegister'});
             }
           };
         }

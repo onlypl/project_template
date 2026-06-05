@@ -608,6 +608,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.0"
+  openinstall_flutter_plugin:
+    dependency: "direct main"
+    description:
+      name: openinstall_flutter_plugin
+      sha256: eb14c34d560b20f807cc66b556e4578fa1399d353854f3acce13450e512107c6
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.6.0"
   path:
     dependency: transitive
     description:

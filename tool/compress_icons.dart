@@ -6,7 +6,6 @@ Future<void> main() async {
   final roots = [
     'android/app/src/main/res',
     'ios/Runner/Assets.xcassets/AppIcon.appiconset',
-    'assets/icon',
   ];
 
   var totalBefore = 0;
@@ -19,7 +18,7 @@ Future<void> main() async {
       if (entity is! File || !entity.path.endsWith('.png')) continue;
       if (!entity.path.contains('ic_launcher') &&
           !entity.path.contains('AppIcon.appiconset') &&
-          !entity.path.contains('assets/icon')) {
+          !entity.path.contains('splash_icon.png')) {
         continue;
       }
 

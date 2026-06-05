@@ -11,7 +11,7 @@ plugins {
 }
 
 android {////com.cloudfront.caida
-    namespace = "com.cloudfront.caida"
+    namespace =  "com.cloudfront.caida"//"com.ox4utkt.shiwan"
     compileSdk = 36
     ndkVersion = "27.0.12077973"
 
@@ -21,8 +21,8 @@ android {////com.cloudfront.caida
             keyPassword = "pl7611346" // 密码
             storeFile = file("${rootDir.absolutePath}/key.jks")//file("${rootDir.absolutePath}/keystore/key.jks") //file("/Users/onlypl/key.jks") // 存储keystore或者是jks文件的路径
             storePassword = "pl7611346" // 存储密码
-          //  enableV1Signing = true
-         //   enableV2Signing = true
+            enableV1Signing = true
+            enableV2Signing = true
         }
 
     }
@@ -37,13 +37,15 @@ android {////com.cloudfront.caida
     }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.cloudfront.caida"
+        applicationId = "io.openinstall.demo"//"com.ox4utkt.shiwan"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion//flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        // OpenInstall：替换为控制台分配的 appKey
+        manifestPlaceholders["OPENINSTALL_APPKEY"] = "3rqhu6"
     }
 
     buildTypes {

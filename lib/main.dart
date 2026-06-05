@@ -10,6 +10,7 @@ import 'package:project_template/app/db/app_hive.dart';
 import 'package:project_template/app/db/app_shared_preferences.dart';
 
 import 'app/routes/app_pages.dart';
+import 'app/services/open_install_service.dart';
 import 'app/widgets/splash_screen.dart';
 
 Future initHiveAndRegisterAdapter() async {
@@ -32,6 +33,8 @@ void main() async {
 
   //init shared preference
   await AppSharedPreferences.init();
+
+  await OpenInstallService.init();
 
   ///Firebase Cloud Messaging  firebase推送
   // inti fcm services

@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:project_template/app/config/translations/strings_enum.dart';
 import 'package:project_template/app/db/app_shared_preferences.dart';
+import 'package:project_template/app/services/open_install_service.dart';
 import 'package:project_template/app/utils/log.dart';
 import 'package:project_template/app/widgets/skip_down_time_progress.dart';
 
@@ -209,7 +210,7 @@ class _SplashPageState extends State<SplashPage> {
                 netImgUrl.isNotEmpty
                     ? Image.network(netImgUrl, fit: BoxFit.fill)
                     : Image.asset(
-                      "assets/icon/app_icon.png",
+                      "assets/icon/splash_icon.png",
                       width: 160.w,
                       height: 160.w,
                       fit: BoxFit.contain,
@@ -325,11 +326,12 @@ class _SplashPageState extends State<SplashPage> {
     }
 
     _hasNavigated = true;
+    final webUrl = OpenInstallService.appendParamsToUrl(url);
     Get.offNamed(
       Routes.BASE_WEB,
       arguments: {
         'title': '',
-        'url': url,
+        'url': webUrl,
         'isShowAppBar': false,
       },
     );
